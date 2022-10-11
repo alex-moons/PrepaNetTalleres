@@ -2,45 +2,68 @@
 //  ViewController.swift
 //  AppMovilPrepanet
 //
-//  Created by macbook on 07/10/22.
+//  Created by alex on 11/10/22.
 //
 
 import UIKit
-import FirebaseCore
-import FirebaseFirestore
-import FirebaseAuth
 
-class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UIApplicationDelegate{
-    
-    var window: UIWindow?
+class ViewController: UIViewController {
 
-    func application(_ application: UIApplication,
-      didFinishLaunchingWithOptions launchOptions:
-                     [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        FirebaseApp.configure()
-      return true
-    }
-
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return tallerList.count
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier:"cell")!
-        cell.textLabel?.text = tallerList[indexPath.row]
-        cell.detailTextLabel?.text = "\(indexPath.row)"
-        cell.imageView?.image = UIImage(named: "defaultUser")
-        return cell
-    }
-    
-    var tallerList = ["Taller1", "Taller2", "Taller3", "Taller4", "Taller5"]
+    @IBOutlet weak var imgLogo: UIImageView!
+    @IBOutlet weak var lbInicioSesion: UILabel!
+    @IBOutlet weak var tfUsername: UITextField!
+    @IBOutlet weak var tfPassword: UITextField!
+    @IBOutlet weak var lbPassRecovery: UILabel!
+    @IBOutlet weak var btnEntrar: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        
+        let tap = UITapGestureRecognizer(target: self, action: #selector(UIInputViewController.dismissKeyboard))
+        view.addGestureRecognizer(tap)
     }
-    //as
+    
+    @objc func dismissKeyboard() {
+        view.endEditing(true)
+    }
+    
+    
+    @IBAction func nextTf(_ sender: Any) {
+        self.tfPassword.becomeFirstResponder()
+    }
+    
+    func clearTf(){
+        tfUsername.text = ""
+        tfPassword.text = ""
+    }
+    
+    @IBAction func enterTf(_ sender: Any) {
+        dismissKeyboard()
+    }
+    
+    @IBAction func Entrar(_ sender: Any) {
+        
+    }
+    
+    override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
+        if tfUsername.hasText && tfPassword.hasText{
+            return true
+        }else{
+            let tfVacio = UIAlertController(title: "Campo de texto Vacío", message: "Por favor llena todos los campos", preferredStyle: .alert)
+            let alertOk = UIAlertAction(title: "Ok", style: .cancel)
+            tfVacio.addAction(alertOk)
+            self.present(tfVacio, animated: true)
+            return false
+        }
+    }
+    // MARK: - Navigation
 
+    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let target = segue.destination as! TallerViewController
+        target.username = tfUsername.text!
+        // Get the new view controller using segue.destination.
+        // Pass the selected object to the new view controller.
+    }
 
 }
-
