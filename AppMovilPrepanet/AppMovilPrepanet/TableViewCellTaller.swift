@@ -1,18 +1,18 @@
 //
-//  CustomTallerTableViewCell.swift
+//  TableViewCellTaller.swift
 //  AppMovilPrepanet
 //
-//  Created by alex on 10/10/22.
+//  Created by alex on 14/10/22.
 //
 
 import UIKit
 
-class CustomTallerTableViewCell: UITableViewCell {
+class TableViewCellTaller: UITableViewCell {
     
-    @IBOutlet weak var lbEnum: UILabel!
+    @IBOutlet weak var lbNum: UILabel!
     @IBOutlet weak var lbNombre: UILabel!
     @IBOutlet weak var lbStatus: UILabel!
-    
+
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
