@@ -7,23 +7,37 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FA1DD6E928FA0A9C00A849C8 /* ViewControllerTalleres.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA1DD6E828FA0A9C00A849C8 /* ViewControllerTalleres.swift */; };
+		FA1DD6EB28FA0C9B00A849C8 /* TableViewCellTaller.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA1DD6EA28FA0C9B00A849C8 /* TableViewCellTaller.swift */; };
+		FA1DD6ED28FA10B900A849C8 /* ViewControllerInfoTaller.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA1DD6EC28FA10B900A849C8 /* ViewControllerInfoTaller.swift */; };
+		FA3A2F9328FE7752005CB31D /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA3A2F9228FE7752005CB31D /* Launch Screen.storyboard */; };
+		FA3A2F9528FE7AFA005CB31D /* Fuente in Resources */ = {isa = PBXBuildFile; fileRef = FA3A2F9428FE7AFA005CB31D /* Fuente */; };
 		FA7D481428F0C7C100E188AD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA7D481328F0C7C100E188AD /* AppDelegate.swift */; };
 		FA7D481628F0C7C100E188AD /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA7D481528F0C7C100E188AD /* SceneDelegate.swift */; };
-		FA7D481828F0C7C100E188AD /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA7D481728F0C7C100E188AD /* ViewController.swift */; };
 		FA7D481B28F0C7C100E188AD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA7D481928F0C7C100E188AD /* Main.storyboard */; };
 		FA7D481D28F0C7C400E188AD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FA7D481C28F0C7C400E188AD /* Assets.xcassets */; };
 		FA7D482028F0C7C400E188AD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA7D481E28F0C7C400E188AD /* LaunchScreen.storyboard */; };
+		FA93270928F4D94900DEDFBC /* taller.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA93270828F4D94900DEDFBC /* taller.swift */; };
+		FA93270F28F5BFCB00DEDFBC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA93270E28F5BFCB00DEDFBC /* ViewController.swift */; };
+		FAC5EA5C28F48559006AD6F7 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FAC5EA5B28F48559006AD6F7 /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		FA1DD6E828FA0A9C00A849C8 /* ViewControllerTalleres.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerTalleres.swift; sourceTree = "<group>"; };
+		FA1DD6EA28FA0C9B00A849C8 /* TableViewCellTaller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCellTaller.swift; sourceTree = "<group>"; };
+		FA1DD6EC28FA10B900A849C8 /* ViewControllerInfoTaller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerInfoTaller.swift; sourceTree = "<group>"; };
+		FA3A2F9228FE7752005CB31D /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
+		FA3A2F9428FE7AFA005CB31D /* Fuente */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Fuente; path = ../../../../../Downloads/Fuente; sourceTree = "<group>"; };
 		FA7D481028F0C7C100E188AD /* AppMovilPrepanet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AppMovilPrepanet.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA7D481328F0C7C100E188AD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FA7D481528F0C7C100E188AD /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		FA7D481728F0C7C100E188AD /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		FA7D481A28F0C7C100E188AD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		FA7D481C28F0C7C400E188AD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FA7D481F28F0C7C400E188AD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FA7D482128F0C7C400E188AD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FA93270828F4D94900DEDFBC /* taller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = taller.swift; sourceTree = "<group>"; };
+		FA93270E28F5BFCB00DEDFBC /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		FAC5EA5B28F48559006AD6F7 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -40,6 +54,8 @@
 		FA7D480728F0C7C100E188AD = {
 			isa = PBXGroup;
 			children = (
+				FA3A2F9228FE7752005CB31D /* Launch Screen.storyboard */,
+				FA93270828F4D94900DEDFBC /* taller.swift */,
 				FA7D481228F0C7C100E188AD /* AppMovilPrepanet */,
 				FA7D481128F0C7C100E188AD /* Products */,
 			);
@@ -58,11 +74,16 @@
 			children = (
 				FA7D481328F0C7C100E188AD /* AppDelegate.swift */,
 				FA7D481528F0C7C100E188AD /* SceneDelegate.swift */,
-				FA7D481728F0C7C100E188AD /* ViewController.swift */,
 				FA7D481928F0C7C100E188AD /* Main.storyboard */,
+				FA1DD6EC28FA10B900A849C8 /* ViewControllerInfoTaller.swift */,
+				FA1DD6EA28FA0C9B00A849C8 /* TableViewCellTaller.swift */,
+				FA1DD6E828FA0A9C00A849C8 /* ViewControllerTalleres.swift */,
+				FA93270E28F5BFCB00DEDFBC /* ViewController.swift */,
 				FA7D481C28F0C7C400E188AD /* Assets.xcassets */,
 				FA7D481E28F0C7C400E188AD /* LaunchScreen.storyboard */,
 				FA7D482128F0C7C400E188AD /* Info.plist */,
+				FAC5EA5B28F48559006AD6F7 /* GoogleService-Info.plist */,
+				FA3A2F9428FE7AFA005CB31D /* Fuente */,
 			);
 			path = AppMovilPrepanet;
 			sourceTree = "<group>";
@@ -83,6 +104,8 @@
 			dependencies = (
 			);
 			name = AppMovilPrepanet;
+			packageProductDependencies = (
+			);
 			productName = AppMovilPrepanet;
 			productReference = FA7D481028F0C7C100E188AD /* AppMovilPrepanet.app */;
 			productType = "com.apple.product-type.application";
@@ -111,6 +134,8 @@
 				Base,
 			);
 			mainGroup = FA7D480728F0C7C100E188AD;
+			packageReferences = (
+			);
 			productRefGroup = FA7D481128F0C7C100E188AD /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -126,7 +151,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				FA7D482028F0C7C400E188AD /* LaunchScreen.storyboard in Resources */,
+				FA3A2F9528FE7AFA005CB31D /* Fuente in Resources */,
+				FAC5EA5C28F48559006AD6F7 /* GoogleService-Info.plist in Resources */,
 				FA7D481D28F0C7C400E188AD /* Assets.xcassets in Resources */,
+				FA3A2F9328FE7752005CB31D /* Launch Screen.storyboard in Resources */,
 				FA7D481B28F0C7C100E188AD /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -138,9 +166,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FA7D481828F0C7C100E188AD /* ViewController.swift in Sources */,
+				FA93270F28F5BFCB00DEDFBC /* ViewController.swift in Sources */,
+				FA1DD6ED28FA10B900A849C8 /* ViewControllerInfoTaller.swift in Sources */,
+				FA1DD6EB28FA0C9B00A849C8 /* TableViewCellTaller.swift in Sources */,
 				FA7D481428F0C7C100E188AD /* AppDelegate.swift in Sources */,
+				FA1DD6E928FA0A9C00A849C8 /* ViewControllerTalleres.swift in Sources */,
 				FA7D481628F0C7C100E188AD /* SceneDelegate.swift in Sources */,
+				FA93270928F4D94900DEDFBC /* taller.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -287,13 +319,18 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 28Z6MA3PHS;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = AppMovilPrepanet/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "PrepaNet Talleres";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.education";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UIStatusBarStyle = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -314,13 +351,18 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 28Z6MA3PHS;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = AppMovilPrepanet/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "PrepaNet Talleres";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.education";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UIStatusBarStyle = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
