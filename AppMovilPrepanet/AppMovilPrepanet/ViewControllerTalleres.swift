@@ -21,7 +21,6 @@ class ViewControllerTalleres: UIViewController, UITableViewDelegate, UITableView
         return cell
     }
     
-    
     @IBOutlet weak var tableViewTalleres: UITableView!
     
     var talleres = [taller]()
@@ -40,14 +39,16 @@ class ViewControllerTalleres: UIViewController, UITableViewDelegate, UITableView
     }
     
 
-    /*
+
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let target = segue.destination as? ViewControllerInfoTaller
+        let index = tableViewTalleres.indexPathForSelectedRow!
+        target?.tallerInfo = talleres[index.row]
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
     }
-    */
 
 }

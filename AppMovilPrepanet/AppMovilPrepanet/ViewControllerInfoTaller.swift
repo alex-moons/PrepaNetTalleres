@@ -8,9 +8,15 @@
 import UIKit
 
 class ViewControllerInfoTaller: UIViewController {
-
+    @IBOutlet weak var lbName: UILabel!
+    @IBOutlet weak var lbStatus: UILabel!
+    
+    var tallerInfo:taller!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        lbName.text = tallerInfo.nombre
+        lbStatus.text = tallerInfo.status
 
         // Do any additional setup after loading the view.
     }

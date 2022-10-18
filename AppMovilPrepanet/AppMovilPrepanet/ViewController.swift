@@ -13,8 +13,8 @@ class ViewController: UIViewController {
     @IBOutlet weak var lbInicioSesion: UILabel!
     @IBOutlet weak var tfUsername: UITextField!
     @IBOutlet weak var tfPassword: UITextField!
-    @IBOutlet weak var lbPassRecovery: UILabel!
     @IBOutlet weak var btnEntrar: UIButton!
+    @IBOutlet weak var btnReset: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
