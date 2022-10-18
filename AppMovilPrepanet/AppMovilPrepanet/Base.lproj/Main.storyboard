@@ -53,7 +53,7 @@
                                                     <rect key="frame" x="16" y="11" width="311" height="40"/>
                                                     <subviews>
                                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="E5t-Lb-BKn">
-                                                            <rect key="frame" x="0.0" y="2.5" width="30" height="35.5"/>
+                                                            <rect key="frame" x="0.0" y="2" width="30" height="35.5"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="30" id="m5R-8Q-eGY"/>
                                                                 <constraint firstAttribute="width" constant="30" id="wAe-qr-zH9"/>
@@ -106,7 +106,7 @@
                                 </connections>
                             </tableView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Notificaciones" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y1i-aI-kQ9">
-                                <rect key="frame" x="26" y="40" width="273" height="47"/>
+                                <rect key="frame" x="26" y="40" width="254.5" height="47"/>
                                 <fontDescription key="fontDescription" name="RalewayRoman-Bold" family="Raleway" pointSize="40"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -170,8 +170,8 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ajustes" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CmU-gQ-aae">
-                                <rect key="frame" x="26" y="40" width="141" height="47"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Ajustes" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CmU-gQ-aae">
+                                <rect key="frame" x="26" y="40" width="219" height="47"/>
                                 <fontDescription key="fontDescription" name="Raleway-Bold" family="Raleway" pointSize="40"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -326,19 +326,19 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Liderazgo Positivo y Transformación Personal" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="WiO-sC-NUE">
-                                <rect key="frame" x="16" y="62" width="343" height="69.5"/>
+                                <rect key="frame" x="16" y="62" width="343" height="72"/>
                                 <fontDescription key="fontDescription" name="Raleway-Medium" family="Raleway" pointSize="40"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Status:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Ro-mw-kLm">
-                                <rect key="frame" x="16" y="139.5" width="67" height="26"/>
+                                <rect key="frame" x="16" y="142" width="67" height="26"/>
                                 <fontDescription key="fontDescription" name="Raleway-Regular" family="Raleway" pointSize="22"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="2bK-8y-jEx">
-                                <rect key="frame" x="91" y="139.5" width="268" height="26"/>
+                                <rect key="frame" x="91" y="142" width="268" height="26"/>
                                 <fontDescription key="fontDescription" name="Raleway-MediumItalic" family="Raleway" pointSize="22"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
