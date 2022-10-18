@@ -4,6 +4,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21207"/>
+        <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -21,15 +22,18 @@
         <array key="Raleway-Regular.ttf">
             <string>Raleway-Regular</string>
         </array>
+        <array key="Raleway-SemiBold.ttf">
+            <string>Raleway-SemiBold</string>
+        </array>
         <array key="Raleway-VariableFont_wght.ttf">
             <string>RalewayRoman-Bold</string>
         </array>
     </customFonts>
     <scenes>
-        <!--View Controller-->
+        <!--View Controller Notificaciones-->
         <scene sceneID="gXV-Ss-pK9">
             <objects>
-                <viewController id="TuH-iy-0Zg" sceneMemberID="viewController">
+                <viewController id="TuH-iy-0Zg" customClass="ViewControllerNotificaciones" customModule="AppMovilPrepanet" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="w7R-mY-Fel">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -38,15 +42,68 @@
                                 <rect key="frame" x="16" y="107" width="343" height="491"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="79" id="Dg4-TH-543">
-                                        <rect key="frame" x="0.0" y="50" width="343" height="79"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" rowHeight="62" id="Dg4-TH-543" customClass="TableViewCellNotif" customModule="AppMovilPrepanet" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="50" width="343" height="62"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Dg4-TH-543" id="zdf-gM-iga">
-                                            <rect key="frame" x="0.0" y="0.0" width="343" height="79"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="343" height="62"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="aRo-gG-has">
+                                                    <rect key="frame" x="16" y="11" width="311" height="40"/>
+                                                    <subviews>
+                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="E5t-Lb-BKn">
+                                                            <rect key="frame" x="0.0" y="2.5" width="30" height="35.5"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="height" constant="30" id="m5R-8Q-eGY"/>
+                                                                <constraint firstAttribute="width" constant="30" id="wAe-qr-zH9"/>
+                                                            </constraints>
+                                                            <imageReference key="image" image="bell.circle" catalog="system" symbolScale="small" renderingMode="hierarchical">
+                                                                <hierarchicalColors>
+                                                                    <color red="0.25556823490846037" green="0.25556823490846037" blue="0.25556823490846037" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                    <color systemColor="secondaryLabelColor"/>
+                                                                    <color systemColor="secondaryLabelColor"/>
+                                                                </hierarchicalColors>
+                                                            </imageReference>
+                                                        </imageView>
+                                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="Yo6-Uj-oNY">
+                                                            <rect key="frame" x="40" y="0.0" width="271" height="40"/>
+                                                            <subviews>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="mlL-C5-fru">
+                                                                    <rect key="frame" x="0.0" y="0.0" width="271" height="20"/>
+                                                                    <fontDescription key="fontDescription" name="RalewayRoman-Bold" family="Raleway" pointSize="17"/>
+                                                                    <nil key="textColor"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="7mW-v7-QiX">
+                                                                    <rect key="frame" x="0.0" y="20" width="271" height="20"/>
+                                                                    <fontDescription key="fontDescription" name="Raleway-SemiBold" family="Raleway" pointSize="14"/>
+                                                                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
+                                                            </subviews>
+                                                        </stackView>
+                                                    </subviews>
+                                                </stackView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="aRo-gG-has" firstAttribute="leading" secondItem="zdf-gM-iga" secondAttribute="leadingMargin" id="NOc-rk-RV4"/>
+                                                <constraint firstItem="aRo-gG-has" firstAttribute="trailing" secondItem="zdf-gM-iga" secondAttribute="trailingMargin" id="WsT-HX-NwK"/>
+                                                <constraint firstItem="aRo-gG-has" firstAttribute="bottom" secondItem="zdf-gM-iga" secondAttribute="bottomMargin" id="sg5-L6-8G2"/>
+                                                <constraint firstItem="aRo-gG-has" firstAttribute="top" secondItem="zdf-gM-iga" secondAttribute="topMargin" id="u0Y-2O-zXO"/>
+                                            </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="lbMsg" destination="7mW-v7-QiX" id="bWd-9O-FU8"/>
+                                            <outlet property="lbTitle" destination="mlL-C5-fru" id="7Xf-So-VIv"/>
+                                            <segue destination="RH2-gZ-ba6" kind="presentation" id="mnc-e8-gdH"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="TuH-iy-0Zg" id="dGQ-JQ-1cW"/>
+                                    <outlet property="delegate" destination="TuH-iy-0Zg" id="lcc-gI-Hy5"/>
+                                </connections>
                             </tableView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Notificaciones" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y1i-aI-kQ9">
                                 <rect key="frame" x="26" y="40" width="273" height="47"/>
@@ -67,10 +124,29 @@
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="" image="bell.fill" catalog="system" selectedImage="bell.fill" id="Hog-Ft-oYe"/>
+                    <connections>
+                        <outlet property="tableViewNotif" destination="VdM-ie-p6F" id="TOh-Ho-sPC"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hbp-ZB-aig" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1197.5999999999999" y="68.815592203898049"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="KXA-Dg-KKe">
+            <objects>
+                <viewController id="RH2-gZ-ba6" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Tw5-bg-9hc">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="0Mo-oy-4TX"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="vaA-Jw-b58"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3iz-at-LJz" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1924" y="69"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="q4v-QQ-BVl">
@@ -395,10 +471,14 @@
     </scenes>
     <resources>
         <image name="backdrop" width="960" height="540"/>
+        <image name="bell.circle" catalog="system" width="128" height="123"/>
         <image name="bell.fill" catalog="system" width="123" height="128"/>
         <image name="gearshape.2.fill" catalog="system" width="128" height="101"/>
         <image name="prepanet_blanco" width="1038" height="227"/>
         <image name="square.split.2x2.fill" catalog="system" width="128" height="114"/>
+        <systemColor name="secondaryLabelColor">
+            <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
