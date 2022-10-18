@@ -1,2 +1,0 @@
-C:\Users\Alan de la Cruz\Desktop\prepaNet\webPrepa\WebPrepaNet\frontPrepaNet\obj\Debug\frontprepanet.esproj.SuggestedBindingRedirects.cache
-C:\Users\Alan de la Cruz\Desktop\prepaNet\webPrepa\WebPrepaNet\frontPrepaNet\obj\Debug\frontprepanet.esproj.CoreCompileInputs.cache
