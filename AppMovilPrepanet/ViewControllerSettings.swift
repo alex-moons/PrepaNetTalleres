@@ -1,29 +1,26 @@
 //
-//  ViewControllerInfoTaller.swift
+//  ViewControllerSettings.swift
 //  AppMovilPrepanet
 //
-//  Created by alex on 14/10/22.
+//  Created by alex on 19/10/22.
 //
 
 import UIKit
 
-class ViewControllerInfoTaller: UIViewController {
-    @IBOutlet weak var lbName: UILabel!
-    @IBOutlet weak var lbStatus: UILabel!
-    @IBOutlet weak var textDesc: UITextView!
+class ViewControllerSettings: UIViewController {
+
     
-    var tallerInfo:taller!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        lbName.text = tallerInfo.nombre
-        lbStatus.text = tallerInfo.status
-        textDesc.text = tallerInfo.desc
 
         // Do any additional setup after loading the view.
     }
     
-
+    @IBAction func logOut(_ sender: Any) {
+        dismiss(animated: true)
+    }
+    
     /*
     // MARK: - Navigation
 

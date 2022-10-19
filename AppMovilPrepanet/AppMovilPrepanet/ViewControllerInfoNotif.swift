@@ -1,29 +1,34 @@
 //
-//  ViewControllerInfoTaller.swift
+//  ViewControllerInfoNotif.swift
 //  AppMovilPrepanet
 //
-//  Created by alex on 14/10/22.
+//  Created by alex on 19/10/22.
 //
 
 import UIKit
 
-class ViewControllerInfoTaller: UIViewController {
-    @IBOutlet weak var lbName: UILabel!
-    @IBOutlet weak var lbStatus: UILabel!
-    @IBOutlet weak var textDesc: UITextView!
+class ViewControllerInfoNotif: UIViewController {
     
-    var tallerInfo:taller!
+    @IBOutlet weak var lbTitulo: UILabel!
+    @IBOutlet weak var textMsg: UITextView!
+    @IBOutlet weak var lbAutor: UILabel!
+    
+    var notif:notificacion!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        lbName.text = tallerInfo.nombre
-        lbStatus.text = tallerInfo.status
-        textDesc.text = tallerInfo.desc
+        lbTitulo.text = notif.title
+        lbAutor.text = notif.coordi
+        textMsg.text = notif.content
+        
 
         // Do any additional setup after loading the view.
     }
     
-
+    @IBAction func dismiss(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
+    }
+    
     /*
     // MARK: - Navigation
 

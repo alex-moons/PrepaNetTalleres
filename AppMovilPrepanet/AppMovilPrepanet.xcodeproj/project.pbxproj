@@ -22,6 +22,8 @@
 		FA7D482028F0C7C400E188AD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA7D481E28F0C7C400E188AD /* LaunchScreen.storyboard */; };
 		FA93270928F4D94900DEDFBC /* taller.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA93270828F4D94900DEDFBC /* taller.swift */; };
 		FA93270F28F5BFCB00DEDFBC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA93270E28F5BFCB00DEDFBC /* ViewController.swift */; };
+		FAB9CADB29003AEC003473E1 /* ViewControllerInfoNotif.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAB9CADA29003AEC003473E1 /* ViewControllerInfoNotif.swift */; };
+		FAB9CADD29004335003473E1 /* ViewControllerSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAB9CADC29004335003473E1 /* ViewControllerSettings.swift */; };
 		FAC5EA5C28F48559006AD6F7 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FAC5EA5B28F48559006AD6F7 /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
@@ -43,6 +45,8 @@
 		FA7D482128F0C7C400E188AD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FA93270828F4D94900DEDFBC /* taller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = taller.swift; sourceTree = "<group>"; };
 		FA93270E28F5BFCB00DEDFBC /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		FAB9CADA29003AEC003473E1 /* ViewControllerInfoNotif.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerInfoNotif.swift; sourceTree = "<group>"; };
+		FAB9CADC29004335003473E1 /* ViewControllerSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerSettings.swift; sourceTree = "<group>"; };
 		FAC5EA5B28F48559006AD6F7 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -60,6 +64,7 @@
 		FA7D480728F0C7C100E188AD = {
 			isa = PBXGroup;
 			children = (
+				FAB9CADC29004335003473E1 /* ViewControllerSettings.swift */,
 				FA3A2F9228FE7752005CB31D /* Launch Screen.storyboard */,
 				FA3A2F9A28FF1089005CB31D /* notificacion.swift */,
 				FA93270828F4D94900DEDFBC /* taller.swift */,
@@ -82,6 +87,7 @@
 				FA7D481328F0C7C100E188AD /* AppDelegate.swift */,
 				FA7D481528F0C7C100E188AD /* SceneDelegate.swift */,
 				FA7D481928F0C7C100E188AD /* Main.storyboard */,
+				FAB9CADA29003AEC003473E1 /* ViewControllerInfoNotif.swift */,
 				FA3A2F9C28FF2278005CB31D /* TableViewCellNotif.swift */,
 				FA3A2F9828FF0FDC005CB31D /* ViewControllerNotificaciones.swift */,
 				FA1DD6EC28FA10B900A849C8 /* ViewControllerInfoTaller.swift */,
@@ -176,6 +182,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FA93270F28F5BFCB00DEDFBC /* ViewController.swift in Sources */,
+				FAB9CADB29003AEC003473E1 /* ViewControllerInfoNotif.swift in Sources */,
 				FA1DD6ED28FA10B900A849C8 /* ViewControllerInfoTaller.swift in Sources */,
 				FA3A2F9D28FF2278005CB31D /* TableViewCellNotif.swift in Sources */,
 				FA3A2F9928FF0FDD005CB31D /* ViewControllerNotificaciones.swift in Sources */,
@@ -185,6 +192,7 @@
 				FA1DD6E928FA0A9C00A849C8 /* ViewControllerTalleres.swift in Sources */,
 				FA7D481628F0C7C100E188AD /* SceneDelegate.swift in Sources */,
 				FA93270928F4D94900DEDFBC /* taller.swift in Sources */,
+				FAB9CADD29004335003473E1 /* ViewControllerSettings.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

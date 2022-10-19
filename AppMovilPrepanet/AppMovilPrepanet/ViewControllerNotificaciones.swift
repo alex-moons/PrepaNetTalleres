@@ -16,8 +16,12 @@ class ViewControllerNotificaciones: UIViewController, UITableViewDelegate, UITab
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! TableViewCellNotif
         cell.lbTitle.text = notificaciones[indexPath.row].title
         cell.lbMsg.text = notificaciones[indexPath.row].content
-        
+        cell.lbAutor.text = notificaciones[indexPath.row].coordi
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
     }
     
     
@@ -40,7 +44,11 @@ class ViewControllerNotificaciones: UIViewController, UITableViewDelegate, UITab
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
+        let target = segue.destination as? ViewControllerInfoNotif
+        let index = tableViewNotif.indexPathForSelectedRow!
+
+        target!.notif = notificaciones[index.row]
+
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
     }
