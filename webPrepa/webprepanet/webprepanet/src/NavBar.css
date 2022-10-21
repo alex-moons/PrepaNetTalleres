@@ -1,3 +1,7 @@
 .nav-bar {
-    background-color: rgb(29,43,80)
+    background-color: rgb(29,43,80);
+}
+
+.logo-align {
+    align-content: space-evenly;
 }
