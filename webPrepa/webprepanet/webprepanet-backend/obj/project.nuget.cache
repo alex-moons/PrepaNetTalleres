@@ -1,0 +1,15 @@
+{
+  "version": 2,
+  "dgSpecHash": "77jiSLF20ErtwpzuhgRJRU2a+7gNuz9+2y/POcVf5wotdA1diOgy8bK3nczaLJoPm/Mq4Lp/aOic8V+E5Z05iw==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\patos\\Documents\\ITC 5\\Ciberseguridad\\prepaNet\\webPrepa\\webprepanet\\webprepanet-backend\\webprepanet-backend.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\patos\\.nuget\\packages\\microsoft.extensions.apidescription.server\\3.0.0\\microsoft.extensions.apidescription.server.3.0.0.nupkg.sha512",
+    "C:\\Users\\patos\\.nuget\\packages\\microsoft.openapi\\1.2.3\\microsoft.openapi.1.2.3.nupkg.sha512",
+    "C:\\Users\\patos\\.nuget\\packages\\swashbuckle.aspnetcore\\6.2.3\\swashbuckle.aspnetcore.6.2.3.nupkg.sha512",
+    "C:\\Users\\patos\\.nuget\\packages\\swashbuckle.aspnetcore.swagger\\6.2.3\\swashbuckle.aspnetcore.swagger.6.2.3.nupkg.sha512",
+    "C:\\Users\\patos\\.nuget\\packages\\swashbuckle.aspnetcore.swaggergen\\6.2.3\\swashbuckle.aspnetcore.swaggergen.6.2.3.nupkg.sha512",
+    "C:\\Users\\patos\\.nuget\\packages\\swashbuckle.aspnetcore.swaggerui\\6.2.3\\swashbuckle.aspnetcore.swaggerui.6.2.3.nupkg.sha512"
+  ],
+  "logs": []
+}

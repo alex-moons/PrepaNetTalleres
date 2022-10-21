@@ -1,2 +1,4 @@
 C:\Users\Alan de la Cruz\Desktop\prepaNet\webPrepa\webPrepaNet3\webPrepaNet3\obj\Debug\webprepanet3.esproj.SuggestedBindingRedirects.cache
 C:\Users\Alan de la Cruz\Desktop\prepaNet\webPrepa\webPrepaNet3\webPrepaNet3\obj\Debug\webprepanet3.esproj.CoreCompileInputs.cache
+C:\Users\patos\Documents\ITC 5\Ciberseguridad\prepaNet\webPrepa\webPrepaNet3\webPrepaNet3\obj\Debug\webprepanet3.esproj.SuggestedBindingRedirects.cache
+C:\Users\patos\Documents\ITC 5\Ciberseguridad\prepaNet\webPrepa\webPrepaNet3\webPrepaNet3\obj\Debug\webprepanet3.esproj.CoreCompileInputs.cache

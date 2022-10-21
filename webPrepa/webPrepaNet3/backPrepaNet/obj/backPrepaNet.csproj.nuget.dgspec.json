@@ -1,20 +1,25 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Alan de la Cruz\\Desktop\\prepaNet\\webPrepa\\webPrepaNet3\\backPrepaNet\\backPrepaNet.csproj": {}
+    "C:\\Users\\patos\\Documents\\ITC 5\\Ciberseguridad\\prepaNet\\webPrepa\\webPrepaNet3\\backPrepaNet\\backPrepaNet.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Alan de la Cruz\\Desktop\\prepaNet\\webPrepa\\webPrepaNet3\\backPrepaNet\\backPrepaNet.csproj": {
+    "C:\\Users\\patos\\Documents\\ITC 5\\Ciberseguridad\\prepaNet\\webPrepa\\webPrepaNet3\\backPrepaNet\\backPrepaNet.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Alan de la Cruz\\Desktop\\prepaNet\\webPrepa\\webPrepaNet3\\backPrepaNet\\backPrepaNet.csproj",
+        "projectUniqueName": "C:\\Users\\patos\\Documents\\ITC 5\\Ciberseguridad\\prepaNet\\webPrepa\\webPrepaNet3\\backPrepaNet\\backPrepaNet.csproj",
         "projectName": "backPrepaNet",
-        "projectPath": "C:\\Users\\Alan de la Cruz\\Desktop\\prepaNet\\webPrepa\\webPrepaNet3\\backPrepaNet\\backPrepaNet.csproj",
-        "packagesPath": "C:\\Users\\Alan de la Cruz\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Alan de la Cruz\\Desktop\\prepaNet\\webPrepa\\webPrepaNet3\\backPrepaNet\\obj\\",
+        "projectPath": "C:\\Users\\patos\\Documents\\ITC 5\\Ciberseguridad\\prepaNet\\webPrepa\\webPrepaNet3\\backPrepaNet\\backPrepaNet.csproj",
+        "packagesPath": "C:\\Users\\patos\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\patos\\Documents\\ITC 5\\Ciberseguridad\\prepaNet\\webPrepa\\webPrepaNet3\\backPrepaNet\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
         "configFilePaths": [
-          "C:\\Users\\Alan de la Cruz\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\patos\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -22,8 +27,7 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "https://api.nuget.org/v3/index.json": {},
-          "https://packagesource": {}
+          "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net6.0": {
@@ -65,7 +69,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.401\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.402\\RuntimeIdentifierGraph.json"
         }
       }
     }

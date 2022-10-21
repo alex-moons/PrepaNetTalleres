@@ -25,3 +25,30 @@ C:\Users\Alan de la Cruz\Desktop\prepaNet\webPrepa\webPrepaNet3\backPrepaNet\obj
 C:\Users\Alan de la Cruz\Desktop\prepaNet\webPrepa\webPrepaNet3\backPrepaNet\obj\Debug\net6.0\backPrepaNet.pdb
 C:\Users\Alan de la Cruz\Desktop\prepaNet\webPrepa\webPrepaNet3\backPrepaNet\obj\Debug\net6.0\backPrepaNet.genruntimeconfig.cache
 C:\Users\Alan de la Cruz\Desktop\prepaNet\webPrepa\webPrepaNet3\backPrepaNet\obj\Debug\net6.0\ref\backPrepaNet.dll
+C:\Users\patos\Documents\ITC 5\Ciberseguridad\prepaNet\webPrepa\webPrepaNet3\backPrepaNet\bin\Debug\net6.0\appsettings.Development.json
+C:\Users\patos\Documents\ITC 5\Ciberseguridad\prepaNet\webPrepa\webPrepaNet3\backPrepaNet\bin\Debug\net6.0\appsettings.json
+C:\Users\patos\Documents\ITC 5\Ciberseguridad\prepaNet\webPrepa\webPrepaNet3\backPrepaNet\bin\Debug\net6.0\backPrepaNet.exe
+C:\Users\patos\Documents\ITC 5\Ciberseguridad\prepaNet\webPrepa\webPrepaNet3\backPrepaNet\bin\Debug\net6.0\backPrepaNet.deps.json
+C:\Users\patos\Documents\ITC 5\Ciberseguridad\prepaNet\webPrepa\webPrepaNet3\backPrepaNet\bin\Debug\net6.0\backPrepaNet.runtimeconfig.json
+C:\Users\patos\Documents\ITC 5\Ciberseguridad\prepaNet\webPrepa\webPrepaNet3\backPrepaNet\bin\Debug\net6.0\backPrepaNet.dll
+C:\Users\patos\Documents\ITC 5\Ciberseguridad\prepaNet\webPrepa\webPrepaNet3\backPrepaNet\bin\Debug\net6.0\backPrepaNet.pdb
+C:\Users\patos\Documents\ITC 5\Ciberseguridad\prepaNet\webPrepa\webPrepaNet3\backPrepaNet\bin\Debug\net6.0\Microsoft.OpenApi.dll
+C:\Users\patos\Documents\ITC 5\Ciberseguridad\prepaNet\webPrepa\webPrepaNet3\backPrepaNet\bin\Debug\net6.0\Swashbuckle.AspNetCore.Swagger.dll
+C:\Users\patos\Documents\ITC 5\Ciberseguridad\prepaNet\webPrepa\webPrepaNet3\backPrepaNet\bin\Debug\net6.0\Swashbuckle.AspNetCore.SwaggerGen.dll
+C:\Users\patos\Documents\ITC 5\Ciberseguridad\prepaNet\webPrepa\webPrepaNet3\backPrepaNet\bin\Debug\net6.0\Swashbuckle.AspNetCore.SwaggerUI.dll
+C:\Users\patos\Documents\ITC 5\Ciberseguridad\prepaNet\webPrepa\webPrepaNet3\backPrepaNet\obj\Debug\net6.0\backPrepaNet.csproj.AssemblyReference.cache
+C:\Users\patos\Documents\ITC 5\Ciberseguridad\prepaNet\webPrepa\webPrepaNet3\backPrepaNet\obj\Debug\net6.0\backPrepaNet.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\patos\Documents\ITC 5\Ciberseguridad\prepaNet\webPrepa\webPrepaNet3\backPrepaNet\obj\Debug\net6.0\backPrepaNet.AssemblyInfoInputs.cache
+C:\Users\patos\Documents\ITC 5\Ciberseguridad\prepaNet\webPrepa\webPrepaNet3\backPrepaNet\obj\Debug\net6.0\backPrepaNet.AssemblyInfo.cs
+C:\Users\patos\Documents\ITC 5\Ciberseguridad\prepaNet\webPrepa\webPrepaNet3\backPrepaNet\obj\Debug\net6.0\backPrepaNet.csproj.CoreCompileInputs.cache
+C:\Users\patos\Documents\ITC 5\Ciberseguridad\prepaNet\webPrepa\webPrepaNet3\backPrepaNet\obj\Debug\net6.0\backPrepaNet.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\patos\Documents\ITC 5\Ciberseguridad\prepaNet\webPrepa\webPrepaNet3\backPrepaNet\obj\Debug\net6.0\backPrepaNet.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\patos\Documents\ITC 5\Ciberseguridad\prepaNet\webPrepa\webPrepaNet3\backPrepaNet\obj\Debug\net6.0\staticwebassets.build.json
+C:\Users\patos\Documents\ITC 5\Ciberseguridad\prepaNet\webPrepa\webPrepaNet3\backPrepaNet\obj\Debug\net6.0\staticwebassets.development.json
+C:\Users\patos\Documents\ITC 5\Ciberseguridad\prepaNet\webPrepa\webPrepaNet3\backPrepaNet\obj\Debug\net6.0\scopedcss\bundle\backPrepaNet.styles.css
+C:\Users\patos\Documents\ITC 5\Ciberseguridad\prepaNet\webPrepa\webPrepaNet3\backPrepaNet\obj\Debug\net6.0\backPrepaNet.csproj.CopyComplete
+C:\Users\patos\Documents\ITC 5\Ciberseguridad\prepaNet\webPrepa\webPrepaNet3\backPrepaNet\obj\Debug\net6.0\backPrepaNet.dll
+C:\Users\patos\Documents\ITC 5\Ciberseguridad\prepaNet\webPrepa\webPrepaNet3\backPrepaNet\obj\Debug\net6.0\refint\backPrepaNet.dll
+C:\Users\patos\Documents\ITC 5\Ciberseguridad\prepaNet\webPrepa\webPrepaNet3\backPrepaNet\obj\Debug\net6.0\backPrepaNet.pdb
+C:\Users\patos\Documents\ITC 5\Ciberseguridad\prepaNet\webPrepa\webPrepaNet3\backPrepaNet\obj\Debug\net6.0\backPrepaNet.genruntimeconfig.cache
+C:\Users\patos\Documents\ITC 5\Ciberseguridad\prepaNet\webPrepa\webPrepaNet3\backPrepaNet\obj\Debug\net6.0\ref\backPrepaNet.dll
