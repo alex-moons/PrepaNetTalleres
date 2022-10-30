@@ -5,6 +5,8 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import Login from './Login';
 import CoordAdminMenu from './CoordAdminMenu';
 import TablaAlumnosAdmin from './TablaAlumnosAdmin';
+import TablaAlumnosCoord from './TablaAlumnosCoord';
+import InfoTaller from './InfoTaller';
 
 const AppRoutes = () => {
     return (
@@ -13,6 +15,8 @@ const AppRoutes = () => {
                 <Route exact path="/" element={<Login />} />
                 <Route path='/menu' element={<CoordAdminMenu />} />
                 <Route path='/tablaAlumnosA' element={<TablaAlumnosAdmin />} />
+                <Route path='/tablaAlumnosC' element={<TablaAlumnosCoord />} />
+                <Route path='/InfoTaller' element={<InfoTaller />} />
             </Routes>
         </BrowserRouter>
     );

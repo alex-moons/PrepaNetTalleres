@@ -12,7 +12,7 @@ function CoordAdminMenu() {
                 <Row >
                     <Col className="row-align">
                         <Card className="cards-size">
-                            <Card.Link href="/tablaAlumnosA" className="link-format">
+                            <Card.Link href="/infoTaller" className="link-format">
                                 <Card.Img variant="top" src="/img/imagenAlumnos.jpg" />
                                 <Card.Body>
                                     <Card.Title>Seleccionar Taller</Card.Title>
@@ -26,7 +26,7 @@ function CoordAdminMenu() {
                     </Col>
                     <Col className="row-align">
                         <Card className="cards-size">
-                            <Card.Link href="/" className="link-format">
+                            <Card.Link href="/tablaAlumnosA" className="link-format">
                                 <Card.Img variant="top" src="/img/imagenTalleres.jpg" />
                                 <Card.Body>
                                     <Card.Title>Todos los alumnos</Card.Title>

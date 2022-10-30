@@ -10,10 +10,11 @@ const NavBar = () => {
     return (
         <Navbar className='nav-bar' expand="lg">
             <Container>
-                <Nav className='mx-auto'>
-                    <Nav.Link href="/">
-                        <img height="40em" src="/img/prepanetLogo.png" />
-                    </Nav.Link>
+                <Nav >
+                    <Navbar.Brand href="/">
+                        <img className="logo-margin" height="40em" src="/img/prepanetLogo.png" />
+                        <img height="40em" src="/img/prepanet_blanco.png" />
+                    </Navbar.Brand>
                 </Nav>
             </Container>
         </Navbar>
