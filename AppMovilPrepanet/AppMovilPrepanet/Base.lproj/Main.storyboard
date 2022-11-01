@@ -119,7 +119,7 @@
                                 </connections>
                             </tableView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Notificaciones" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y1i-aI-kQ9">
-                                <rect key="frame" x="26" y="84" width="273" height="47"/>
+                                <rect key="frame" x="26" y="84" width="254.5" height="47"/>
                                 <fontDescription key="fontDescription" name="RalewayRoman-Bold" family="Raleway" pointSize="40"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -154,48 +154,47 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gXS-Fc-cqm">
-                                <rect key="frame" x="301" y="20" width="58" height="32"/>
-                                <color key="tintColor" name="AccentColor"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="tinted" title="Listo">
-                                    <fontDescription key="titleFontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="15"/>
-                                </buttonConfiguration>
-                                <connections>
-                                    <action selector="dismiss:" destination="RH2-gZ-ba6" eventType="touchUpInside" id="dQh-Rl-NTo"/>
-                                </connections>
-                            </button>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="justified" translatesAutoresizingMaskIntoConstraints="NO" id="gv9-4c-kwd">
-                                <rect key="frame" x="16" y="177" width="343" height="416"/>
+                                <rect key="frame" x="16" y="183.5" width="343" height="409.5"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                 <color key="textColor" systemColor="labelColor"/>
-                                <fontDescription key="fontDescription" name="Raleway-Medium" family="Raleway" pointSize="14"/>
+                                <fontDescription key="fontDescription" name="Raleway-Medium" family="Raleway" pointSize="15"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Inicio de Inscripciones para los de nuevo ingreso" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="akb-49-co2">
-                                <rect key="frame" x="16" y="66" width="343" height="52"/>
-                                <fontDescription key="fontDescription" name="Raleway-Black" family="Raleway" pointSize="22"/>
+                            <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Inicio de Inscripciones nuevo ingreso" textAlignment="justified" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="akb-49-co2">
+                                <rect key="frame" x="16" y="64" width="343" height="70"/>
+                                <fontDescription key="fontDescription" name="Raleway-Black" family="Raleway" pointSize="30"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Alejandro Hernández" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xML-it-9ap">
-                                <rect key="frame" x="16" y="135" width="343" height="20"/>
-                                <fontDescription key="fontDescription" name="Raleway-SemiBold" family="Raleway" pointSize="17"/>
+                                <rect key="frame" x="16" y="154" width="343" height="22.5"/>
+                                <fontDescription key="fontDescription" name="Raleway-SemiBold" family="Raleway" pointSize="19"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gXS-Fc-cqm">
+                                <rect key="frame" x="325" y="14" width="34" height="30"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="15"/>
+                                <color key="tintColor" name="AccentColor"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title="Listo"/>
+                                <connections>
+                                    <action selector="dismiss:" destination="RH2-gZ-ba6" eventType="touchUpInside" id="dQh-Rl-NTo"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="0Mo-oy-4TX"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="0Mo-oy-4TX" firstAttribute="trailing" secondItem="xML-it-9ap" secondAttribute="trailing" constant="16" id="2Qz-av-k7s"/>
-                            <constraint firstItem="xML-it-9ap" firstAttribute="top" secondItem="akb-49-co2" secondAttribute="bottom" constant="17" id="EvK-ub-oyd"/>
+                            <constraint firstItem="xML-it-9ap" firstAttribute="top" secondItem="akb-49-co2" secondAttribute="bottom" constant="20" id="EvK-ub-oyd"/>
                             <constraint firstItem="xML-it-9ap" firstAttribute="leading" secondItem="0Mo-oy-4TX" secondAttribute="leading" constant="16" id="Rvr-9N-pAP"/>
                             <constraint firstItem="akb-49-co2" firstAttribute="leading" secondItem="0Mo-oy-4TX" secondAttribute="leading" constant="16" id="Tck-sV-0eh"/>
                             <constraint firstItem="0Mo-oy-4TX" firstAttribute="trailing" secondItem="gv9-4c-kwd" secondAttribute="trailing" constant="16" id="UDx-fd-tdV"/>
                             <constraint firstItem="akb-49-co2" firstAttribute="top" secondItem="gXS-Fc-cqm" secondAttribute="bottom" constant="14" id="Wc4-83-Lp0"/>
-                            <constraint firstItem="gv9-4c-kwd" firstAttribute="top" secondItem="xML-it-9ap" secondAttribute="bottom" constant="22" id="ceV-GC-5FZ"/>
+                            <constraint firstItem="gv9-4c-kwd" firstAttribute="top" secondItem="xML-it-9ap" secondAttribute="bottom" constant="7" id="ceV-GC-5FZ"/>
                             <constraint firstItem="gXS-Fc-cqm" firstAttribute="top" secondItem="0Mo-oy-4TX" secondAttribute="top" constant="20" id="dQ2-rp-vl8"/>
                             <constraint firstItem="0Mo-oy-4TX" firstAttribute="bottom" secondItem="gv9-4c-kwd" secondAttribute="bottom" constant="54" id="hGY-GX-2VK"/>
                             <constraint firstItem="gv9-4c-kwd" firstAttribute="leading" secondItem="0Mo-oy-4TX" secondAttribute="leading" constant="16" id="iNA-q3-84o"/>
@@ -242,13 +241,12 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UC5-Ma-k0K">
-                                <rect key="frame" x="240.5" y="64" width="118.5" height="32"/>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UC5-Ma-k0K">
+                                <rect key="frame" x="240" y="47" width="118.5" height="32"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="15"/>
                                 <color key="tintColor" name="AccentColor"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="gray" title="Cerrar Sesión">
-                                    <fontDescription key="titleFontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="15"/>
-                                </buttonConfiguration>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title="Cerrar Sesión"/>
                                 <connections>
                                     <action selector="logOut:" destination="c58-Dm-TZz" eventType="touchUpInside" id="Is4-9m-h9Z"/>
                                 </connections>
@@ -323,8 +321,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="sF6-Av-tez">
-                                <rect key="frame" x="16" y="172" width="343" height="466"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="sF6-Av-tez">
+                                <rect key="frame" x="16" y="100" width="343" height="518"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" rowHeight="116" id="8V6-B6-xrA" customClass="TableViewCellTaller" customModule="AppMovilPrepanet" customModuleProvider="target">
@@ -347,14 +345,17 @@
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Liderazgo Positivo y Transformación Personal" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Gq-sW-68X">
-                                                                    <rect key="frame" x="30.5" y="0.0" width="280.5" height="47"/>
+                                                                    <rect key="frame" x="30.5" y="0.0" width="198" height="47"/>
                                                                     <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
+                                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="Roseta Completa" translatesAutoresizingMaskIntoConstraints="NO" id="TU8-Ha-cA0">
+                                                                    <rect key="frame" x="248.5" y="0.0" width="62.5" height="47"/>
+                                                                </imageView>
                                                             </subviews>
                                                         </stackView>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No enrolado por no aprobar etapa 2" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iPD-up-uEf">
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No enrolado por no aprobar etapa 2" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iPD-up-uEf">
                                                             <rect key="frame" x="0.0" y="47" width="311" height="47"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                             <nil key="textColor"/>
@@ -383,9 +384,10 @@
                                     <outlet property="delegate" destination="1Lu-ML-c8x" id="CqU-C4-aFG"/>
                                 </connections>
                             </tableView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bienvenido, " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y4a-L2-SoH">
-                                <rect key="frame" x="16" y="69" width="144.5" height="33.5"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="28"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Talleres" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6cp-ap-S0c">
+                                <rect key="frame" x="31" y="73" width="116" height="43"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="36"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -393,8 +395,6 @@
                         <viewLayoutGuide key="safeArea" id="Q4i-p0-5aI"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="y4a-L2-SoH" firstAttribute="top" secondItem="Q4i-p0-5aI" secondAttribute="top" constant="25" id="6Xo-Qw-5TF"/>
-                            <constraint firstItem="y4a-L2-SoH" firstAttribute="leading" secondItem="Q4i-p0-5aI" secondAttribute="leading" constant="16" id="9Ex-k0-acJ"/>
                             <constraint firstItem="Q4i-p0-5aI" firstAttribute="trailing" secondItem="sF6-Av-tez" secondAttribute="trailing" constant="16" id="QSj-Q1-aI4"/>
                             <constraint firstItem="sF6-Av-tez" firstAttribute="leading" secondItem="Q4i-p0-5aI" secondAttribute="leading" constant="16" id="bgg-wV-CXl"/>
                             <constraint firstItem="sF6-Av-tez" firstAttribute="bottom" secondItem="Q4i-p0-5aI" secondAttribute="bottom" constant="20" id="dQG-VZ-e3L"/>
@@ -409,7 +409,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AwE-wH-kiJ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1700" y="832"/>
+            <point key="canvasLocation" x="1700" y="831.63418290854577"/>
         </scene>
         <!--View Controller Info Taller-->
         <scene sceneID="MDf-mG-y5X">
@@ -419,31 +419,39 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="maZ-q9-ZeB">
+                            <imageView opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.20000000000000001" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Roseta Completa" translatesAutoresizingMaskIntoConstraints="NO" id="MUp-uy-y2J">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <color key="tintColor" systemColor="systemBlueColor"/>
+                                <accessibility key="accessibilityConfiguration">
+                                    <accessibilityTraits key="traits" image="YES" notEnabled="YES"/>
+                                </accessibility>
+                            </imageView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="maZ-q9-ZeB">
                                 <rect key="frame" x="16" y="64" width="343" height="583"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Liderazgo Positivo y Transformación Personal" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="WiO-sC-NUE">
-                                        <rect key="frame" x="0.0" y="0.0" width="343" height="69.5"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Liderazgo Positivo y Transformación Personal" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="WiO-sC-NUE">
+                                        <rect key="frame" x="0.0" y="0.0" width="343" height="72"/>
                                         <fontDescription key="fontDescription" name="Raleway-Medium" family="Raleway" pointSize="40"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Status:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Ro-mw-kLm">
-                                        <rect key="frame" x="0.0" y="79.5" width="343" height="26"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Ro-mw-kLm">
+                                        <rect key="frame" x="0.0" y="74" width="343" height="51.5"/>
+                                        <rect key="contentStretch" x="0.0" y="0.0" width="0.55000000000000004" height="1"/>
+                                        <string key="text">Status:</string>
                                         <fontDescription key="fontDescription" name="Raleway-Regular" family="Raleway" pointSize="22"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="2bK-8y-jEx">
-                                        <rect key="frame" x="0.0" y="115.5" width="343" height="26"/>
-                                        <fontDescription key="fontDescription" name="Raleway-MediumItalic" family="Raleway" pointSize="22"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="2bK-8y-jEx">
+                                        <rect key="frame" x="0.0" y="127.5" width="343" height="20"/>
+                                        <fontDescription key="fontDescription" name="Raleway-MediumItalic" family="Raleway" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="U7j-wn-2Hh">
-                                        <rect key="frame" x="0.0" y="151.5" width="343" height="431.5"/>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                        <string key="text">Metamomento. Expresión de emociones. Posiciones ante la comunicación de emociones. La inteligencia emocional y la comunicación asertiva. Regulación de emociones. Desarrollo de resolución de conflictos (El plano inteligente-emocional)</string>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="justified" translatesAutoresizingMaskIntoConstraints="NO" id="U7j-wn-2Hh">
+                                        <rect key="frame" x="0.0" y="149.5" width="343" height="433.5"/>
+                                        <string key="text">Metamomento. Expresión de emociones. Posiciones ante la comunicación de emociones. La inteligencia emocional y la comunicación asertiva. Regulación de emociones. Desarrollo de resolución de conflictos (El plano inteligente-emocional)</string>
                                         <color key="textColor" systemColor="labelColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -452,12 +460,16 @@
                             </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="h6i-MY-bcj"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="MUp-uy-y2J" firstAttribute="top" secondItem="WXs-hk-zfd" secondAttribute="top" id="9er-Mf-V6I"/>
                             <constraint firstItem="maZ-q9-ZeB" firstAttribute="leading" secondItem="h6i-MY-bcj" secondAttribute="leading" constant="16" id="HRg-sq-Wyl"/>
+                            <constraint firstItem="MUp-uy-y2J" firstAttribute="leading" secondItem="WXs-hk-zfd" secondAttribute="leading" id="JEH-oE-YWE"/>
+                            <constraint firstItem="h6i-MY-bcj" firstAttribute="trailing" secondItem="MUp-uy-y2J" secondAttribute="trailing" id="Ni9-4W-A2U"/>
                             <constraint firstItem="maZ-q9-ZeB" firstAttribute="top" secondItem="h6i-MY-bcj" secondAttribute="top" constant="20" id="OTY-zJ-qwk"/>
                             <constraint firstAttribute="trailing" secondItem="maZ-q9-ZeB" secondAttribute="trailing" constant="16" id="hd4-Sa-qO2"/>
                             <constraint firstItem="h6i-MY-bcj" firstAttribute="bottom" secondItem="maZ-q9-ZeB" secondAttribute="bottom" constant="20" id="qmJ-s4-aVz"/>
+                            <constraint firstItem="h6i-MY-bcj" firstAttribute="bottom" secondItem="MUp-uy-y2J" secondAttribute="bottom" id="vlh-oJ-rRV"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="5nB-Tr-ph1"/>
@@ -469,7 +481,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GSS-L2-6PW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2484" y="832"/>
+            <point key="canvasLocation" x="2484" y="831.63418290854577"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="LYX-yL-9jc">
@@ -576,6 +588,7 @@
     </scenes>
     <color key="tintColor" name="AccentColor"/>
     <resources>
+        <image name="Roseta Completa" width="303" height="350"/>
         <image name="backdrop" width="960" height="540"/>
         <image name="bell.fill" catalog="system" width="123" height="128"/>
         <image name="gearshape.2.fill" catalog="system" width="128" height="101"/>
@@ -592,6 +605,9 @@
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemBlueColor">
+            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
