@@ -11,7 +11,6 @@
 		FA1DD6EB28FA0C9B00A849C8 /* TableViewCellTaller.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA1DD6EA28FA0C9B00A849C8 /* TableViewCellTaller.swift */; };
 		FA1DD6ED28FA10B900A849C8 /* ViewControllerInfoTaller.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA1DD6EC28FA10B900A849C8 /* ViewControllerInfoTaller.swift */; };
 		FA3A2F9328FE7752005CB31D /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA3A2F9228FE7752005CB31D /* Launch Screen.storyboard */; };
-		FA3A2F9528FE7AFA005CB31D /* Fuente in Resources */ = {isa = PBXBuildFile; fileRef = FA3A2F9428FE7AFA005CB31D /* Fuente */; };
 		FA3A2F9928FF0FDD005CB31D /* ViewControllerNotificaciones.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA3A2F9828FF0FDC005CB31D /* ViewControllerNotificaciones.swift */; };
 		FA3A2F9B28FF1089005CB31D /* notificacion.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA3A2F9A28FF1089005CB31D /* notificacion.swift */; };
 		FA3A2F9D28FF2278005CB31D /* TableViewCellNotif.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA3A2F9C28FF2278005CB31D /* TableViewCellNotif.swift */; };
@@ -24,7 +23,7 @@
 		FA93270F28F5BFCB00DEDFBC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA93270E28F5BFCB00DEDFBC /* ViewController.swift */; };
 		FAB9CADB29003AEC003473E1 /* ViewControllerInfoNotif.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAB9CADA29003AEC003473E1 /* ViewControllerInfoNotif.swift */; };
 		FAB9CADD29004335003473E1 /* ViewControllerSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAB9CADC29004335003473E1 /* ViewControllerSettings.swift */; };
-		FAC5EA5C28F48559006AD6F7 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FAC5EA5B28F48559006AD6F7 /* GoogleService-Info.plist */; };
+		FBA109CE291307F800017247 /* tallerCeldaTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBA109CD291307F800017247 /* tallerCeldaTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,7 +31,6 @@
 		FA1DD6EA28FA0C9B00A849C8 /* TableViewCellTaller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCellTaller.swift; sourceTree = "<group>"; };
 		FA1DD6EC28FA10B900A849C8 /* ViewControllerInfoTaller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerInfoTaller.swift; sourceTree = "<group>"; };
 		FA3A2F9228FE7752005CB31D /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
-		FA3A2F9428FE7AFA005CB31D /* Fuente */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Fuente; path = ../../../../../Downloads/Fuente; sourceTree = "<group>"; };
 		FA3A2F9828FF0FDC005CB31D /* ViewControllerNotificaciones.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerNotificaciones.swift; sourceTree = "<group>"; };
 		FA3A2F9A28FF1089005CB31D /* notificacion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = notificacion.swift; sourceTree = "<group>"; };
 		FA3A2F9C28FF2278005CB31D /* TableViewCellNotif.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCellNotif.swift; sourceTree = "<group>"; };
@@ -47,7 +45,7 @@
 		FA93270E28F5BFCB00DEDFBC /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		FAB9CADA29003AEC003473E1 /* ViewControllerInfoNotif.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerInfoNotif.swift; sourceTree = "<group>"; };
 		FAB9CADC29004335003473E1 /* ViewControllerSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerSettings.swift; sourceTree = "<group>"; };
-		FAC5EA5B28F48559006AD6F7 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		FBA109CD291307F800017247 /* tallerCeldaTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = tallerCeldaTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,6 +85,7 @@
 				FA7D481328F0C7C100E188AD /* AppDelegate.swift */,
 				FA7D481528F0C7C100E188AD /* SceneDelegate.swift */,
 				FA7D481928F0C7C100E188AD /* Main.storyboard */,
+				FBA109CD291307F800017247 /* tallerCeldaTableViewCell.swift */,
 				FAB9CADA29003AEC003473E1 /* ViewControllerInfoNotif.swift */,
 				FA3A2F9C28FF2278005CB31D /* TableViewCellNotif.swift */,
 				FA3A2F9828FF0FDC005CB31D /* ViewControllerNotificaciones.swift */,
@@ -97,8 +96,6 @@
 				FA7D481C28F0C7C400E188AD /* Assets.xcassets */,
 				FA7D481E28F0C7C400E188AD /* LaunchScreen.storyboard */,
 				FA7D482128F0C7C400E188AD /* Info.plist */,
-				FAC5EA5B28F48559006AD6F7 /* GoogleService-Info.plist */,
-				FA3A2F9428FE7AFA005CB31D /* Fuente */,
 			);
 			path = AppMovilPrepanet;
 			sourceTree = "<group>";
@@ -166,8 +163,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				FA7D482028F0C7C400E188AD /* LaunchScreen.storyboard in Resources */,
-				FA3A2F9528FE7AFA005CB31D /* Fuente in Resources */,
-				FAC5EA5C28F48559006AD6F7 /* GoogleService-Info.plist in Resources */,
 				FA7D481D28F0C7C400E188AD /* Assets.xcassets in Resources */,
 				FA3A2F9328FE7752005CB31D /* Launch Screen.storyboard in Resources */,
 				FA7D481B28F0C7C100E188AD /* Main.storyboard in Resources */,
@@ -191,6 +186,7 @@
 				FA7D481428F0C7C100E188AD /* AppDelegate.swift in Sources */,
 				FA1DD6E928FA0A9C00A849C8 /* ViewControllerTalleres.swift in Sources */,
 				FA7D481628F0C7C100E188AD /* SceneDelegate.swift in Sources */,
+				FBA109CE291307F800017247 /* tallerCeldaTableViewCell.swift in Sources */,
 				FA93270928F4D94900DEDFBC /* taller.swift in Sources */,
 				FAB9CADD29004335003473E1 /* ViewControllerSettings.swift in Sources */,
 			);
