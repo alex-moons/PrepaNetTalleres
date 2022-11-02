@@ -11,7 +11,7 @@ function TablaAlumnosCoord() {
             <Container>
                 <Row>
                     <Col>
-                        <h1 className="titulo">Campus AAA</h1>
+                        <h1 className="titulo">Campus MTY</h1>
                     </Col>
                     <Col>
                         <Form className="titulo">
@@ -43,25 +43,37 @@ function TablaAlumnosCoord() {
                     </thead>
                     <tbody>
                         <tr>
-                            <td>1</td>
-                            <td>Mark</td>
-                            <td>Otto</td>
-                            <td>@mdo</td>
+                            <td>A01197723</td>
+                            <td>Patricio Santos</td>
+                            <td>4</td>
+                            <td>EA2022</td>
+                            <td>11/01/2022 - 22/04/2022</td>
+                            <td>3</td>
+                            <td>305</td>
+                            <td>Si</td>
+                            <td>Aprobado</td>
                         </tr>
                         <tr>
-                            <td>2</td>
-                            <td>Jacobknsdlkfjsldjflksdjflkjsdlfjldkskjflkdsjflkdslfjskldf</td>
-                            <td>Thornton</td>
-                            <td>@fat</td>
+                            <td>A01721287</td>
+                            <td>Alex Hernandez</td>
+                            <td>4</td>
+                            <td>MA2022</td>
+                            <td>11/05/2022 - 22/08/2022</td>
+                            <td>4</td>
+                            <td>403</td>
+                            <td>No</td>
+                            <td>Cursando</td>
                         </tr>
                         <tr>
+                            <td>A01197723</td>
+                            <td>Patricio Santos</td>
+                            <td>4</td>
+                            <td>EA2022</td>
+                            <td>11/01/2022 - 22/04/2022</td>
                             <td>3</td>
-                            <td colSpan={2}>Larry the Bird</td>
-                            <td>@twitterkfndslkfansdlfknsodfnwoefjfkejnofb dsknskndkjfsolfbneljfboejbfsnfe</td>
-                            <td>3</td>
-                            <td colSpan={2}>Larry the Bird</td>
-                            <td>@twitterkfndslkfansdlfknsodfnwoefjfkejnofb dsknskndkjfsolfbneljfboejbfsnfe</td>
-                            <td>@twitterkfndslkfansdlfknsodfnwoefjfkejnofb dsknskndkjfsolfbneljfboejbfsnfe</td>
+                            <td>305</td>
+                            <td>Si</td>
+                            <td>Aprobado</td>
                         </tr>
                     </tbody>
                 </Table>
