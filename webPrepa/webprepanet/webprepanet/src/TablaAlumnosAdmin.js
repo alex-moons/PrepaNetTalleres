@@ -7,6 +7,7 @@ import "./TablaAlumnosAdmin.css";
 
 
 
+
 function TablaAlumnosAdmin() {
     const [listaAlumnos, setAlumnos] = useState([]);
 
@@ -14,7 +15,6 @@ function TablaAlumnosAdmin() {
 
     return (
         <div className="bg-tablas">
-            <test/>
             <Container>
                 <Row className="tabla-row">
                     <Col>
