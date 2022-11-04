@@ -1,6 +1,8 @@
 import React, { Component, useState, useEffect } from 'react';
 import { Table, Form, Button, Container, Row, Col, Link, Dropdown } from 'react-bootstrap';
 import Alumno from "./Alumno"
+import { FireStoreDataAlumno } from './components/FireStoreData'
+import { AddValue } from './components/Add'
 
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./TablaAlumnosAdmin.css";
@@ -114,6 +116,8 @@ function TablaAlumnosAdmin() {
                     </Table>
                 </Row>
             </Container>
+            <AddValue />
+            <FireStoreDataAlumno />
         </div>
     );
 }

@@ -37,6 +37,7 @@ function InfoTaller() {
                     </Col>
                 </Row>
             </Container>
+
         </div>
     );
 }
