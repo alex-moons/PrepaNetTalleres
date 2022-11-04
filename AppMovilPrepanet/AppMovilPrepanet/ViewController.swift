@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import FirebaseAuth
 
 class ViewController: UIViewController {
 
@@ -21,6 +22,12 @@ class ViewController: UIViewController {
         
         let tap = UITapGestureRecognizer(target: self, action: #selector(UIInputViewController.dismissKeyboard))
         view.addGestureRecognizer(tap)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        let handle = Auth.auth().addStateDidChangeListener { auth, user in
+          // ...
+        }
     }
     
     override func viewDidDisappear(_ animated: Bool) {
@@ -51,9 +58,21 @@ class ViewController: UIViewController {
     }
     
     override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
-        if tfUsername.hasText && tfPassword.hasText{
+        if let username = tfUsername.text, let password = tfPassword.text {
+            Auth.auth().signIn(withEmail: username, password: password) {
+                [weak self] authResult, error in
+                guard let strongSelf = self else { return }
+                if let err = error {
+                    print(err.localizedDescription)
+                }
+            }
             return true
-        }else{
+        }
+            if Auth.auth().currentUser != nil {
+                print(Auth.auth().currentUser?.uid)
+                return true
+            }
+        else{
             let tfVacio = UIAlertController(title: "Campo de texto Vacío", message: "Por favor llena todos los campos", preferredStyle: .alert)
             let alertOk = UIAlertAction(title: "Ok", style: .cancel)
             tfVacio.addAction(alertOk)
@@ -61,6 +80,7 @@ class ViewController: UIViewController {
             return false
         }
     }
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
