@@ -14,13 +14,17 @@ class tallerCeldaTableViewCell: UITableViewCell {
     @IBOutlet weak var bgImage: UIImageView!
     @IBOutlet weak var statusView: UIView!
     @IBOutlet weak var lbStatus: UILabel!
+    @IBOutlet weak var viewNombre: UIView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        viewCelda.layer.cornerRadius = 7
+        viewCelda.layer.cornerRadius = 6
         bgImage.layer.cornerRadius = 7
-        statusView.layer.cornerRadius = 5
+        statusView.layer.cornerRadius = 4
+        viewNombre.clipsToBounds = true
+        viewNombre.layer.cornerRadius = 6
+        viewNombre.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMaxXMaxYCorner]
 
         // Initialization code
     }

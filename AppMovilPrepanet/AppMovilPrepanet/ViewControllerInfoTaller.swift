@@ -10,16 +10,21 @@ import UIKit
 class ViewControllerInfoTaller: UIViewController {
     @IBOutlet weak var lbName: UILabel!
     @IBOutlet weak var lbStatus: UILabel!
+    @IBOutlet weak var imgTitulo: UIImageView!
     @IBOutlet weak var textDesc: UITextView!
     
     var tallerInfo:taller!
+    var img:UIImage!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        imgTitulo.image = img
+        
         lbName.text = tallerInfo.nombre
         lbStatus.text = tallerInfo.status
         textDesc.text = tallerInfo.desc
-
+        
         // Do any additional setup after loading the view.
     }
     
