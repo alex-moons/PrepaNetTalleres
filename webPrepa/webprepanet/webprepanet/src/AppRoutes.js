@@ -8,6 +8,7 @@ import TablaAlumnosAdmin from './TablaAlumnosAdmin';
 import TablaAlumnosCoord from './TablaAlumnosCoord';
 import InfoTaller from './InfoTaller';
 
+
 const AppRoutes = () => {
     return (
         <BrowserRouter>

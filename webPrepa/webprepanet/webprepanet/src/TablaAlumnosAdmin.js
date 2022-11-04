@@ -5,8 +5,13 @@ import Alumno from "./Alumno"
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./TablaAlumnosAdmin.css";
 
+
+
+
 function TablaAlumnosAdmin() {
     const [listaAlumnos, setAlumnos] = useState([]);
+
+    
 
     return (
         <div className="bg-tablas">
