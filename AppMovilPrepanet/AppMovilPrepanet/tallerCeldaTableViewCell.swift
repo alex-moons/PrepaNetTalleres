@@ -18,9 +18,9 @@ class tallerCeldaTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        viewCelda.layer.cornerRadius = 5
-        bgImage.clipsToBounds = true
-        statusView.layer.cornerRadius = 3
+        viewCelda.layer.cornerRadius = 7
+        bgImage.layer.cornerRadius = 7
+        statusView.layer.cornerRadius = 5
 
         // Initialization code
     }

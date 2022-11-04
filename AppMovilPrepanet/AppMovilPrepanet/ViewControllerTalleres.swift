@@ -13,8 +13,8 @@ class ViewControllerTalleres: UIViewController, UITableViewDelegate, UITableView
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! TableViewCellTaller
-        cell.lbNum.text = String(indexPath.row+1)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! tallerCeldaTableViewCell
+        cell.bgImage.image = UIImage(named: "taller\(String(indexPath.row+1))")
         cell.lbNombre.text = talleres[indexPath.row].nombre
         cell.lbStatus.text = talleres[indexPath.row].status
         return cell
