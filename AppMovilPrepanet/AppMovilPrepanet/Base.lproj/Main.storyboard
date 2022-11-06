@@ -428,6 +428,7 @@
                     <tabBarItem key="tabBarItem" title="" image="square.split.2x2.fill" catalog="system" selectedImage="square.split.2x2.fill" id="nHa-sA-dQa"/>
                     <navigationItem key="navigationItem" title="Talleres" id="tF6-Wd-BR9"/>
                     <connections>
+                        <outlet property="lbTituloTalleres" destination="6cp-ap-S0c" id="Atb-sx-ijM"/>
                         <outlet property="tableViewTalleres" destination="sF6-Av-tez" id="hko-CM-xBl"/>
                     </connections>
                 </viewController>

@@ -6,14 +6,40 @@
 //
 
 import UIKit
+import Firebase
 import FirebaseAuth
 
 class ViewControllerTalleres: UIViewController, UITableViewDelegate, UITableViewDataSource{
         
+    @IBOutlet weak var lbTituloTalleres: UILabel!
+    
+    var db = Firestore.firestore()
+    
     override func viewWillAppear(_ animated: Bool) {
         let handle = Auth.auth().addStateDidChangeListener { auth, user in
           // ...
         }
+        
+        let user = Auth.auth().currentUser
+        
+        let nombreAlumno = db.collection("Alumno").whereField("correo_institucional", isEqualTo: user?.email!)
+        
+        nombreAlumno.getDocuments { querySnapshot, error in
+            if let error = error {
+                print(error.localizedDescription)
+            }
+            else{
+                let alumnoData = querySnapshot!.documents[0].data()
+                
+                let nameAlumno = alumnoData["nombre"]as! String
+                
+                let fullName = nameAlumno.components(separatedBy: " ")
+                
+                self.lbTituloTalleres.text = fullName[0]
+            }
+        }
+        
+        
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
