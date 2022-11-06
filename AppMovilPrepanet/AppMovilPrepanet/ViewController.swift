@@ -53,31 +53,38 @@ class ViewController: UIViewController {
         dismissKeyboard()
     }
     
-    @IBAction func Entrar(_ sender: Any) {
-        
+    func errorMessage() {
+        let tfVacio = UIAlertController(title: "Campo de texto Vacío", message: "Por favor llena todos los campos", preferredStyle: .alert)
+        let alertOk = UIAlertAction(title: "Ok", style: .cancel)
+        tfVacio.addAction(alertOk)
+        self.present(tfVacio, animated: true)
     }
     
-    override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
+    @IBAction func Entrar(_ sender: Any) {
         if let username = tfUsername.text, let password = tfPassword.text {
             Auth.auth().signIn(withEmail: username, password: password) {
                 [weak self] authResult, error in
-                guard let strongSelf = self else { return }
+                guard let _ = self else { return }
                 if let err = error {
+                    print("Error en auth")
                     print(err.localizedDescription)
                 }
+                if Auth.auth().currentUser != nil {
+                    print(Auth.auth().currentUser?.uid as Any)
+                    
+                    DispatchQueue.main.async {
+                        [unowned self] in self?.performSegue(withIdentifier: "login", sender: self)
+                    }
+                }
+                else {
+                    print("Usuario Invalido")
+                    self?.errorMessage()
+                }
             }
-            return true
         }
-            if Auth.auth().currentUser != nil {
-                print(Auth.auth().currentUser?.uid)
-                return true
-            }
         else{
-            let tfVacio = UIAlertController(title: "Campo de texto Vacío", message: "Por favor llena todos los campos", preferredStyle: .alert)
-            let alertOk = UIAlertAction(title: "Ok", style: .cancel)
-            tfVacio.addAction(alertOk)
-            self.present(tfVacio, animated: true)
-            return false
+            print("Campos vacios")
+            errorMessage();
         }
     }
     
@@ -85,7 +92,7 @@ class ViewController: UIViewController {
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let target = segue.destination as! UINavigationController
+        //let target = segue.destination as! UINavigationController
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
     }

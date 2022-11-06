@@ -6,8 +6,16 @@
 //
 
 import UIKit
+import FirebaseAuth
 
 class ViewControllerTalleres: UIViewController, UITableViewDelegate, UITableViewDataSource{
+        
+    override func viewWillAppear(_ animated: Bool) {
+        let handle = Auth.auth().addStateDidChangeListener { auth, user in
+          // ...
+        }
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return talleres.count
     }
