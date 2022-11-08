@@ -76,7 +76,7 @@ class ViewController: UIViewController {
                     print(err.localizedDescription)
                 }
                 if Auth.auth().currentUser != nil {
-                    print(Auth.auth().currentUser?.uid as Any)
+                    //print(Auth.auth().currentUser?.uid as Any)
                     
                     DispatchQueue.main.async {
                         [unowned self] in self?.performSegue(withIdentifier: "login", sender: self)

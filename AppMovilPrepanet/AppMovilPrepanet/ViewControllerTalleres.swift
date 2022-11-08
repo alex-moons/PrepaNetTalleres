@@ -17,6 +17,7 @@ class ViewControllerTalleres: UIViewController, UITableViewDelegate, UITableView
     var db = Firestore.firestore()
     let user = Auth.auth().currentUser
     var talleres = [taller](repeating: taller(nombre: "", status: "", desc: ""), count: 6)
+    var nombreAlumno: Query!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,7 +35,7 @@ class ViewControllerTalleres: UIViewController, UITableViewDelegate, UITableView
     override func viewWillAppear(_ animated: Bool) {
         let _ = Auth.auth().addStateDidChangeListener { auth, user in }
         
-        let nombreAlumno = db.collection("Alumno").whereField("correo_institucional", isEqualTo: user?.email! as Any)
+        nombreAlumno = db.collection("Alumno").whereField("correo_institucional", isEqualTo: user?.email! as Any)
         
         nombreAlumno.getDocuments { querySnapshot, error in
             if let error = error {
@@ -55,6 +56,7 @@ class ViewControllerTalleres: UIViewController, UITableViewDelegate, UITableView
     }
     
     func cargarTalleres() {
+        print("Cargando talleres...")
         //Cargar la info de los 6 talleres desde Firestore
         let tablaTalleres = db.collection("Taller")
         
@@ -66,31 +68,60 @@ class ViewControllerTalleres: UIViewController, UITableViewDelegate, UITableView
                 for t in querySnapshot!.documents {
                     let datos = t.data()
                     
-                    self.talleres[(datos["id"] as! Int) - 1] = taller(nombre: datos["nombre"] as! String, status: "Firestore", desc: datos["descripcion"] as! String)
+                    self.talleres[(datos["id"] as! Int) - 1] = taller(nombre: datos["nombre"] as! String, status: "Sin Cursar", desc: datos["descripcion"] as! String)
                 }
-                self.tableViewTalleres.reloadData()
+                //self.tableViewTalleres.reloadData()
             }
             
         }
-
-        
-        let alumno = db.collection("Alumno").whereField("correo_institucional", isEqualTo: user?.email! as Any)
-        
-        alumno.getDocuments() { querySnapshot, error in
+        print("Cargando grupos...")
+        nombreAlumno.getDocuments() { querySnapshot, error in
                 if let error = error {
                     print(error.localizedDescription)
                 }
                 else{
                     let alumnoID = querySnapshot!.documents[0].documentID
-                    let inscripcionesAlumno = self.db.collection("Inscripcion").whereField("alumno_id", isEqualTo: "/Alumno/" + alumnoID)
+                    let alumnoDoc = self.db.collection("Alumno").document(alumnoID)
+                    //print(alumnoID)
+                    let inscripcionesAlumno = self.db.collection("Inscripcion").whereField("alumno_id", isEqualTo: alumnoDoc)
                     
-                    
-                    
+                    inscripcionesAlumno.getDocuments { querySnapshot, error in
+                        if let error = error {
+                            print(error.localizedDescription)
+                        }
+                        else{
+                            for inscripcion in querySnapshot!.documents {
+                                let datos = inscripcion.data()
+                                
+                                let grupoDoc = datos["grupo_id"] as! DocumentReference
+                                
+                                grupoDoc.getDocument { (document, error) in
+                                    if let document = document, document.exists {
+                                        let grupoDatos = document.data()
+                                        let tallerDoc = grupoDatos?["taller_id"] as! DocumentReference
+                                        
+                                        tallerDoc.getDocument { (document1, error) in
+                                            if let document1 = document1, document1.exists {
+                                                let tallerDatos = document1.data()
+                                                let tallerID = tallerDatos?["id"] as! Int
+                                                self.talleres[tallerID-1].status = datos["estatus"] as! String
+                                                self.tableViewTalleres.reloadData()
+                                            } else {
+                                                print("Document does not exist")
+                                            }
+                                        }
+                                    } else {
+                                        print("Document does not exist")
+                                    }
+                                }
+                            }
+                        }
+                    }
                 }
         }
-        
-        let talleres = db.collection("Taller")
-        let inscripcionesAlumno = db.collection("Inscripcion")
+        print("Grupos cargados")
+        //let talleres = db.collection("Taller")
+        //let inscripcionesAlumno = db.collection("Inscripcion")
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
