@@ -12,17 +12,29 @@ import FirebaseAuth
 class ViewControllerTalleres: UIViewController, UITableViewDelegate, UITableViewDataSource{
         
     @IBOutlet weak var lbTituloTalleres: UILabel!
+    @IBOutlet weak var tableViewTalleres: UITableView!
     
     var db = Firestore.firestore()
+    let user = Auth.auth().currentUser
+    var talleres = [taller](repeating: taller(nombre: "", status: "", desc: ""), count: 6)
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        /*talleres = [
+            taller(nombre: "Liderazgo Positivo y Transformación Personal", status: "Aprobado", desc: "Transformar su vida y aumentar tu riqueza y capital psicológico, con el fin de tener mayor éxito estudiantil, lograr una mayor influencia en su contexto y cambiar el entorno."),
+            taller(nombre: "Mis Habilidades y Motivaciones", status: "Aprobado", desc:"Reconocimiento de habilidades, destrezas, fortalezas. FODA. GATO"),
+            taller(nombre: "Mis Emociones", status: "Sin Asistencia", desc:"¿Qué son las emociones? Emociones, biología de la salud. Importancia de las emociones. Identificación de emociones. Tipos de emociones. Inteligencia emocional."),
+            taller(nombre: "Mis Relaciones", status: "No enrolado por no aprobar etapa 2", desc:"Desarrollo de empatía. (Competencias emocionales e interpersonales). Tipos de relaciones. Aspectos importantes en las relaciones. Límites personales. Mis relaciones interpersonales. Mapa de mis relaciones."),
+            taller(nombre: "Mis Àreas de Oportunidad", status: "No Cursado", desc:"Metamomento. Expresión de emociones. Posiciones ante la comunicación de emociones. La inteligencia emocional y la comunicación asertiva. Regulación de emociones. Desarrollo de resolución de conflictos (El plano inteligente-emocional)"),
+            taller(nombre: "Mis Metas", status: "No Cursado", desc:"Esferas/dimensiones de la persona. Equilibrio para lograr el bienestar. *PFP. Metodología SMART. Desarrollo de plan de acción y toma de decisiones.")
+        ]*/
+    }
     
     override func viewWillAppear(_ animated: Bool) {
-        let handle = Auth.auth().addStateDidChangeListener { auth, user in
-          // ...
-        }
+        let _ = Auth.auth().addStateDidChangeListener { auth, user in }
         
-        let user = Auth.auth().currentUser
-        
-        let nombreAlumno = db.collection("Alumno").whereField("correo_institucional", isEqualTo: user?.email!)
+        let nombreAlumno = db.collection("Alumno").whereField("correo_institucional", isEqualTo: user?.email! as Any)
         
         nombreAlumno.getDocuments { querySnapshot, error in
             if let error = error {
@@ -39,7 +51,46 @@ class ViewControllerTalleres: UIViewController, UITableViewDelegate, UITableView
             }
         }
         
+        cargarTalleres()
+    }
+    
+    func cargarTalleres() {
+        //Cargar la info de los 6 talleres desde Firestore
+        let tablaTalleres = db.collection("Taller")
         
+        tablaTalleres.getDocuments { querySnapshot, error in
+            if let error = error {
+                print(error.localizedDescription)
+            }
+            else{
+                for t in querySnapshot!.documents {
+                    let datos = t.data()
+                    
+                    self.talleres[(datos["id"] as! Int) - 1] = taller(nombre: datos["nombre"] as! String, status: "Firestore", desc: datos["descripcion"] as! String)
+                }
+                self.tableViewTalleres.reloadData()
+            }
+            
+        }
+
+        
+        let alumno = db.collection("Alumno").whereField("correo_institucional", isEqualTo: user?.email! as Any)
+        
+        alumno.getDocuments() { querySnapshot, error in
+                if let error = error {
+                    print(error.localizedDescription)
+                }
+                else{
+                    let alumnoID = querySnapshot!.documents[0].documentID
+                    let inscripcionesAlumno = self.db.collection("Inscripcion").whereField("alumno_id", isEqualTo: "/Alumno/" + alumnoID)
+                    
+                    
+                    
+                }
+        }
+        
+        let talleres = db.collection("Taller")
+        let inscripcionesAlumno = db.collection("Inscripcion")
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -77,22 +128,7 @@ class ViewControllerTalleres: UIViewController, UITableViewDelegate, UITableView
         tableView.deselectRow(at: indexPath, animated: true)
     }
     
-    @IBOutlet weak var tableViewTalleres: UITableView!
     
-    var talleres = [taller]()
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        talleres = [
-            taller(nombre: "Liderazgo Positivo y Transformación Personal", status: "Aprobado", desc: "Transformar su vida y aumentar tu riqueza y capital psicológico, con el fin de tener mayor éxito estudiantil, lograr una mayor influencia en su contexto y cambiar el entorno."),
-            taller(nombre: "Mis Habilidades y Motivaciones", status: "Aprobado", desc:"Reconocimiento de habilidades, destrezas, fortalezas. FODA. GATO"),
-            taller(nombre: "Mis Emociones", status: "Sin Asistencia", desc:"¿Qué son las emociones? Emociones, biología de la salud. Importancia de las emociones. Identificación de emociones. Tipos de emociones. Inteligencia emocional."),
-            taller(nombre: "Mis Relaciones", status: "No enrolado por no aprobar etapa 2", desc:"Desarrollo de empatía. (Competencias emocionales e interpersonales). Tipos de relaciones. Aspectos importantes en las relaciones. Límites personales. Mis relaciones interpersonales. Mapa de mis relaciones."),
-            taller(nombre: "Mis Àreas de Oportunidad", status: "No Cursado", desc:"Metamomento. Expresión de emociones. Posiciones ante la comunicación de emociones. La inteligencia emocional y la comunicación asertiva. Regulación de emociones. Desarrollo de resolución de conflictos (El plano inteligente-emocional)"),
-            taller(nombre: "Mis Metas", status: "No Cursado", desc:"Esferas/dimensiones de la persona. Equilibrio para lograr el bienestar. *PFP. Metodología SMART. Desarrollo de plan de acción y toma de decisiones.")
-        ]
-    }
     
     // MARK: - Navigation
 

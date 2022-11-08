@@ -543,7 +543,7 @@ Metamomento. Expresión de emociones. Posiciones ante la comunicación de emocio
                                     <constraint firstAttribute="width" constant="300" id="pSG-6H-nc3"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" textContentType="username"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" textContentType="email"/>
                                 <connections>
                                     <action selector="nextTf:" destination="ooF-N3-kWR" eventType="primaryActionTriggered" id="BB7-yR-I9d"/>
                                 </connections>
