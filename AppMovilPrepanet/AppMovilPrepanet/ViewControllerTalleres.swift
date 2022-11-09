@@ -17,111 +17,96 @@ class ViewControllerTalleres: UIViewController, UITableViewDelegate, UITableView
     var db = Firestore.firestore()
     let user = Auth.auth().currentUser
     var talleres = [taller](repeating: taller(nombre: "", status: "", desc: ""), count: 6)
-    var nombreAlumno: Query!
+    var queryAlumno: Query!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        /*talleres = [
-            taller(nombre: "Liderazgo Positivo y Transformación Personal", status: "Aprobado", desc: "Transformar su vida y aumentar tu riqueza y capital psicológico, con el fin de tener mayor éxito estudiantil, lograr una mayor influencia en su contexto y cambiar el entorno."),
-            taller(nombre: "Mis Habilidades y Motivaciones", status: "Aprobado", desc:"Reconocimiento de habilidades, destrezas, fortalezas. FODA. GATO"),
-            taller(nombre: "Mis Emociones", status: "Sin Asistencia", desc:"¿Qué son las emociones? Emociones, biología de la salud. Importancia de las emociones. Identificación de emociones. Tipos de emociones. Inteligencia emocional."),
-            taller(nombre: "Mis Relaciones", status: "No enrolado por no aprobar etapa 2", desc:"Desarrollo de empatía. (Competencias emocionales e interpersonales). Tipos de relaciones. Aspectos importantes en las relaciones. Límites personales. Mis relaciones interpersonales. Mapa de mis relaciones."),
-            taller(nombre: "Mis Àreas de Oportunidad", status: "No Cursado", desc:"Metamomento. Expresión de emociones. Posiciones ante la comunicación de emociones. La inteligencia emocional y la comunicación asertiva. Regulación de emociones. Desarrollo de resolución de conflictos (El plano inteligente-emocional)"),
-            taller(nombre: "Mis Metas", status: "No Cursado", desc:"Esferas/dimensiones de la persona. Equilibrio para lograr el bienestar. *PFP. Metodología SMART. Desarrollo de plan de acción y toma de decisiones.")
-        ]*/
     }
     
     override func viewWillAppear(_ animated: Bool) {
         let _ = Auth.auth().addStateDidChangeListener { auth, user in }
         
-        nombreAlumno = db.collection("Alumno").whereField("correo_institucional", isEqualTo: user?.email! as Any)
-        
-        nombreAlumno.getDocuments { querySnapshot, error in
+        // Título del menú
+        queryAlumno = db.collection("Alumno").whereField("correo_institucional", isEqualTo: user?.email! as Any)
+        queryAlumno.getDocuments { querySnapshot, error in
             if let error = error {
                 print(error.localizedDescription)
             }
             else{
                 let alumnoData = querySnapshot!.documents[0].data()
+                let nombreAlumno = alumnoData["nombre"]as! String
+                let nombreFullAlumno = nombreAlumno.components(separatedBy: " ")
                 
-                let nameAlumno = alumnoData["nombre"]as! String
-                
-                let fullName = nameAlumno.components(separatedBy: " ")
-                
-                self.lbTituloTalleres.text = fullName[0]
+                self.lbTituloTalleres.text = nombreFullAlumno[0]
             }
         }
-        
         cargarTalleres()
     }
     
     func cargarTalleres() {
-        print("Cargando talleres...")
         //Cargar la info de los 6 talleres desde Firestore
-        let tablaTalleres = db.collection("Taller")
-        
-        tablaTalleres.getDocuments { querySnapshot, error in
+        db.collection("Taller").getDocuments { querySnapshot, error in
             if let error = error {
                 print(error.localizedDescription)
             }
             else{
-                for t in querySnapshot!.documents {
-                    let datos = t.data()
+                for tallerDoc in querySnapshot!.documents {
+                    let datos = tallerDoc.data()
                     
                     self.talleres[(datos["id"] as! Int) - 1] = taller(nombre: datos["nombre"] as! String, status: "Sin Cursar", desc: datos["descripcion"] as! String)
                 }
                 //self.tableViewTalleres.reloadData()
             }
-            
         }
-        print("Cargando grupos...")
-        nombreAlumno.getDocuments() { querySnapshot, error in
-                if let error = error {
-                    print(error.localizedDescription)
-                }
-                else{
-                    let alumnoID = querySnapshot!.documents[0].documentID
-                    let alumnoDoc = self.db.collection("Alumno").document(alumnoID)
-                    //print(alumnoID)
-                    let inscripcionesAlumno = self.db.collection("Inscripcion").whereField("alumno_id", isEqualTo: alumnoDoc)
-                    
-                    inscripcionesAlumno.getDocuments { querySnapshot, error in
-                        if let error = error {
-                            print(error.localizedDescription)
+        
+        //Cargar el estatus del alumno en base a su grupo
+        queryAlumno.getDocuments() { querySnapshot, error in
+            if let error = error {
+                print(error.localizedDescription)
+            }
+            else{
+                //Se cargan todas las inscripciones del alumno
+                let alumnoDoc = self.db.collection("Alumno").document(querySnapshot!.documents[0].documentID)
+                let inscripcionesAlumno = self.db.collection("Inscripcion").whereField("alumno_id", isEqualTo: alumnoDoc)
+                
+                inscripcionesAlumno.getDocuments { querySnapshot1, error in
+                    if let error = error {
+                        print("Inscripcion Error" + error.localizedDescription)
+                    }
+                    else{
+                        if (querySnapshot1!.documents.count == 0){
+                            self.tableViewTalleres.reloadData()
                         }
-                        else{
-                            for inscripcion in querySnapshot!.documents {
-                                let datos = inscripcion.data()
-                                
-                                let grupoDoc = datos["grupo_id"] as! DocumentReference
-                                
-                                grupoDoc.getDocument { (document, error) in
-                                    if let document = document, document.exists {
-                                        let grupoDatos = document.data()
-                                        let tallerDoc = grupoDatos?["taller_id"] as! DocumentReference
-                                        
-                                        tallerDoc.getDocument { (document1, error) in
-                                            if let document1 = document1, document1.exists {
-                                                let tallerDatos = document1.data()
-                                                let tallerID = tallerDatos?["id"] as! Int
-                                                self.talleres[tallerID-1].status = datos["estatus"] as! String
-                                                self.tableViewTalleres.reloadData()
-                                            } else {
-                                                print("Document does not exist")
-                                            }
+                        //Se consigue el grupo y taller de cada inscripcion
+                        for inscripcion in querySnapshot1!.documents {
+                            let datos = inscripcion.data()
+                            let grupoDoc = datos["grupo_id"] as! DocumentReference
+                            
+                            grupoDoc.getDocument { (document, error) in
+                                if let document = document, document.exists {
+                                    let grupoDatos = document.data()
+                                    let tallerDoc = grupoDatos?["taller_id"] as! DocumentReference
+                                    
+                                    tallerDoc.getDocument { (document1, error) in
+                                        if let document1 = document1, document1.exists {
+                                            let tallerDatos = document1.data()
+                                            let tallerID = tallerDatos?["id"] as! Int
+                                            self.talleres[tallerID-1].status = datos["estatus"] as! String
+                                            self.tableViewTalleres.reloadData()
+                                        } else {
+                                            print("Document does not exist")
                                         }
-                                    } else {
-                                        print("Document does not exist")
                                     }
+                                } else {
+                                    print("Document does not exist")
                                 }
                             }
                         }
                     }
                 }
+            }
         }
-        print("Grupos cargados")
-        //let talleres = db.collection("Taller")
-        //let inscripcionesAlumno = db.collection("Inscripcion")
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
