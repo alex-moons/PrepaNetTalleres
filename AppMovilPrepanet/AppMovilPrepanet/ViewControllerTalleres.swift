@@ -154,6 +154,8 @@ class ViewControllerTalleres: UIViewController, UITableViewDelegate, UITableView
         let index = tableViewTalleres.indexPathForSelectedRow!
         target?.tallerInfo = talleres[index.row]
         target?.img = UIImage(named: "taller\(String(index.row+1))")
+        target?.talleres = talleres
+        target?.tallerIndex = index.row
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
     }

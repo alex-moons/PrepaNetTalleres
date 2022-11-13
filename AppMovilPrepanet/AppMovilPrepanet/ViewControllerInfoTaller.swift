@@ -12,7 +12,11 @@ class ViewControllerInfoTaller: UIViewController {
     @IBOutlet weak var lbStatus: UILabel!
     @IBOutlet weak var imgTitulo: UIImageView!
     @IBOutlet weak var textDesc: UITextView!
+    @IBOutlet weak var btnInscribir: UIButton!
+    @IBOutlet weak var btnCalendario: UIButton!
     
+    var talleres = [taller]()
+    var tallerIndex:Int = -1
     var tallerInfo:taller!
     var img:UIImage!
     
@@ -26,6 +30,31 @@ class ViewControllerInfoTaller: UIViewController {
         textDesc.text = tallerInfo.desc
         
         // Do any additional setup after loading the view.
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        btnInscribir.isEnabled = false
+        btnCalendario.isEnabled = false
+        /*Condiciones para habilitar boton
+         - El alumno debio cursar todos los talleres anteriores y no estar cursando el taller escogido
+         - Debe haber un grupo con fechas de inscripcion vigentes
+         */
+        var habilitarBotones = true
+        
+        print(tallerIndex)
+        for i in 0..<tallerIndex {
+            print(talleres[i].status)
+            if talleres[i].status != "Aprobado" {
+                habilitarBotones = false
+            }
+        }
+        
+        
+        
+        if habilitarBotones {
+            btnInscribir.isEnabled = true
+            btnCalendario.isEnabled = true
+        }
     }
     
 

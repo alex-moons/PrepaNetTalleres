@@ -474,7 +474,7 @@ Metamomento. Expresión de emociones. Posiciones ante la comunicación de emocio
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VIv-Jg-XcM">
+                            <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VIv-Jg-XcM">
                                 <rect key="frame" x="117" y="597" width="210" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="210" id="9Le-IP-M2O"/>
@@ -493,7 +493,7 @@ Metamomento. Expresión de emociones. Posiciones ante la comunicación de emocio
                                     </attributedString>
                                 </buttonConfiguration>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wMX-c6-O67">
+                            <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wMX-c6-O67">
                                 <rect key="frame" x="48" y="597" width="55" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="55" id="FyV-Pm-6WB"/>
@@ -570,6 +570,8 @@ Metamomento. Expresión de emociones. Posiciones ante la comunicación de emocio
                     </view>
                     <navigationItem key="navigationItem" id="5nB-Tr-ph1"/>
                     <connections>
+                        <outlet property="btnCalendario" destination="wMX-c6-O67" id="iGn-OF-fEQ"/>
+                        <outlet property="btnInscribir" destination="VIv-Jg-XcM" id="ZLw-6R-goQ"/>
                         <outlet property="imgTitulo" destination="zZ0-lO-3Zi" id="vil-M6-joJ"/>
                         <outlet property="lbName" destination="WiO-sC-NUE" id="7g2-v5-cGp"/>
                         <outlet property="lbStatus" destination="2bK-8y-jEx" id="pjr-RG-Ahb"/>
@@ -693,7 +695,7 @@ Metamomento. Expresión de emociones. Posiciones ante la comunicación de emocio
         <image name="square.split.2x2.fill" catalog="system" width="128" height="114"/>
         <image name="tallerdefault" width="2000" height="1333"/>
         <namedColor name="AccentColor">
-            <color red="1" green="0.79199999570846558" blue="0.15700000524520874" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.2196078431372549" green="0.33333333333333331" blue="0.95294117647058818" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
