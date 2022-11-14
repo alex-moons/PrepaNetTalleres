@@ -16,7 +16,7 @@ class ViewControllerTalleres: UIViewController, UITableViewDelegate, UITableView
     
     var db = Firestore.firestore()
     let user = Auth.auth().currentUser
-    var talleres = [taller](repeating: taller(nombre: "", status: "", desc: ""), count: 6)
+    var talleres = [taller](repeating: taller(docID: "", nombre: "", status: "", desc: ""), count: 6)
     var queryAlumno: Query!
     
     override func viewDidLoad() {
@@ -54,7 +54,7 @@ class ViewControllerTalleres: UIViewController, UITableViewDelegate, UITableView
                 for tallerDoc in querySnapshot!.documents {
                     let datos = tallerDoc.data()
                     
-                    self.talleres[(datos["id"] as! Int) - 1] = taller(nombre: datos["nombre"] as! String, status: "Sin Cursar", desc: datos["descripcion"] as! String)
+                    self.talleres[(datos["id"] as! Int) - 1] = taller(docID: tallerDoc.documentID, nombre: datos["nombre"] as! String, status: "Sin Cursar", desc: datos["descripcion"] as! String)
                 }
                 //self.tableViewTalleres.reloadData()
             }
