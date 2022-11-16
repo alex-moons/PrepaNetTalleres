@@ -280,7 +280,7 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="s76-dI-d0X"/>
                                 </constraints>
-                                <string key="text">Créditos: Equipo Cyberware Tecnológico de Monterrey: Alejandro Hernández, Patricio Santos, Aaron Urbina, Alan Cruz, Baetie Hurtado</string>
+                                <string key="text">Créditos Equipo Cyberware Tecnológico de Monterrey: Alejandro Hernández, Patricio Santos, Aaron Urbina, Alan Cruz, Baetie Hurtado</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <color key="textColor" red="0.27157600094441497" green="0.26911806062906529" blue="0.28389462557705969" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
