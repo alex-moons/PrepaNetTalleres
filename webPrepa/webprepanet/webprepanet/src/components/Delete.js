@@ -1,8 +1,14 @@
 import React from "react";
 import firebase from "firebase/compat/app";
-const Delete = ({ doc }) => {
+
+// un export para cada delete que se quiere hacer/ Esto funciona para borrar docs
+// doc es el nombre del documento que queremos borrar
+export const DeleteAlumno = ({ doc }) => {
+
+    // para conectarse al firebase
     const db = firebase.firestore();
 
+    // metodo para borrar el documento
     const deleteValue = () => {
         db.collection("values")
             .doc(doc)
@@ -15,7 +21,6 @@ const Delete = ({ doc }) => {
             });
     };
 
+    // un boton para borrar
     return <button onClick={deleteValue}>Delete</button>;
 };
-
-export default Delete;
