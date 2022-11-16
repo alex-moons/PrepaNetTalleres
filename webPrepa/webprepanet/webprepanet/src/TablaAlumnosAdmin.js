@@ -1,7 +1,6 @@
 import React, { Component, useState, useEffect } from 'react';
 import { Table, Form, Button, Container, Row, Col, Link, Dropdown } from 'react-bootstrap';
-import Alumno from "./Alumno"
-import { FireStoreDataAlumno } from './components/FireStoreData'
+import {  FireStoreTablaAlumnosInfo } from './components/FireStoreData'
 import { AddValue } from './components/Add'
 
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -11,9 +10,7 @@ import "./TablaAlumnosAdmin.css";
 
 
 function TablaAlumnosAdmin() {
-    const [listaAlumnos, setAlumnos] = useState([]);
 
-    
 
     return (
         <div className="bg-tablas">
@@ -61,64 +58,13 @@ function TablaAlumnosAdmin() {
                             </tr>
                         </thead>
                         <tbody>
-                            {/*listaAlumnos.length === 0 ? (
-                                <p>No hay datos</p>
-                            ) : (
-                                listaAlumnos.map((item) => (
-                                    <Alumno
-                                        nombre={item.nombre}
-                                        matricula={item.matricula}
-                                        correo_institucional={item.correo_institucional}
-                                        campus={item.campus}
-                                        tetramestre={item.tetramestre}
-                                        periodo_de_ingreso={item.periodo_de_ingreso}
-                                        talleres_aprobados={item.talleres_aprobados}
-                                    />
-                                ))
-                            )*/}
-                            <tr>
-                                <td>A01197723</td>
-                                <td>Patricio Santos</td>
-                                <td>Monterrey</td>
-                                <td>4</td>
-                                <td>EA2022</td>
-                                <td>11/01/2022 - 22/04/2022</td>
-                                <td>3</td>
-                                <td>305</td>
-                                <td>Si</td>
-                                <td>Aprobado</td>
-                            </tr>
-                            <tr>
-                                <td>A01721287</td>
-                                <td>Alex Hernandez</td>
-                                <td>Monterrey</td>
-                                <td>4</td>
-                                <td>MA2022</td>
-                                <td>11/05/2022 - 22/08/2022</td>
-                                <td>4</td>
-                                <td>403</td>
-                                <td>No</td>
-                                <td>Cursando</td>
-                            </tr>
-                            <tr>
-                                <td>A01197723</td>
-                                <td>Patricio Santos</td>
-                                <td>Monterrey</td>
-                                <td>4</td>
-                                <td>EA2022</td>
-                                <td>11/01/2022 - 22/04/2022</td>
-                                <td>3</td>
-                                <td>305</td>
-                                <td>Si</td>
-                                <td>Aprobado</td>
-                            </tr>
+                            <FireStoreTablaAlumnosInfo />
                         </tbody>
                     </Table>
                 </Row>
+          
             </Container>
-            <AddValue />
-            <FireStoreDataAlumno />
-        </div>
+        </ div >
     );
 }
 
