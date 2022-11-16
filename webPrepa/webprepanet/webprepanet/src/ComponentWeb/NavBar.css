@@ -1,0 +1,15 @@
+.nav-bar {
+    background-color: rgb(29, 43, 80);
+    justify-content: space-between;
+}
+
+    .nav-bar .logo-margin {
+        align-content: center;
+        justify-content: center;
+        place-content: center;
+    }
+
+.logo-margin {
+    margin-left: 20px;
+    justify-content: left;
+}

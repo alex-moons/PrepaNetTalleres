@@ -1,0 +1,68 @@
+@import url("https://fonts.googleapis.com/css?family=Raleway:400,600");
+
+.listaTarjetas {
+    width: 75%;
+}
+
+.tarjeta {
+    margin-bottom: 20px;
+    display: flex;
+    width: 100%;
+}
+
+.titleCards {
+    font-family: var(--font-family-raleway);
+    font-weight: 600;
+    font-size: var(--font-size-l);
+    color: black;
+    display: flex;
+}
+
+.description {
+    font-family: var(--font-family-raleway);
+    font-weight: 400;
+    font-size: var(--font-size-s);
+    color: black;
+}
+
+.aprobado {
+    display: flex;
+    font-family: var(--font-family-raleway);
+    font-size: var(--font-size-s);
+    background-color: lightgreen;
+    border-radius: 15px;
+    width: 140px;
+    padding: 2px;
+    justify-content: center;
+}
+
+.inscrito {
+    display: flex;
+    font-family: var(--font-family-raleway);
+    font-size: var(--font-size-s);
+    background-color: lightblue;
+    border-radius: 15px;
+    width: 140px;
+    padding: 2px;
+    justify-content: center;
+}
+
+.no_disp {
+    display: flex;
+    font-family: var(--font-family-raleway);
+    font-size: var(--font-size-s);
+    background-color: lightgray;
+    border-radius: 15px;
+    width: 140px;
+    padding: 2px;
+    justify-content: center;
+}
+
+:root {
+    --font-size-s: 14px;
+    --font-size-m: 20px;
+    --font-size-l: 30px;
+    --font-size-xl: 64px;
+    --font-size-xl2: 70px;
+    --font-family-raleway: "Raleway";
+}
