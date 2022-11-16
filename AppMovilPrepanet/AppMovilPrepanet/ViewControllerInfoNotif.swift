@@ -17,9 +17,9 @@ class ViewControllerInfoNotif: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        lbTitulo.text = notif.title
-        lbAutor.text = notif.coordi
-        textMsg.text = notif.content
+        lbTitulo.text = notif.titulo
+        lbAutor.text = notif.groupKey
+        textMsg.text = notif.contenido
         
 
         // Do any additional setup after loading the view.

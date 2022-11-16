@@ -57,7 +57,7 @@ class ViewControllerInfoTaller: UIViewController {
             print(mensajeError)
         }
                 
-        if /*tallerInfo.status == "Sin Cursar" &&*/ habilitarBotones {
+        if tallerInfo.status == "Sin Cursar" && habilitarBotones {
             habilitarBotones = false
             mensajeError = "No hay fechas disponibles por el momento."
             let currentTime = Date()
