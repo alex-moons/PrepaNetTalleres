@@ -12,12 +12,14 @@ class taller: NSObject {
     var nombre:String
     var status: String
     var desc:String
+    var grupoDatos:[String : Any]?
     
     init(docID: String, nombre: String, status: String, desc:String) {
         self.docID = docID
         self.nombre = nombre
         self.status = status
         self.desc = desc
+        grupoDatos = nil
     }
 
 }
