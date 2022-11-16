@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Firebase
 import FirebaseAuth
 
 class ViewController: UIViewController {
@@ -16,6 +17,8 @@ class ViewController: UIViewController {
     @IBOutlet weak var tfPassword: UITextField!
     @IBOutlet weak var btnEntrar: UIButton!
     @IBOutlet weak var btnReset: UIButton!
+    
+    let db = Firestore.firestore()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -78,9 +81,23 @@ class ViewController: UIViewController {
                 }
                 if Auth.auth().currentUser != nil {
                     //print(Auth.auth().currentUser?.uid as Any)
-                    
-                    DispatchQueue.main.async {
-                        [unowned self] in self?.performSegue(withIdentifier: "login", sender: self)
+                    self!.db.collection("Alumno").whereField("correo_institucional", isEqualTo: username).getDocuments{ [self] querySnapshot, error in
+                            if let error = error {
+                                print("Inscripcion Error" + error.localizedDescription)
+                            }
+                        if querySnapshot?.documents.count != 0 {
+                            print("Valid user")
+                            DispatchQueue.main.async {
+                                [unowned self] in self?.performSegue(withIdentifier: "login", sender: self)
+                            }
+                        } else {
+                            self!.errorMessage(title: "No es alumno", message: "No es alumno")
+                            do {
+                                try Auth.auth().signOut()
+                            } catch let signOutError as NSError {
+                              print("Error signing out: %@", signOutError)
+                            }
+                        }
                     }
                 }
                 else {
