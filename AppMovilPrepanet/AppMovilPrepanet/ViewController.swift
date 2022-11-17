@@ -28,14 +28,15 @@ class ViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        print("Login Appearing")
         let _ = Auth.auth().addStateDidChangeListener { auth, user in }
         
         //EDITAR DESPUES: se hace sign out cada vez que hace login
-        do {
+        /*do {
             try Auth.auth().signOut()
         } catch let signOutError as NSError {
           print("Error signing out: %@", signOutError)
-        }
+        }*/
     }
     
     override func viewDidDisappear(_ animated: Bool) {

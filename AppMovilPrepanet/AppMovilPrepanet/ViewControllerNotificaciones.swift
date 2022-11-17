@@ -12,10 +12,10 @@ class ViewControllerNotificaciones: UIViewController, UITableViewDelegate, UITab
     
     @IBOutlet weak var tableViewNotif: UITableView!
     
-    var notificaciones = [notificacion]()
-    
     let db = Firestore.firestore()
     let user = Auth.auth().currentUser
+    
+    var notificaciones:[notificacion] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,7 +28,6 @@ class ViewControllerNotificaciones: UIViewController, UITableViewDelegate, UITab
         // Do any additional setup after loading the view.
     }
     
-        /*.whereField("campus_id", in: [" ", "Monterrey"]).whereField("grupo_id", in: [" ", "OEPTCqwTF6PKzYND21v6"])*/
     override func viewWillAppear(_ animated: Bool) {
         /*
          - Llamar Alumno (Campus)
@@ -37,8 +36,9 @@ class ViewControllerNotificaciones: UIViewController, UITableViewDelegate, UITab
          - Llamar Taller (numero)
          - Llamar notificaciones
          */
+        notificaciones = [notificacion]()
         
-        db.collection("Alumno").whereField("correo_institucional", isEqualTo: user?.email!).getDocuments { qsAlumno, error in
+        db.collection("Alumno").whereField("correo_institucional", isEqualTo: user!.email!).getDocuments { qsAlumno, error in
             if let error = error {
                 print("Inscripcion Error" + error.localizedDescription)
             }
@@ -51,37 +51,54 @@ class ViewControllerNotificaciones: UIViewController, UITableViewDelegate, UITab
                     print("Inscripcion Error" + error.localizedDescription)
                 }
                 
-                let inscripcionData = qsInscripcion?.documents[0].data()
-                let grupoDoc = inscripcionData?["grupo_id"] as! DocumentReference
-                
-                grupoDoc.getDocument { qsGrupo, error in
-                    if let error = error {
-                        print("Inscripcion Error" + error.localizedDescription)
-                    }
-                    let grupoData = qsGrupo?.data()
-                    let tallerDoc = grupoData?["taller_id"] as! DocumentReference
+                if (!qsInscripcion!.documents.isEmpty){
+                    let inscripcionData = qsInscripcion?.documents[0].data()
+                    let grupoDoc = inscripcionData?["grupo_id"] as! DocumentReference
                     
-                    tallerDoc.getDocument { qsTaller, error in
+                    grupoDoc.getDocument { qsGrupo, error in
                         if let error = error {
                             print("Inscripcion Error" + error.localizedDescription)
                         }
-                        let tallerData = qsTaller?.data()
+                        let grupoData = qsGrupo!.data()
+                        let tallerDoc = grupoData?["taller_id"] as! DocumentReference
                         
-                        let tallerId = String(tallerData?["id"] as! Int)
-                        let campusKey = tallerId + "-" + (alumnoData?["campus"] as! String)
-                        let groupKey = campusKey + "-" + qsGrupo!.documentID
-                        
-                        print(groupKey)
-                        
-                        self.db.collection("Notificacion").whereField("groupKey", in: ["0", tallerId, campusKey, groupKey]).getDocuments{ qsNotificacion, error in
+                        tallerDoc.getDocument { qsTaller, error in
                             if let error = error {
                                 print("Inscripcion Error" + error.localizedDescription)
                             }
-                            for notifDoc in qsNotificacion!.documents {
-                                let nData = notifDoc.data()
-                                let notif = notificacion(titulo: nData["titulo"] as! String, fecha: nData["fecha"] as! Timestamp, contenido: nData["contenido"] as! String, autor_id: nData["autor_id"] as! DocumentReference, groupKey: nData["groupKey"] as! String)
-                                self.notificaciones.append(notif)
+                            let tallerData = qsTaller!.data()
+                            
+                            let tallerId = String(tallerData!["id"] as! Int)
+                            let campusKey = tallerId + "-" + (alumnoData?["campus"] as! String)
+                            let groupKey = campusKey + "-" + qsGrupo!.documentID
+                            
+                            //print(groupKey)
+                            
+                            self.db.collection("Notificacion").whereField("groupKey", in: ["0", tallerId, campusKey, groupKey]).getDocuments{ qsNotificacion, error in
+                                if let error = error {
+                                    print("Inscripcion Error" + error.localizedDescription)
+                                }
+                                for notifDoc in qsNotificacion!.documents {
+                                    let nData = notifDoc.data()
+                                    let notif = notificacion(titulo: nData["titulo"] as! String, fecha: nData["fecha"] as! Timestamp, contenido: nData["contenido"] as! String, autor_id: nData["autor_id"] as! DocumentReference, groupKey: nData["groupKey"] as! String)
+                                    self.notificaciones.append(notif)
+                                }
+                                self.tableViewNotif.reloadData()
                             }
+                        }
+                    }
+                }
+                else {
+                    self.db.collection("Notificacion").whereField("groupKey", isEqualTo: "0").getDocuments{ qsNotificacion, error in
+                        if let error = error {
+                            print("Inscripcion Error" + error.localizedDescription)
+                        }
+                        for notifDoc in qsNotificacion!.documents {
+                            let nData = notifDoc.data()
+                            let notif = notificacion(titulo: nData["titulo"] as! String, fecha: nData["fecha"] as! Timestamp, contenido: nData["contenido"] as! String, autor_id: nData["autor_id"] as! DocumentReference, groupKey: nData["groupKey"] as! String)
+                            self.notificaciones.append(notif)
+                        }
+                        if (!self.notificaciones.isEmpty){
                             self.tableViewNotif.reloadData()
                         }
                     }
