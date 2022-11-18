@@ -177,7 +177,7 @@ class ViewControllerInfoTaller: UIViewController {
            - Crear inscripcion
            */
             
-            self.db.collection("Alumno").whereField("correo_institucional", isEqualTo: self.user?.email!).getDocuments {
+            self.db.collection("Alumno").whereField("correo_institucional", isEqualTo: self.user!.email!).getDocuments {
                 qsAlumno, error in
                 if let error = error {
                     print("Inscripcion Error" + error.localizedDescription)

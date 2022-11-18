@@ -303,6 +303,9 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="" image="gearshape.2.fill" catalog="system" selectedImage="gearshape.2.fill" id="1CZ-Yn-7yw"/>
                     <navigationItem key="navigationItem" title="Ajustes" id="5UX-yK-73e"/>
+                    <connections>
+                        <segue destination="ooF-N3-kWR" kind="presentation" identifier="signOut" modalPresentationStyle="fullScreen" id="Quk-Tc-ixb"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dnt-TG-nX7" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -734,13 +737,6 @@ Inscripciones: 11/10/2022</string>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="prepanet_blanco" translatesAutoresizingMaskIntoConstraints="NO" id="10N-Qf-OMh">
-                                <rect key="frame" x="9" y="139" width="357" height="96"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="96" id="7TW-YP-X4r"/>
-                                    <constraint firstAttribute="width" constant="357" id="hMB-dz-Gla"/>
-                                </constraints>
-                            </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3aX-Ca-Q7u">
                                 <rect key="frame" x="141.5" y="448" width="92" height="31"/>
                                 <constraints>
@@ -759,6 +755,13 @@ Inscripciones: 11/10/2022</string>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                 <state key="normal" title="Olvidé mi contraseña"/>
                             </button>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="prepanet_blanco" translatesAutoresizingMaskIntoConstraints="NO" id="10N-Qf-OMh">
+                                <rect key="frame" x="9" y="138" width="357" height="96"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="96" id="7TW-YP-X4r"/>
+                                    <constraint firstAttribute="width" constant="357" id="hMB-dz-Gla"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="KoY-kl-ACY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>

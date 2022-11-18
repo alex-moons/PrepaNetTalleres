@@ -28,7 +28,7 @@ class ViewControllerSettings: UIViewController, UITableViewDelegate, UITableView
         // Do any additional setup after loading the view.
     }
     
-    @IBAction func logOut(_ sender: Any) {
+    @IBAction func logOut(_ sender: UIButton) {
         do {
             print("Signing out")
             try Auth.auth().signOut()
@@ -40,6 +40,7 @@ class ViewControllerSettings: UIViewController, UITableViewDelegate, UITableView
         print("Dismissing")
         self.dismiss(animated: true)
         print("Dismissed")
+        //performSegue(withIdentifier: "signOut", sender: self)
     }
     
     /*
@@ -51,5 +52,7 @@ class ViewControllerSettings: UIViewController, UITableViewDelegate, UITableView
         // Pass the selected object to the new view controller.
     }
     */
+    
+    
 
 }
