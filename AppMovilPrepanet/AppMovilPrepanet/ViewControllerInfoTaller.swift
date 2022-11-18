@@ -15,6 +15,8 @@ class ViewControllerInfoTaller: UIViewController {
     @IBOutlet weak var textDesc: UITextView!
     @IBOutlet weak var btnInscribir: UIButton!
     @IBOutlet weak var btnCalendario: UIButton!
+    @IBOutlet weak var lbFechasCurso: UILabel!
+    @IBOutlet weak var lbFechasInscripcion: UILabel!
     
     var db = Firestore.firestore()
     let user = Auth.auth().currentUser
@@ -23,6 +25,7 @@ class ViewControllerInfoTaller: UIViewController {
     var tallerIndex:Int!
     var tallerInfo:taller!
     var img:UIImage!
+    var tallerDisponible:QueryDocumentSnapshot!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,6 +40,69 @@ class ViewControllerInfoTaller: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        let formatoFecha = DateFormatter()
+        formatoFecha.dateFormat = "dd/MM/yyyy"
+        switch tallerInfo.status {
+        case "Aprobado":
+            print("Taller aprobado")
+            let cursoInit = (talleres[tallerIndex].grupoDatos!["fecha_inicio"] as! Timestamp).dateValue()
+            let cursoFin = (talleres[tallerIndex].grupoDatos!["fecha_fin"] as! Timestamp).dateValue()
+            lbFechasCurso.text = formatoFecha.string(from: cursoInit) + " - " + formatoFecha.string(from: cursoFin)
+            lbFechasInscripcion.text = "Sin Fechas"
+            
+            break
+            
+        case "Cursando":
+            print("Taller cursando")
+            let cursoInit = (talleres[tallerIndex].grupoDatos!["fecha_inicio"] as! Timestamp).dateValue()
+            let cursoFin = (talleres[tallerIndex].grupoDatos!["fecha_fin"] as! Timestamp).dateValue()
+            lbFechasCurso.text = formatoFecha.string(from: cursoInit) + " - " + formatoFecha.string(from: cursoFin)
+            lbFechasInscripcion.text = "Sin Fechas"
+            
+            break
+            
+        case "Pendiente":
+            print("Taller pendiente")
+            let cursoInit = (talleres[tallerIndex].grupoDatos!["fecha_inicio"] as! Timestamp).dateValue()
+            let cursoFin = (talleres[tallerIndex].grupoDatos!["fecha_fin"] as! Timestamp).dateValue()
+            let inscripInit = (talleres[tallerIndex].grupoDatos!["inscripcion_inicio"] as! Timestamp).dateValue()
+            let inscripFin = (talleres[tallerIndex].grupoDatos!["inscripcion_fin"] as! Timestamp).dateValue()
+            lbFechasCurso.text = formatoFecha.string(from: cursoInit) + " - " + formatoFecha.string(from: cursoFin)
+            lbFechasInscripcion.text = formatoFecha.string(from: inscripInit) + " - " + formatoFecha.string(from: inscripFin)
+            
+            break
+            
+        case "Sin Cursar":
+            print("Taller sin cursar")
+            if let cursoInit = talleres[tallerIndex].grupoDatos,
+               let cursoFin = talleres[tallerIndex].grupoDatos {
+                let dateInit = (cursoInit["fecha_inicio"] as! Timestamp).dateValue()
+                let dateFin = (cursoFin["fecha_fin"] as! Timestamp).dateValue()
+                lbFechasCurso.text = formatoFecha.string(from: dateInit) + " - " + formatoFecha.string(from: dateFin)
+            }
+            else {
+                lbFechasCurso.text = "Sin Fechas"
+            }
+            
+            if let inscripInit = talleres[tallerIndex].grupoDatos,
+               let inscripFin = talleres[tallerIndex].grupoDatos {
+                let dateInit = (inscripInit["inscripcion_inicio"] as! Timestamp).dateValue()
+                let dateFin = (inscripFin["inscripcion_fin"] as! Timestamp).dateValue()
+                lbFechasInscripcion.text = formatoFecha.string(from: dateInit) + " - " + formatoFecha.string(from: dateFin)
+            }
+            else {
+                lbFechasInscripcion.text = "Sin Fechas"
+            }
+            
+            break
+            
+        default:
+            lbFechasCurso.text = "Sin Fechas"
+            lbFechasInscripcion.text = "Sin Fechas"
+            
+            break
+        }
+        
         btnInscribir.isEnabled = false
         btnCalendario.isEnabled = false
         /*Condiciones para habilitar boton
@@ -56,13 +122,16 @@ class ViewControllerInfoTaller: UIViewController {
         if (mensajeError != " "){
             print(mensajeError)
         }
-                
+        
+        if (tallerInfo.status == "Pendiente"){
+            habilitarBotones = false
+        }
+        
         if tallerInfo.status == "Sin Cursar" && habilitarBotones {
             habilitarBotones = false
             mensajeError = "No hay fechas disponibles por el momento."
             let currentTime = Date()
             let tallerDoc = db.collection("Taller").document(tallerInfo.docID)
-            var tallerDisponible:QueryDocumentSnapshot!
             
             db.collection("GrupoTaller").whereField("taller_id", isEqualTo: tallerDoc).getDocuments { querySnapshot, error in
                 if let error = error {
@@ -73,29 +142,17 @@ class ViewControllerInfoTaller: UIViewController {
                     let tallerData = tallerDoc.data()
                     let inscripcionInit = (tallerData["inscripcion_inicio"] as! Timestamp).dateValue()
                     let inscripcionFin = (tallerData["inscripcion_fin"] as! Timestamp).dateValue()
-                    print(inscripcionInit)
+                    /*print(inscripcionInit)
                     print(currentTime)
-                    print(inscripcionFin)
+                    print(inscripcionFin)*/
                     if inscripcionInit <= currentTime && inscripcionFin >= currentTime {
                         //print("Hay taller disponible")
-                        tallerDisponible = tallerDoc
+                        self.tallerDisponible = tallerDoc
                         habilitarBotones = true
                         mensajeError = ""
                     }
-                    /*if inscripcionInit <= currentTime {
-                        print("init usar <=")
-                    }
-                    if inscripcionInit >= currentTime {
-                        print("init usar >=")
-                    }
-                    if inscripcionFin <= currentTime {
-                        print("fin usar <=")
-                    }
-                    if inscripcionFin >= currentTime {
-                        print("fin usar >=")
-                    }*/
                 }
-                if let _ = tallerDisponible {
+                if let _ = self.tallerDisponible {
                     print("Hay taller disponible")
                 }
                 else {
@@ -108,6 +165,51 @@ class ViewControllerInfoTaller: UIViewController {
                 }
             }
         }
+    }
+    
+    @IBAction func Inscribir(_ sender: UIButton){
+        let confirmAlert = UIAlertController(title: "Confirmar inscripción", message: "Deseas inscribirte a este taller? Una vez mandada la solicitud, un coordinador aceptará tu inscripción.", preferredStyle: .alert)
+        
+        confirmAlert.addAction(UIAlertAction(title: "Confirmar", style: .default, handler: { (action: UIAlertAction!) in
+          /*
+           - Tener taller disponible (gupo_id)
+           - Conseguir doc Alumno
+           - Crear inscripcion
+           */
+            
+            self.db.collection("Alumno").whereField("correo_institucional", isEqualTo: self.user?.email!).getDocuments {
+                qsAlumno, error in
+                if let error = error {
+                    print("Inscripcion Error" + error.localizedDescription)
+                }
+                
+                let alumnoDoc = qsAlumno?.documents[0]
+                
+                self.db.collection("Inscripcion").document().setData([
+                    "alumno_id": self.db.collection("Alumno").document(alumnoDoc!.documentID),
+                    "alumno_idStr": alumnoDoc!.documentID,
+                    "estatus": "Pendiente",
+                    "grupo_id": self.db.collection("GrupoTaller").document(self.tallerDisponible!.documentID),
+                    "grupo_idStr": self.tallerDisponible!.documentID,
+                    "periodo": "SD22",
+                    "taller_aprobado": false
+                ]) { err in
+                    if let err = err {
+                        print("Error writing document: \(err)")
+                    } else {
+                        print("Document successfully written!")
+                    }
+                }
+                self.navigationController?.popViewController(animated: true)
+            }
+           
+          }))
+
+        confirmAlert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { (action: UIAlertAction!) in
+          print("Handle Cancel Logic here")
+          }))
+        
+        self.present(confirmAlert, animated: true)
     }
     
 

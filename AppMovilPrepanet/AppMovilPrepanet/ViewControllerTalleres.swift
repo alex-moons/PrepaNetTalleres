@@ -93,6 +93,7 @@ class ViewControllerTalleres: UIViewController, UITableViewDelegate, UITableView
                                             let tallerDatos = document1.data()
                                             let tallerID = tallerDatos?["id"] as! Int
                                             self.talleres[tallerID-1].status = datos["estatus"] as! String
+                                            self.talleres[tallerID-1].grupoDatos = grupoDatos
                                             self.tableViewTalleres.reloadData()
                                         } else {
                                             print("Document does not exist")
