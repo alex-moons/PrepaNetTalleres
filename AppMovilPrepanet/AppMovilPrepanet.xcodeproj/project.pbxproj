@@ -369,6 +369,7 @@
 				INFOPLIST_FILE = AppMovilPrepanet/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "PrepaNet Talleres";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.education";
+				INFOPLIST_KEY_NSCalendarsUsageDescription = "";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = "Launch Screen.storyboard";
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -404,6 +405,7 @@
 				INFOPLIST_FILE = AppMovilPrepanet/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "PrepaNet Talleres";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.education";
+				INFOPLIST_KEY_NSCalendarsUsageDescription = "";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = "Launch Screen.storyboard";
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
