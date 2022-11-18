@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import { Table, Form, Button, Container, Row, Col, Link } from 'react-bootstrap';
 
 import "bootstrap/dist/css/bootstrap.min.css";
-
 import "./TablaAlumnosCoord.css";
+import styles from "./TablaAlumnosCoord.css";
 
 function TablaAlumnosCoord() {
     return (
@@ -26,8 +26,8 @@ function TablaAlumnosCoord() {
                 </Row>
             </Container>
 
-            <div className="container-width-tabla">
-                <Table responsive striped bordered hover variant="light">
+            <div class="container-width-tabla tabla-alumnos">
+                <Table responsive striped bordered hover variant="light" >
                     <thead>
                         <tr>
                             <th>Matricula</th>

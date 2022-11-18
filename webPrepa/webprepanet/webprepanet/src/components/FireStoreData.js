@@ -1,7 +1,9 @@
 import React from "react";
 import { useGetDataAlumno, useGetDataGrupoTaller, useGetDataInscripcion, useGetDataTaller } from "../hooks/useGetData";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { Card, Button, Container, Row, Col, Link } from 'react-bootstrap';
+import { Card, Button, Container, Row, Col, Link, Dropdown } from 'react-bootstrap';
+import { UpdateEstatus } from "./Update";
+import { AddValueInscripcion } from "./Add";
 import "../InfoTaller.css";
 
 // Estos metodos enseñan datos
@@ -100,7 +102,10 @@ export const FireStoreTablaAlumnosInfo = () => {
                         <InfoAlumno myId={inscripciones.value.alumno_idStr} />
                         <InfoGrupo myId={inscripciones.value.grupo_idStr} />
                         <td>{inscripciones.value.taller_aprobado ? 'Verdadero' : 'Falso'}</td>
-                        <td>{inscripciones.value.estatus}</td>
+                        
+                            <UpdateEstatus doc={inscripciones}  />
+                            
+                        
                     </tr>
                 </React.Fragment>
 
@@ -121,38 +126,58 @@ export const FireStoreDataGrupos = () => {
     const [talleres] = useGetDataTaller();
     let idTaller = ''
 
-    function padTo2Digits(num) {
-        return num.toString().padStart(2, '0');
+    let cont = 0;
+
+    function Fecha(props) {
+
+        function padTo2Digits(num) {
+            return num.toString().padStart(2, '0');
+        }
+
+        function formatDate(date) {
+            return [
+                padTo2Digits(date.getDate()),
+                padTo2Digits(date.getMonth() + 1),
+                date.getFullYear(),
+            ].join('/');
+        }
+
+        let tallerId = props.myID;
+        let tallerIdgrupo = props.myIDgrupo
+        let ind = props.index
+
+
+        if (tallerId == tallerIdgrupo) {
+            cont = cont + 1;
+            return (
+                <>
+                    <p><b>Grupo: {grupos[ind].value.numero_grupo}</b></p>
+                    <p><b>Inicio de inscripciones:</b> {formatDate(grupos[ind].value.inscripcion_inicio.toDate())}</p>
+                    <p><b>Fin de inscripciones:</b> {formatDate(grupos[ind].value.inscripcion_fin.toDate())}</p>
+                    <p><b>Inicio del curso:</b> {formatDate(grupos[ind].value.fecha_inicio.toDate())}</p>
+                    <p><b>Fin del curso:</b> {formatDate(grupos[ind].value.fecha_fin.toDate())}</p>
+
+                </>
+            );
+        }
+
+
+
     }
 
-    function formatDate(date) {
-        return [
-            padTo2Digits(date.getDate()),
-            padTo2Digits(date.getMonth() + 1),
-            date.getFullYear(),
-        ].join('/');
-    }
-
-    function Descripcion(props) {
-       
-
-        return (
-            <>
-                {talleres[idTaller].value.descripcion}
-            </>
-
-        );
-    }
 
     // HAY QUE COMPLETAR LA TABLA AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
     return (
         <>
             {talleres.map((talleres) => (
-                <React.Fragment key={taller.id}>
+                <React.Fragment key={talleres.id}>
                     <Row className="taller-row">
                         <Col className="flex">
-                            {talleres.value.nombre}
+                            <h2 className="taller-titulo">
+                                {talleres.value.nombre}
+                            </h2>
                         </Col>
+
                         <Col>
                             <h2 className="taller-fecha">Fechas</h2>
                         </Col>
@@ -162,10 +187,15 @@ export const FireStoreDataGrupos = () => {
                             {talleres.value.descripcion}
                         </Col>
                         <Col className="taller-texto">
-                            <p><b>Inicio de inscripciones:</b> {formatDate(grupos.value.inscripcion_inicio.toDate())}</p>
-                            <p><b>Fin de inscripciones:</b> {formatDate(grupos.value.inscripcion_fin.toDate())}</p>
-                            <p><b>Inicio del curso:</b> {formatDate(grupos.value.fecha_inicio.toDate())}</p>
-                            <p><b>Fin del curso:</b> {formatDate(grupos.value.fecha_fin.toDate())}</p>
+                            {grupos.map((grupos, index) => {
+                                return (
+
+                                    <Fecha myID={talleres.id} myIDgrupo={grupos.value.taller_idStr} index={index} />
+
+
+                                );
+
+                            })}
                         </Col>
                     </Row>
                     <Row>

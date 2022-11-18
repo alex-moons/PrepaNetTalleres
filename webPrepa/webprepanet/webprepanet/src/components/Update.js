@@ -1,19 +1,32 @@
 import React from "react";
+import { Dropdown, Button } from 'react-bootstrap';
 import firebase from "firebase/compat/app";
 // PARA ACTUALIZAR VALORES EN UN HTML PON <UPADTE DOC ={ DOC.ID}/>
-const Update = ({ doc }) => {
+export const UpdateEstatus = ({ doc }) => {
     const [value, setValue] = React.useState("");
+    const [estado, setEstado] = React.useState("");
+
+
 
     const db = firebase.firestore();
     const getValue = (event) => {
         setValue(event.target.value);
+        setEstado(event.target.value);
+    };
+    const getEstado = (e) => {
+        setValue(e.target.value);
     };
 
-    const updateValue = () => {
-        db.collection("values")
-            .doc(doc)
+    const updateTaller_aprobado = () => {
+        let pasa = false;
+        if (value == "Aprobado") {
+            pasa = true;
+        }
+        console.log("Entre al update")
+        db.collection("Inscripcion")
+            .doc(doc.id)
             .update({
-                value: value,
+                taller_aprobado: pasa,
             })
             .then(function () {
                 console.log("Document successfully updated!");
@@ -21,14 +34,44 @@ const Update = ({ doc }) => {
             .catch(function (error) {
                 console.error("Error updating document: ", error);
             });
+
+    };
+
+    const updateValue = () => {
+        console.log("Entre al update")
+        db.collection("Inscripcion")
+            .doc(doc.id)
+            .update({
+                estatus: value,
+            })
+            .then(function () {
+                console.log("Document successfully updated!");
+            })
+            .catch(function (error) {
+                console.error("Error updating document: ", error);
+            });
+        updateTaller_aprobado();
     };
 
     return (
         <>
-            <input onBlur={getValue} type='text' />
-            <button onClick={updateValue}>Update</button>
+            <td>
+            <select id="estados" defaultValue={doc.value.estatus}
+                onChange={
+
+                    getEstado
+                }
+                >
+                <option value="Aprobado">Aprobado</option>
+                <option value="Reprobado">Reprobado</option>
+                <option value="Cursando">Cursando</option>
+                <option value="Pendiente">Pendiente</option>
+                </select>
+            </td>
+            <td>
+                <button onClick={updateValue}>Actualizar</button>
+            </td>
         </>
     );
 };
 
-export default Update;

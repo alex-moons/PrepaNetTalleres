@@ -3,7 +3,7 @@ import firebase from "firebase/compat/app"; // Biblioteca para usar el firebase 
 import 'firebase/compat/firestore'; // Biblioteca para usar el FireStore Database
 
 // Tiene que ser en mayusculas, un export para cada query que se quiere hacer
-export const AddValue = () => {
+export const AddValueInscripcion = () => {
     const [value, setValue] = React.useState(""); // Aqui se ponen los valores que queremos junto a su set
     const db = firebase.firestore(); // Esto es la variable general para accesar a FireBase
     // Para cada valor, definir un get
@@ -13,11 +13,11 @@ export const AddValue = () => {
 
     // Metodo para agregar los valores del useState a FireBase
     const addValue = () => {
-        db.collection("Alumno") // Se define en que coleccion lo queremos meter
+        db.collection("Inscripcion") // Se define en que coleccion lo queremos meter
             .doc(value) // Nombre del doc
             .set({
                 // Aqui definimos los valores que queremos poner el el doc
-                value: value,
+                estatus: value,
             })
             // Si todo sale bien se corre este metodo
             .then(function () {
