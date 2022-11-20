@@ -19,6 +19,8 @@ class ViewControllerInfoTaller: UIViewController {
     @IBOutlet weak var btnCalendario: UIButton!
     @IBOutlet weak var lbFechasCurso: UILabel!
     @IBOutlet weak var lbFechasInscripcion: UILabel!
+    @IBOutlet weak var lbTFechasCurso: UILabel!
+    @IBOutlet weak var lbTFechasInscripcion: UILabel!
     
     var db = Firestore.firestore()
     let user = Auth.auth().currentUser
@@ -53,7 +55,8 @@ class ViewControllerInfoTaller: UIViewController {
             let cursoInit = (talleres[tallerIndex].grupoDatos!["fecha_inicio"] as! Timestamp).dateValue()
             let cursoFin = (talleres[tallerIndex].grupoDatos!["fecha_fin"] as! Timestamp).dateValue()
             lbFechasCurso.text = formatoFecha.string(from: cursoInit) + " - " + formatoFecha.string(from: cursoFin)
-            lbFechasInscripcion.text = "Sin Fechas"
+            lbTFechasInscripcion.text = ""
+            lbFechasInscripcion.text = ""
             
             break
             
@@ -62,7 +65,8 @@ class ViewControllerInfoTaller: UIViewController {
             let cursoInit = (talleres[tallerIndex].grupoDatos!["fecha_inicio"] as! Timestamp).dateValue()
             let cursoFin = (talleres[tallerIndex].grupoDatos!["fecha_fin"] as! Timestamp).dateValue()
             lbFechasCurso.text = formatoFecha.string(from: cursoInit) + " - " + formatoFecha.string(from: cursoFin)
-            lbFechasInscripcion.text = "Sin Fechas"
+            lbTFechasInscripcion.text = ""
+            lbFechasInscripcion.text = ""
             
             break
             
@@ -93,7 +97,8 @@ class ViewControllerInfoTaller: UIViewController {
                 lbFechasCurso.text = formatoFecha.string(from: dateInit) + " - " + formatoFecha.string(from: dateFin)
             }
             else {
-                lbFechasCurso.text = "Sin Fechas"
+                lbFechasCurso.text = ""
+                lbTFechasCurso.text = ""
             }
             
             if let inscripInit = talleres[tallerIndex].grupoDatos,
@@ -103,20 +108,23 @@ class ViewControllerInfoTaller: UIViewController {
                 lbFechasInscripcion.text = formatoFecha.string(from: dateInit) + " - " + formatoFecha.string(from: dateFin)
             }
             else {
-                lbFechasInscripcion.text = "Sin Fechas"
+                lbTFechasInscripcion.text = ""
+                lbFechasInscripcion.text = ""
             }
             
             break
             
         default:
-            lbFechasCurso.text = "Sin Fechas"
-            lbFechasInscripcion.text = "Sin Fechas"
+            lbTFechasCurso.text = ""
+            lbFechasCurso.text = ""
+            lbTFechasInscripcion.text = ""
+            lbFechasInscripcion.text = ""
             
             break
         }
         
         btnInscribir.isEnabled = false
-        if lbFechasCurso.text == "Sin Fechas"{
+        if lbFechasCurso.text == ""{
             btnCalendario.isEnabled = false
         }else{
             btnCalendario.isEnabled = true

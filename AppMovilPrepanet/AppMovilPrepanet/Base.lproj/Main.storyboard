@@ -694,6 +694,8 @@ Inscripciones: 11/10/2022</string>
                         <outlet property="lbFechasInscripcion" destination="vpa-pF-UPu" id="sH4-Dr-7Rd"/>
                         <outlet property="lbName" destination="WiO-sC-NUE" id="7g2-v5-cGp"/>
                         <outlet property="lbStatus" destination="2bK-8y-jEx" id="pjr-RG-Ahb"/>
+                        <outlet property="lbTFechasCurso" destination="Qz6-ZQ-Yfj" id="zfp-9r-X6f"/>
+                        <outlet property="lbTFechasInscripcion" destination="O3b-y4-a84" id="2BA-bk-bzj"/>
                         <outlet property="textDesc" destination="U7j-wn-2Hh" id="bna-i6-XOr"/>
                     </connections>
                 </viewController>
