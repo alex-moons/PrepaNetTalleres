@@ -61,8 +61,6 @@ class ViewControllerInfoTaller: UIViewController {
             print("Taller cursando")
             let cursoInit = (talleres[tallerIndex].grupoDatos!["fecha_inicio"] as! Timestamp).dateValue()
             let cursoFin = (talleres[tallerIndex].grupoDatos!["fecha_fin"] as! Timestamp).dateValue()
-            fechaini = cursoInit
-            fechafin = cursoFin
             lbFechasCurso.text = formatoFecha.string(from: cursoInit) + " - " + formatoFecha.string(from: cursoFin)
             lbFechasInscripcion.text = "Sin Fechas"
             
@@ -72,8 +70,6 @@ class ViewControllerInfoTaller: UIViewController {
             print("Taller pendiente")
             let cursoInit = (talleres[tallerIndex].grupoDatos!["fecha_inicio"] as! Timestamp).dateValue()
             let cursoFin = (talleres[tallerIndex].grupoDatos!["fecha_fin"] as! Timestamp).dateValue()
-            fechaini = cursoInit
-            fechafin = cursoFin
             let inscripInit = (talleres[tallerIndex].grupoDatos!["inscripcion_inicio"] as! Timestamp).dateValue()
             let inscripFin = (talleres[tallerIndex].grupoDatos!["inscripcion_fin"] as! Timestamp).dateValue()
             lbFechasCurso.text = formatoFecha.string(from: cursoInit) + " - " + formatoFecha.string(from: cursoFin)
@@ -83,6 +79,11 @@ class ViewControllerInfoTaller: UIViewController {
             
         case "Sin Cursar":
             print("Taller sin cursar")
+            
+            /*let tallerDocRef = db.collection("Taller").document(talleres[tallerIndex].docID);
+            
+            db.collection("GrupoTaller").whereField("taller_id", isEqualTo: tallerDocRef)*/
+            
             if let cursoInit = talleres[tallerIndex].grupoDatos,
                let cursoFin = talleres[tallerIndex].grupoDatos {
                 let dateInit = (cursoInit["fecha_inicio"] as! Timestamp).dateValue()
@@ -169,6 +170,12 @@ class ViewControllerInfoTaller: UIViewController {
                 }
                 if let _ = self.tallerDisponible {
                     print("Hay taller disponible")
+                    let cursoInit = (self.tallerDisponible.data()["fecha_inicio"] as! Timestamp).dateValue()
+                    let cursoFin = (self.tallerDisponible.data()["fecha_fin"] as! Timestamp).dateValue()
+                    let inscripInit = (self.tallerDisponible.data()["inscripcion_inicio"] as! Timestamp).dateValue()
+                    let inscripFin = (self.tallerDisponible.data()["inscripcion_fin"] as! Timestamp).dateValue()
+                    self.lbFechasCurso.text = formatoFecha.string(from: cursoInit) + " - " + formatoFecha.string(from: cursoFin)
+                    self.lbFechasInscripcion.text = formatoFecha.string(from: inscripInit) + " - " + formatoFecha.string(from: inscripFin)
                 }
                 else {
                     print(mensajeError)

@@ -32,6 +32,7 @@ class ViewControllerSettings: UIViewController, UITableViewDelegate, UITableView
         do {
             print("Signing out")
             try Auth.auth().signOut()
+            UserDefaults.standard.set("", forKey: "signedUser")
             print("Signed out")
         } catch {
             print("Sign out error")
