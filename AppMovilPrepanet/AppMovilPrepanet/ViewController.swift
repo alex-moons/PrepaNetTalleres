@@ -17,7 +17,9 @@ class ViewController: UIViewController {
     @IBOutlet weak var tfPassword: UITextField!
     @IBOutlet weak var btnEntrar: UIButton!
     @IBOutlet weak var btnReset: UIButton!
+    @IBOutlet weak var checkbox: UIButton!
     
+    var recordar:Bool = false
     let db = Firestore.firestore()
     let defaults = UserDefaults.standard
     let staySigned = true; //Cambiar despues por check button
@@ -89,6 +91,17 @@ class ViewController: UIViewController {
         dismissKeyboard()
         Entrar(btnEntrar!)
     }
+    
+    @IBAction func recuerdame(_ sender: Any) {
+        if recordar {
+            self.checkbox.setImage(UIImage(named: "unchecked"), for: .normal)
+            recordar = false
+        }else{
+            self.checkbox.setImage(UIImage(named: "checkbox"), for: .normal)
+            recordar = true
+        }
+    }
+    
     
     func errorMessage(title: String, message: String) {
         let tfVacio = UIAlertController(title: title, message: message, preferredStyle: .alert)

@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="ooF-N3-kWR">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21225" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="ooF-N3-kWR">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21207"/>
         <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -34,7 +35,7 @@
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" rowHeight="89" id="Dg4-TH-543" customClass="TableViewCellNotif" customModule="AppMovilPrepanet" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="44.5" width="343" height="89"/>
+                                        <rect key="frame" x="0.0" y="50" width="343" height="89"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Dg4-TH-543" id="zdf-gM-iga">
                                             <rect key="frame" x="0.0" y="0.0" width="343" height="89"/>
@@ -227,7 +228,7 @@
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" rowHeight="56" id="1W0-f1-hth">
-                                        <rect key="frame" x="0.0" y="44.5" width="325" height="56"/>
+                                        <rect key="frame" x="0.0" y="50" width="325" height="56"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="1W0-f1-hth" id="7lN-YH-0qd">
                                             <rect key="frame" x="0.0" y="0.0" width="325" height="56"/>
@@ -371,7 +372,7 @@
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" rowHeight="124" id="xqE-K5-A7U" customClass="tallerCeldaTableViewCell" customModule="AppMovilPrepanet" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="44.5" width="317" height="124"/>
+                                        <rect key="frame" x="0.0" y="50" width="317" height="124"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="xqE-K5-A7U" id="FrB-3s-aeR">
                                             <rect key="frame" x="0.0" y="0.0" width="317" height="124"/>
@@ -743,7 +744,7 @@ Inscripciones: 11/10/2022</string>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3aX-Ca-Q7u">
-                                <rect key="frame" x="141.5" y="448" width="92" height="31"/>
+                                <rect key="frame" x="141.5" y="462" width="92" height="34.5"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="92" id="X2H-D7-Q4D"/>
                                 </constraints>
@@ -755,10 +756,17 @@ Inscripciones: 11/10/2022</string>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ox5-JV-nl4">
-                                <rect key="frame" x="183" y="400" width="153" height="32"/>
+                                <rect key="frame" x="99" y="516.5" width="177" height="33.5"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="177" id="QZk-zx-1Uh"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                 <state key="normal" title="Olvidé mi contraseña"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Olvidé mi contraseña">
+                                    <fontDescription key="titleFontDescription" type="system" pointSize="16"/>
+                                </buttonConfiguration>
                             </button>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="prepanet_blanco" translatesAutoresizingMaskIntoConstraints="NO" id="10N-Qf-OMh">
                                 <rect key="frame" x="9" y="138" width="357" height="96"/>
@@ -767,6 +775,27 @@ Inscripciones: 11/10/2022</string>
                                     <constraint firstAttribute="width" constant="357" id="hMB-dz-Gla"/>
                                 </constraints>
                             </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Recuérdame" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kqv-ok-bHY">
+                                <rect key="frame" x="75" y="406" width="96" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="96" id="dBG-5d-pOh"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WUN-wr-G0h">
+                                <rect key="frame" x="47" y="406" width="20" height="20"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="20" id="LdQ-qa-lAg"/>
+                                    <constraint firstAttribute="height" constant="20" id="tIU-jU-wqz"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" image="unchecked"/>
+                                <connections>
+                                    <action selector="recuerdame:" destination="ooF-N3-kWR" eventType="touchUpInside" id="okg-dh-94T"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="KoY-kl-ACY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -775,25 +804,30 @@ Inscripciones: 11/10/2022</string>
                             <constraint firstItem="WNU-Z4-W3H" firstAttribute="top" secondItem="COV-bJ-PsJ" secondAttribute="bottom" constant="27" id="AOJ-tR-NIK"/>
                             <constraint firstItem="7hM-xR-Ok1" firstAttribute="top" secondItem="YUu-c6-ZGK" secondAttribute="top" id="FlU-8N-AVd"/>
                             <constraint firstItem="7hM-xR-Ok1" firstAttribute="leading" secondItem="YUu-c6-ZGK" secondAttribute="leading" id="HEA-Po-hje"/>
+                            <constraint firstItem="Kqv-ok-bHY" firstAttribute="top" secondItem="GjV-dj-vmy" secondAttribute="bottom" constant="14" id="L5l-9m-H4e"/>
                             <constraint firstItem="COV-bJ-PsJ" firstAttribute="top" secondItem="10N-Qf-OMh" secondAttribute="bottom" constant="27" id="Nxf-WC-EAN"/>
+                            <constraint firstItem="ox5-JV-nl4" firstAttribute="top" secondItem="3aX-Ca-Q7u" secondAttribute="bottom" constant="20" id="OYS-rv-ZSC"/>
                             <constraint firstItem="3aX-Ca-Q7u" firstAttribute="centerX" secondItem="YUu-c6-ZGK" secondAttribute="centerX" id="Oqe-z7-peF"/>
                             <constraint firstItem="10N-Qf-OMh" firstAttribute="centerX" secondItem="YUu-c6-ZGK" secondAttribute="centerX" id="QLE-fh-Kmq"/>
                             <constraint firstItem="COV-bJ-PsJ" firstAttribute="centerX" secondItem="YUu-c6-ZGK" secondAttribute="centerX" id="SMN-qS-TTg"/>
                             <constraint firstItem="GjV-dj-vmy" firstAttribute="centerX" secondItem="YUu-c6-ZGK" secondAttribute="centerX" id="Thy-m2-tx9"/>
-                            <constraint firstItem="3aX-Ca-Q7u" firstAttribute="top" secondItem="GjV-dj-vmy" secondAttribute="bottom" constant="56" id="UiV-cw-7uF"/>
+                            <constraint firstItem="3aX-Ca-Q7u" firstAttribute="top" secondItem="GjV-dj-vmy" secondAttribute="bottom" constant="70" id="UiV-cw-7uF"/>
                             <constraint firstAttribute="trailing" secondItem="7hM-xR-Ok1" secondAttribute="trailing" id="VAv-YZ-XV4"/>
                             <constraint firstItem="10N-Qf-OMh" firstAttribute="centerY" secondItem="YUu-c6-ZGK" secondAttribute="centerY" constant="-146.5" id="Y69-EU-Bc4"/>
+                            <constraint firstItem="Kqv-ok-bHY" firstAttribute="leading" secondItem="WUN-wr-G0h" secondAttribute="trailing" constant="8" id="fof-rK-wIN"/>
                             <constraint firstItem="WNU-Z4-W3H" firstAttribute="centerX" secondItem="YUu-c6-ZGK" secondAttribute="centerX" id="hxe-S2-jtn"/>
+                            <constraint firstItem="WUN-wr-G0h" firstAttribute="centerX" secondItem="YUu-c6-ZGK" secondAttribute="centerX" constant="-130.5" id="iJG-DD-xp5"/>
+                            <constraint firstItem="WUN-wr-G0h" firstAttribute="top" secondItem="GjV-dj-vmy" secondAttribute="bottom" constant="14" id="l8N-Hq-Ijw"/>
                             <constraint firstItem="GjV-dj-vmy" firstAttribute="width" secondItem="WNU-Z4-W3H" secondAttribute="width" id="meZ-8y-tH2"/>
-                            <constraint firstItem="ox5-JV-nl4" firstAttribute="top" secondItem="GjV-dj-vmy" secondAttribute="bottom" constant="8" id="mxY-N2-gA4"/>
                             <constraint firstItem="GjV-dj-vmy" firstAttribute="top" secondItem="WNU-Z4-W3H" secondAttribute="bottom" constant="8" id="nzW-bn-fHr"/>
-                            <constraint firstItem="ox5-JV-nl4" firstAttribute="centerX" secondItem="YUu-c6-ZGK" secondAttribute="centerX" constant="72" id="zcF-47-NRA"/>
+                            <constraint firstItem="ox5-JV-nl4" firstAttribute="centerX" secondItem="YUu-c6-ZGK" secondAttribute="centerX" id="zcF-47-NRA"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="Znb-H6-LHS"/>
                     <connections>
                         <outlet property="btnEntrar" destination="3aX-Ca-Q7u" id="UZv-Pl-MYh"/>
                         <outlet property="btnReset" destination="ox5-JV-nl4" id="jjT-f2-95c"/>
+                        <outlet property="checkbox" destination="WUN-wr-G0h" id="7sV-v9-AFn"/>
                         <outlet property="imgLogo" destination="10N-Qf-OMh" id="efP-m5-aBG"/>
                         <outlet property="lbInicioSesion" destination="COV-bJ-PsJ" id="8Zg-lN-BTv"/>
                         <outlet property="tfPassword" destination="GjV-dj-vmy" id="VUs-Bk-nvQ"/>
@@ -802,24 +836,26 @@ Inscripciones: 11/10/2022</string>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WJK-Uj-3gF" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="Jk0-Fx-e6n"/>
             </objects>
-            <point key="canvasLocation" x="286" y="-607"/>
+            <point key="canvasLocation" x="285.60000000000002" y="-607.64617691154433"/>
         </scene>
     </scenes>
     <color key="tintColor" name="AccentColor"/>
     <resources>
         <image name="backdrop" width="960" height="540"/>
-        <image name="bell.fill" catalog="system" width="128" height="124"/>
+        <image name="bell.fill" catalog="system" width="123" height="128"/>
         <image name="calendar.badge.plus" catalog="system" width="128" height="108"/>
-        <image name="gearshape.2.fill" catalog="system" width="128" height="100"/>
+        <image name="gearshape.2.fill" catalog="system" width="128" height="101"/>
         <image name="prepanet_blanco" width="1038" height="227"/>
         <image name="square.split.2x2.fill" catalog="system" width="128" height="114"/>
         <image name="tallerdefault" width="2000" height="1333"/>
+        <image name="unchecked" width="20" height="20"/>
         <namedColor name="AccentColor">
             <color red="0.2196078431372549" green="0.33333333333333331" blue="0.95294117647058818" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
         <systemColor name="labelColor">
-            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="secondaryLabelColor">
             <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
