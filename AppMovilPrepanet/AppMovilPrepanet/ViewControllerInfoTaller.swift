@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import EventKit
+import Foundation
 import Firebase
 
 class ViewControllerInfoTaller: UIViewController {
@@ -17,6 +19,8 @@ class ViewControllerInfoTaller: UIViewController {
     @IBOutlet weak var btnCalendario: UIButton!
     @IBOutlet weak var lbFechasCurso: UILabel!
     @IBOutlet weak var lbFechasInscripcion: UILabel!
+    @IBOutlet weak var lbTFechasCurso: UILabel!
+    @IBOutlet weak var lbTFechasInscripcion: UILabel!
     
     var db = Firestore.firestore()
     let user = Auth.auth().currentUser
@@ -26,6 +30,9 @@ class ViewControllerInfoTaller: UIViewController {
     var tallerInfo:taller!
     var img:UIImage!
     var tallerDisponible:QueryDocumentSnapshot!
+    var fechaini:Date?
+    var fechafin:Date?
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,7 +55,8 @@ class ViewControllerInfoTaller: UIViewController {
             let cursoInit = (talleres[tallerIndex].grupoDatos!["fecha_inicio"] as! Timestamp).dateValue()
             let cursoFin = (talleres[tallerIndex].grupoDatos!["fecha_fin"] as! Timestamp).dateValue()
             lbFechasCurso.text = formatoFecha.string(from: cursoInit) + " - " + formatoFecha.string(from: cursoFin)
-            lbFechasInscripcion.text = "Sin Fechas"
+            lbTFechasInscripcion.text = ""
+            lbFechasInscripcion.text = ""
             
             break
             
@@ -57,7 +65,8 @@ class ViewControllerInfoTaller: UIViewController {
             let cursoInit = (talleres[tallerIndex].grupoDatos!["fecha_inicio"] as! Timestamp).dateValue()
             let cursoFin = (talleres[tallerIndex].grupoDatos!["fecha_fin"] as! Timestamp).dateValue()
             lbFechasCurso.text = formatoFecha.string(from: cursoInit) + " - " + formatoFecha.string(from: cursoFin)
-            lbFechasInscripcion.text = "Sin Fechas"
+            lbTFechasInscripcion.text = ""
+            lbFechasInscripcion.text = ""
             
             break
             
@@ -74,14 +83,22 @@ class ViewControllerInfoTaller: UIViewController {
             
         case "Sin Cursar":
             print("Taller sin cursar")
+            
+            /*let tallerDocRef = db.collection("Taller").document(talleres[tallerIndex].docID);
+            
+            db.collection("GrupoTaller").whereField("taller_id", isEqualTo: tallerDocRef)*/
+            
             if let cursoInit = talleres[tallerIndex].grupoDatos,
                let cursoFin = talleres[tallerIndex].grupoDatos {
                 let dateInit = (cursoInit["fecha_inicio"] as! Timestamp).dateValue()
                 let dateFin = (cursoFin["fecha_fin"] as! Timestamp).dateValue()
+                fechaini = dateInit
+                fechafin = dateFin
                 lbFechasCurso.text = formatoFecha.string(from: dateInit) + " - " + formatoFecha.string(from: dateFin)
             }
             else {
-                lbFechasCurso.text = "Sin Fechas"
+                lbFechasCurso.text = ""
+                lbTFechasCurso.text = ""
             }
             
             if let inscripInit = talleres[tallerIndex].grupoDatos,
@@ -91,20 +108,27 @@ class ViewControllerInfoTaller: UIViewController {
                 lbFechasInscripcion.text = formatoFecha.string(from: dateInit) + " - " + formatoFecha.string(from: dateFin)
             }
             else {
-                lbFechasInscripcion.text = "Sin Fechas"
+                lbTFechasInscripcion.text = ""
+                lbFechasInscripcion.text = ""
             }
             
             break
             
         default:
-            lbFechasCurso.text = "Sin Fechas"
-            lbFechasInscripcion.text = "Sin Fechas"
+            lbTFechasCurso.text = ""
+            lbFechasCurso.text = ""
+            lbTFechasInscripcion.text = ""
+            lbFechasInscripcion.text = ""
             
             break
         }
         
         btnInscribir.isEnabled = false
-        btnCalendario.isEnabled = false
+        if lbFechasCurso.text == ""{
+            btnCalendario.isEnabled = false
+        }else{
+            btnCalendario.isEnabled = true
+        }
         /*Condiciones para habilitar boton
          - El alumno debio cursar todos los talleres anteriores y no estar cursando el taller escogido
          - Debe haber un grupo con fechas de inscripcion vigentes
@@ -154,6 +178,12 @@ class ViewControllerInfoTaller: UIViewController {
                 }
                 if let _ = self.tallerDisponible {
                     print("Hay taller disponible")
+                    let cursoInit = (self.tallerDisponible.data()["fecha_inicio"] as! Timestamp).dateValue()
+                    let cursoFin = (self.tallerDisponible.data()["fecha_fin"] as! Timestamp).dateValue()
+                    let inscripInit = (self.tallerDisponible.data()["inscripcion_inicio"] as! Timestamp).dateValue()
+                    let inscripFin = (self.tallerDisponible.data()["inscripcion_fin"] as! Timestamp).dateValue()
+                    self.lbFechasCurso.text = formatoFecha.string(from: cursoInit) + " - " + formatoFecha.string(from: cursoFin)
+                    self.lbFechasInscripcion.text = formatoFecha.string(from: inscripInit) + " - " + formatoFecha.string(from: inscripFin)
                 }
                 else {
                     print(mensajeError)
@@ -177,7 +207,7 @@ class ViewControllerInfoTaller: UIViewController {
            - Crear inscripcion
            */
             
-            self.db.collection("Alumno").whereField("correo_institucional", isEqualTo: self.user?.email!).getDocuments {
+            self.db.collection("Alumno").whereField("correo_institucional", isEqualTo: self.user!.email!).getDocuments {
                 qsAlumno, error in
                 if let error = error {
                     print("Inscripcion Error" + error.localizedDescription)
@@ -200,7 +230,13 @@ class ViewControllerInfoTaller: UIViewController {
                         print("Document successfully written!")
                     }
                 }
-                self.navigationController?.popViewController(animated: true)
+                let alertInscrip = UIAlertController(title: "Inscripción Aceptada", message: "Se ha inscrito exitosamente al taller", preferredStyle: .alert)
+                let okAccion = UIAlertAction(title: "Regresar a Dashboard", style: .cancel){ _ in
+                    self.navigationController?.popViewController(animated: true)
+                }
+                alertInscrip.addAction(okAccion)
+                self.present(alertInscrip, animated: true)
+                
             }
            
           }))
@@ -210,6 +246,47 @@ class ViewControllerInfoTaller: UIViewController {
           }))
         
         self.present(confirmAlert, animated: true)
+    }
+    
+    func addEventToCalendar(title: String, description: String?, startDate: Date, endDate: Date, completion: ((_ success: Bool, _ error: NSError?) -> Void)? = nil) {
+        print("func actioned")
+        let eventStore = EKEventStore()
+
+        eventStore.requestAccess(to: .event) { (granted, error) in
+          
+          if (granted) && (error == nil) {
+              print("granted \(granted)")
+              print("error \(String(describing: error))")
+              
+              let event:EKEvent = EKEvent(eventStore: eventStore)
+              
+              event.title = title
+              event.startDate = startDate
+              event.endDate = endDate
+              event.isAllDay = true
+              event.notes = description
+              event.calendar = eventStore.defaultCalendarForNewEvents
+              do {
+                  try eventStore.save(event, span: .thisEvent)
+              } catch let error as NSError {
+                  print("failed to save event with error : \(error)")
+              }
+              print("Saved Event")
+          }
+          else{
+          
+              print("failed to save event with error : \(String(describing: error)) or access not granted")
+          }
+        }
+    }
+    
+    @IBAction func calendarHandler(_ sender: Any) {
+        print("Calendar clicked")
+        if fechaini != nil && fechafin != nil {
+            print(fechaini!)
+            print(fechafin!)
+            addEventToCalendar(title: lbName.text!, description: textDesc.text!, startDate: fechaini!, endDate: fechafin!)
+        }
     }
     
 

@@ -17,19 +17,49 @@ class ViewController: UIViewController {
     @IBOutlet weak var tfPassword: UITextField!
     @IBOutlet weak var btnEntrar: UIButton!
     @IBOutlet weak var btnReset: UIButton!
+    @IBOutlet weak var checkbox: UIButton!
     
+    var recordar:Bool = false
     let db = Firestore.firestore()
+    let defaults = UserDefaults.standard
+    let staySigned = true; //Cambiar despues por check button
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         let tap = UITapGestureRecognizer(target: self, action: #selector(UIInputViewController.dismissKeyboard))
         view.addGestureRecognizer(tap)
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        print("Login Appearing")
         let _ = Auth.auth().addStateDidChangeListener { auth, user in }
+        //print(defaults.string(forKey: "signedUser"))
+        
+        print(defaults.string(forKey: "signedUser")!)
+        if let signedUser = defaults.string(forKey: "signedUser"){
+            print(signedUser)
+            if signedUser == ""{
+                do {
+                    try Auth.auth().signOut()
+                } catch {
+                  print(error)
+                }
+            } else {
+                print("Signed user exists, perfrom segue")
+                DispatchQueue.main.async {
+                    [unowned self] in self.performSegue(withIdentifier: "login", sender: self)
+                }
+            }
+        } else {
+            print("No saved user, sign out")
+            do {
+                try Auth.auth().signOut()
+            } catch {
+              print(error)
+            }
+        }
+
         
         //EDITAR DESPUES: se hace sign out cada vez que hace login
         /*do {
@@ -62,6 +92,17 @@ class ViewController: UIViewController {
         Entrar(btnEntrar!)
     }
     
+    @IBAction func recuerdame(_ sender: Any) {
+        if recordar {
+            self.checkbox.setImage(UIImage(named: "unchecked"), for: .normal)
+            recordar = false
+        }else{
+            self.checkbox.setImage(UIImage(named: "checkbox"), for: .normal)
+            recordar = true
+        }
+    }
+    
+    
     func errorMessage(title: String, message: String) {
         let tfVacio = UIAlertController(title: title, message: message, preferredStyle: .alert)
         let alertOk = UIAlertAction(title: "Ok", style: .cancel)
@@ -80,6 +121,7 @@ class ViewController: UIViewController {
                     print("Error en auth")
                     print(err.localizedDescription)
                 }
+                
                 if Auth.auth().currentUser != nil {
                     //print(Auth.auth().currentUser?.uid as Any)
                     self!.db.collection("Alumno").whereField("correo_institucional", isEqualTo: username).getDocuments{ [self] querySnapshot, error in
@@ -88,6 +130,9 @@ class ViewController: UIViewController {
                             }
                         if querySnapshot?.documents.count != 0 {
                             print("Valid user")
+                            if (self!.staySigned){
+                                self!.defaults.set(username, forKey: "signedUser")
+                            }
                             DispatchQueue.main.async {
                                 [unowned self] in self?.performSegue(withIdentifier: "login", sender: self)
                             }

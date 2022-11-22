@@ -74,7 +74,7 @@ class ViewControllerNotificaciones: UIViewController, UITableViewDelegate, UITab
                             
                             //print(groupKey)
                             
-                            self.db.collection("Notificacion").whereField("groupKey", in: ["0", tallerId, campusKey, groupKey]).getDocuments{ qsNotificacion, error in
+                            self.db.collection("Notificacion").whereField("groupKey", isEqualTo: "0").getDocuments{ qsNotificacion, error in
                                 if let error = error {
                                     print("Inscripcion Error" + error.localizedDescription)
                                 }
@@ -84,6 +84,39 @@ class ViewControllerNotificaciones: UIViewController, UITableViewDelegate, UITab
                                     self.notificaciones.append(notif)
                                 }
                                 self.tableViewNotif.reloadData()
+                                self.db.collection("Notificacion").whereField("groupKey", isEqualTo: tallerId).getDocuments{ qsNotificacion, error in
+                                    if let error = error {
+                                        print("Inscripcion Error" + error.localizedDescription)
+                                    }
+                                    for notifDoc in qsNotificacion!.documents {
+                                        let nData = notifDoc.data()
+                                        let notif = notificacion(titulo: nData["titulo"] as! String, fecha: nData["fecha"] as! Timestamp, contenido: nData["contenido"] as! String, autor_id: nData["autor_id"] as! DocumentReference, groupKey: nData["groupKey"] as! String)
+                                        self.notificaciones.append(notif)
+                                    }
+                                    self.tableViewNotif.reloadData()
+                                    self.db.collection("Notificacion").whereField("groupKey", isEqualTo: campusKey).getDocuments{ qsNotificacion, error in
+                                        if let error = error {
+                                            print("Inscripcion Error" + error.localizedDescription)
+                                        }
+                                        for notifDoc in qsNotificacion!.documents {
+                                            let nData = notifDoc.data()
+                                            let notif = notificacion(titulo: nData["titulo"] as! String, fecha: nData["fecha"] as! Timestamp, contenido: nData["contenido"] as! String, autor_id: nData["autor_id"] as! DocumentReference, groupKey: nData["groupKey"] as! String)
+                                            self.notificaciones.append(notif)
+                                        }
+                                        self.tableViewNotif.reloadData()
+                                        self.db.collection("Notificacion").whereField("groupKey", isEqualTo: groupKey).getDocuments{ qsNotificacion, error in
+                                            if let error = error {
+                                                print("Inscripcion Error" + error.localizedDescription)
+                                            }
+                                            for notifDoc in qsNotificacion!.documents {
+                                                let nData = notifDoc.data()
+                                                let notif = notificacion(titulo: nData["titulo"] as! String, fecha: nData["fecha"] as! Timestamp, contenido: nData["contenido"] as! String, autor_id: nData["autor_id"] as! DocumentReference, groupKey: nData["groupKey"] as! String)
+                                                self.notificaciones.append(notif)
+                                            }
+                                            self.tableViewNotif.reloadData()
+                                        }
+                                    }
+                                }
                             }
                         }
                     }
@@ -107,6 +140,10 @@ class ViewControllerNotificaciones: UIViewController, UITableViewDelegate, UITab
         }
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        notificaciones.removeAll();
+    }
+    
     // MARK: - Table
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -115,9 +152,11 @@ class ViewControllerNotificaciones: UIViewController, UITableViewDelegate, UITab
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! TableViewCellNotif
-        cell.lbTitle.text = notificaciones[indexPath.row].titulo
-        cell.lbMsg.text = notificaciones[indexPath.row].contenido
-        cell.lbAutor.text = notificaciones[indexPath.row].groupKey
+        if (notificaciones.count != 0){
+            cell.lbTitle.text = notificaciones[indexPath.row].titulo
+            cell.lbMsg.text = notificaciones[indexPath.row].contenido
+            cell.lbAutor.text = notificaciones[indexPath.row].groupKey
+        }
         return cell
     }
     
