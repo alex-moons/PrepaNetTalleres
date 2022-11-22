@@ -1,0 +1,33 @@
+@import url("https://fonts.googleapis.com/css?family=Raleway:400,600");
+
+VistaAlumnos {
+  width: 100%;
+  min-height: 100%;
+  background-color: #1d2b50;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #1d2b50;
+}
+
+.titulo {
+  color: #f8f8f8;
+  font-family: var(--font-family-raleway);
+  font-size: var(--font-size-xl);
+  font-weight: 600;
+  min-height: 75px;
+  line-height: normal;
+  align-items: flex-start;
+  padding: 20px;
+}
+
+:root {
+  --font-size-s: 14px;
+  --font-size-m: 20px;
+  --font-size-l: 30px;
+  --font-size-xl: 64px;
+  --font-size-xl2: 70px;
+  --font-family-raleway: "Raleway";
+}

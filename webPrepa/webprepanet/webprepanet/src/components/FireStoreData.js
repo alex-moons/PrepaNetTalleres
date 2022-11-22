@@ -1,8 +1,8 @@
 import React from "react";
-import { useGetDataAlumno, useGetDataGrupoTaller, useGetDataInscripcion, useGetDataTaller } from "../hooks/useGetData";
+import { useGetDataAlumno, useGetDataGrupoTaller, useGetDataInscripcion, useGetDataTaller, useGetDataAdministrador, useGetDataCoordinador } from "../hooks/useGetData";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Card, Button, Container, Row, Col, Link } from 'react-bootstrap';
-import "../InfoTaller.css";
+import "../Pages/InfoTaller.css";
 
 // Estos metodos enseñan datos
 export const FireStoreDataAlumno = () => {
@@ -32,6 +32,8 @@ export const FireStoreTablaAlumnosInfo = () => {
     const [inscripciones] = useGetDataInscripcion();
     const [grupos] = useGetDataGrupoTaller();
     const [talleres] = useGetDataTaller();
+    const [administradores] = useGetDataAdministrador();
+    const [coordinadores] = useGetDataCoordinador();
 
     function InfoAlumno(props) {
         let alumnoId = props.myId;
@@ -45,6 +47,41 @@ export const FireStoreTablaAlumnosInfo = () => {
                         <td>{alumnos[i].value.campus}</td>
                         <td>{alumnos[i].value.tetramestre}</td>
                         <td>{alumnos[i].value.periodo_de_ingreso}</td>
+                    </>
+                );
+            }
+        }
+
+    }
+
+    function InfoAdministrador(props) {
+        let adminID = props.myId;
+
+        for (let i = 0; i < administradores.length; i++) {
+            if (administradores[i].id == adminID) {
+                return (
+                    <>
+                        <td>{administradores[i].value.correo}</td>
+                        <td>{administradores[i].value.nombre}</td>
+                        <td>{administradores[i].value.nomina}</td>
+                    </>
+                );
+            }
+        }
+
+    }
+
+    function InfoCoordinador(props) {
+        let coordId = props.myId;
+
+        for (let i = 0; i < coordinadores.length; i++) {
+            if (coordinadores[i].id == coordId) {
+                return (
+                    <>
+                        <td>{coordinadores[i].value.campus}</td>
+                        <td>{coordinadores[i].value.correo}</td>
+                        <td>{coordinadores[i].value.nombre}</td>
+                        <td>{coordinadores[i].value.nomina}</td>
                     </>
                 );
             }
@@ -145,41 +182,41 @@ export const FireStoreDataGrupos = () => {
     }
 
     // HAY QUE COMPLETAR LA TABLA AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-    return (
-        <>
-            {talleres.map((talleres) => (
-                <React.Fragment key={taller.id}>
-                    <Row className="taller-row">
-                        <Col className="flex">
-                            {talleres.value.nombre}
-                        </Col>
-                        <Col>
-                            <h2 className="taller-fecha">Fechas</h2>
-                        </Col>
-                    </Row>
-                    <Row>
-                        <Col className="taller-texto">
-                            {talleres.value.descripcion}
-                        </Col>
-                        <Col className="taller-texto">
-                            <p><b>Inicio de inscripciones:</b> {formatDate(grupos.value.inscripcion_inicio.toDate())}</p>
-                            <p><b>Fin de inscripciones:</b> {formatDate(grupos.value.inscripcion_fin.toDate())}</p>
-                            <p><b>Inicio del curso:</b> {formatDate(grupos.value.fecha_inicio.toDate())}</p>
-                            <p><b>Fin del curso:</b> {formatDate(grupos.value.fecha_fin.toDate())}</p>
-                        </Col>
-                    </Row>
-                    <Row>
-                        <Col className="center-taller">
-                            <Button className="taller-button">Lista</Button>
-                        </Col>
-                        <Col className="center-taller">
-                            <Button className="taller-button">Editar</Button>
-                        </Col>
-                    </Row>
-                </React.Fragment>
+    //return (
+    //    <>
+    //        {talleres.map((talleres) => (
+    //            <React.Fragment key={taller.id}>
+    //                <Row className="taller-row">
+    //                    <Col className="flex">
+    //                        {talleres.value.nombre}
+    //                    </Col>
+    //                    <Col>
+    //                        <h2 className="taller-fecha">Fechas</h2>
+    //                    </Col>
+    //                </Row>
+    //                <Row>
+    //                    <Col className="taller-texto">
+    //                        {talleres.value.descripcion}
+    //                    </Col>
+    //                    <Col className="taller-texto">
+    //                        <p><b>Inicio de inscripciones:</b> {formatDate(grupos.value.inscripcion_inicio.toDate())}</p>
+    //                        <p><b>Fin de inscripciones:</b> {formatDate(grupos.value.inscripcion_fin.toDate())}</p>
+    //                        <p><b>Inicio del curso:</b> {formatDate(grupos.value.fecha_inicio.toDate())}</p>
+    //                        <p><b>Fin del curso:</b> {formatDate(grupos.value.fecha_fin.toDate())}</p>
+    //                    </Col>
+    //                </Row>
+    //                <Row>
+    //                    <Col className="center-taller">
+    //                        <Button className="taller-button">Lista</Button>
+    //                    </Col>
+    //                    <Col className="center-taller">
+    //                        <Button className="taller-button">Editar</Button>
+    //                    </Col>
+    //                </Row>
+    //            </React.Fragment>
 
-            ))}
-        </>
-    );
+    //        ))}
+    //    </>
+    //);
 };
 

@@ -5,9 +5,9 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import firebase from "firebase/compat/app";
+import "firebase/compat/auth";
 
-
-firebase.initializeApp({
+const app = firebase.initializeApp({
     apiKey: process.env.REACT_APP_apiKey,
     authDomain: process.env.REACT_APP_authDomain,
     databaseURL: process.env.REACT_APP_databaseURL,
@@ -17,6 +17,8 @@ firebase.initializeApp({
     appId: process.env.REACT_APP_appId,
     measurementId: process.env.REACT_APP_measurementId,
 });
+
+export default app;
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
