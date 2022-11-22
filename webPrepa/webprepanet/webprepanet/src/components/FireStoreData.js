@@ -1,10 +1,33 @@
 import React from "react";
-import { useGetDataAlumno, useGetDataGrupoTaller, useGetDataInscripcion, useGetDataTaller } from "../hooks/useGetData";
+import { useGetDataAlumno, useGetDataDoc, useGetDataGrupoTaller, useGetDataInscripcion, useGetDataTaller } from "../hooks/useGetData";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { Card, Button, Container, Row, Col, Link, Dropdown } from 'react-bootstrap';
+import { Card, Button, Container, Row, Col, Link, Dropdown, Form, Table } from 'react-bootstrap';
 import { UpdateEstatus } from "./Update";
 import { AddValueInscripcion } from "./Add";
 import "../InfoTaller.css";
+import "../TablaAlumnosAdmin.css";
+import firebase from "firebase/compat/app";
+
+async function getDoc(docu) {
+
+
+    const db = firebase.firestore();
+    let arr = [];
+    const docum = db.collection(docu.parent.id).doc(docu.id)
+    const documen = await docum.get().then(
+        (doc) => {
+            if (doc.exists) {
+                //   console.log("existo", doc.data());
+                arr.push({ id: doc.id, value: doc.data() });
+                return arr;
+
+            } else {
+                console.log("no existo")
+            }
+        }
+    );
+    return arr;
+}
 
 // Estos metodos enseñan datos
 export const FireStoreDataAlumno = () => {
@@ -30,32 +53,63 @@ export const FireStoreDataAlumno = () => {
 
 // construir la tabla de los alumnos de TableAlumnosAdmin.js
 export const FireStoreTablaAlumnosInfo = () => {
+
+    // cada uno de estos tiene todas las colecciones de cada uno
+    const [sortedField, setSortedField] = React.useState(null);
     const [alumnos] = useGetDataAlumno();
     const [inscripciones] = useGetDataInscripcion();
     const [grupos] = useGetDataGrupoTaller();
     const [talleres] = useGetDataTaller();
+    let tabla = [];
+    let fila = [];
+    let curr = 0;
+    let cont = 0;
 
-    function InfoAlumno(props) {
-        let alumnoId = props.myId;
+    for (let i = 0; i < inscripciones.length; i++) {
+        InfoAlumnoTabla(inscripciones[i].value.alumno_idStr)
 
+        InfoGrupoTabla(inscripciones[i].value.grupo_idStr, inscripciones[i])
+    }
+
+    if (sortedField !== null) {
+
+    tabla.sort(sortMatri);
+    }
+
+    function sortMatri(a, b) {
+        if (sortedField == 3) {
+            return (a[sortedField] < b[sortedField]) ? -1 : 1;
+        }
+        else if (sortedField < 6 || sortedField > 7) {
+            return (a[sortedField].toLowerCase() < b[sortedField].toLowerCase()) ? -1 : 1;
+
+        }
+        else if (sortedField < 8) {
+            return (a[sortedField] < b[sortedField]) ? -1 : 1;
+        }
+    }
+
+    // firebase principal
+
+    function InfoAlumnoTabla(alumnoId) {
+
+
+        // console.log(document);
         for (let i = 0; i < alumnos.length; i++) {
             if (alumnos[i].id == alumnoId) {
-                return (
-                    <>
-                        <td>{alumnos[i].value.matricula}</td>
-                        <td>{alumnos[i].value.nombre}</td>
-                        <td>{alumnos[i].value.campus}</td>
-                        <td>{alumnos[i].value.tetramestre}</td>
-                        <td>{alumnos[i].value.periodo_de_ingreso}</td>
-                    </>
-                );
+                fila.push(alumnos[i].value.matricula);
+                fila.push(alumnos[i].value.nombre);
+                fila.push(alumnos[i].value.campus);
+                fila.push(alumnos[i].value.tetramestre);
+                fila.push(alumnos[i].value.periodo_de_ingreso);
+                fila.length = 5;
+
             }
         }
 
     }
 
-    function InfoGrupo(props) {
-        let grupoId = props.myId;
+    function InfoGrupoTabla(grupoId, inscripcion) {
 
         function padTo2Digits(num) {
             return num.toString().padStart(2, '0');
@@ -76,13 +130,19 @@ export const FireStoreTablaAlumnosInfo = () => {
                 for (let j = 0; j < talleres.length; j++) {
 
                     if (talleres[j].id == grupos[i].value.taller_idStr) {
-                        return (
-                            <>
-                                <td> {formatDate(fechaInicio)} - {formatDate(fechaFin)}</td>
-                                <td>{talleres[j].value.id}</td>
-                                <td>{grupos[i].value.numero_grupo}</td>
-                            </>
-                        );
+                        fila.push(formatDate(fechaInicio) + " - " + formatDate(fechaFin));
+                        fila.push(talleres[j].value.id);
+                        fila.push(grupos[i].value.numero_grupo);
+                        fila.push(inscripcion.value.taller_aprobado ? 'Verdadero' : 'Falso')
+                        fila.push(inscripcion.value.estatus)
+                        fila.push(inscripcion)
+                        let aux = [...fila]
+                        if (aux.length == 11) {
+                            tabla.push(aux)
+                        }
+                        console.log(tabla)
+                        fila.length = 0;
+
 
                     }
 
@@ -90,28 +150,112 @@ export const FireStoreTablaAlumnosInfo = () => {
             }
         }
 
+
     }
 
 
     return (
-        < >
+        <div className="bg-tablas">
+            <Container>
+                <Row className="tabla-row">
+                    <Col>
+                        <h1 className="tabla-titulo">Alumnos</h1>
+                    </Col>
+                    <Col className="tabla-filter">
+                        <Form className="tabla-buscar">
+                            <Form.Control type="email" placeholder="Buscar" />
+                        </Form>
+                    </Col>
+                   
+                </Row>
+                <Row className="tabla-datos">
+                    <Table responsive striped bordered hover variant="light" style={{ overflow: "auto" }}>
+                        <thead>
+                            <tr>
+                                <th>
+                                    <button type="button" onClick={() => setSortedField(0)}>
+                                        Matricula
+                                    </button>
+                                </th>
+                                <th>
+                                    <button type="button" onClick={() => setSortedField(1)}>
+                                        Alumno
+                                    </button>
+                                </th>
+                                <th>
+                                    <button type="button" onClick={() => setSortedField(2)}>
+                                        Campus
+                                    </button>
+                                </th>
+                                <th>
+                                    <button type="button" onClick={() => setSortedField(3)}>
+                                        Tetramestre
+                                    </button>
+                                </th>
+                                <th>
+                                    <button type="button" onClick={() => setSortedField(4)}>
+                                        Periodo
+                                    </button>
+                                </th>
+                                <th>
+                                    <button type="button" onClick={() => setSortedField(5)}>
+                                        Fechas
+                                    </button>
+                                </th>
+                                <th>
+                                    <button type="button" onClick={() => setSortedField(6)}>
+                                        Taller Inscrito
+                                    </button>
+                                </th>
+                                <th>
+                                    <button type="button" onClick={() => setSortedField(7)}>
+                                        Grupo
+                                    </button>
+                                </th>
+                                <th>
+                                    <button type="button" onClick={() => setSortedField(8)}>
+                                        Taller Aprobado
+                                    </button>
+                                </th>
+                                <th>
+                                    <button type="button" onClick={() => setSortedField(9)}>
+                                        Estatus
+                                    </button>
+                                </th>
 
-            {inscripciones.map((inscripciones) => (
-                <React.Fragment key={inscripciones.id}>
-                    <tr>
-                        <InfoAlumno myId={inscripciones.value.alumno_idStr} />
-                        <InfoGrupo myId={inscripciones.value.grupo_idStr} />
-                        <td>{inscripciones.value.taller_aprobado ? 'Verdadero' : 'Falso'}</td>
-                        
-                            <UpdateEstatus doc={inscripciones}  />
-                            
-                        
-                    </tr>
-                </React.Fragment>
+                                <th>Actualizar</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {tabla.map((tabla, ind) => (
+                                <React.Fragment key={inscripciones.id}>
+                                    <tr>
+                                        <td>{tabla[0]}</td>
+                                        <td>{tabla[1]}</td>
+                                        <td>{tabla[2]}</td>
+                                        <td>{tabla[3]}</td>
+                                        <td>{tabla[4]}</td>
+                                        <td>{tabla[5]}</td>
+                                        <td>{tabla[6]}</td>
+                                        <td>{tabla[7]}</td>
+                                        <td>{tabla[8]}</td>
+                                        {/* <InfoAlumno myId={inscripciones.value.alumno_idStr} index={ind} />
+                                        <InfoGrupo myId={inscripciones.value.grupo_idStr} myDoc={inscripciones} />
+                                        <td>{inscripciones.value.taller_aprobado ? 'Verdadero' : 'Falso'}</td>*/}
 
-            ))}
+                                        <UpdateEstatus doc={tabla[10]} />
 
-        </>
+
+                                    </tr>
+                                </React.Fragment>
+
+                            ))}
+                        </tbody>
+                    </Table>
+                </Row>
+
+            </Container>
+        </ div >
 
     );
 
@@ -166,7 +310,6 @@ export const FireStoreDataGrupos = () => {
     }
 
 
-    // HAY QUE COMPLETAR LA TABLA AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
     return (
         <>
             {talleres.map((talleres) => (
