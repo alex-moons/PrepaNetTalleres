@@ -11,7 +11,10 @@ body, html {
     background-repeat: no-repeat;
     background-size: cover;
     align-items: center;
-    overflow: hidden;
+}
+
+.tablaAlumnos{
+    overflow: auto;
 }
 
 .titulo {

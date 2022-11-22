@@ -6,9 +6,20 @@
 //
 
 import UIKit
+import Firebase
+import FirebaseAuth
 
-class ViewControllerSettings: UIViewController {
-
+class ViewControllerSettings: UIViewController, UITableViewDelegate, UITableViewDataSource{
+    
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 0
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+        return cell
+    }
     
     
     override func viewDidLoad() {
@@ -17,8 +28,20 @@ class ViewControllerSettings: UIViewController {
         // Do any additional setup after loading the view.
     }
     
-    @IBAction func logOut(_ sender: Any) {
-        dismiss(animated: true)
+    @IBAction func logOut(_ sender: UIButton) {
+        do {
+            print("Signing out")
+            try Auth.auth().signOut()
+            UserDefaults.standard.set("", forKey: "signedUser")
+            print("Signed out")
+        } catch {
+            print("Sign out error")
+          print(error)
+        }
+        print("Dismissing")
+        self.dismiss(animated: true)
+        print("Dismissed")
+        //performSegue(withIdentifier: "signOut", sender: self)
     }
     
     /*
@@ -30,5 +53,7 @@ class ViewControllerSettings: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
+    
+    
 
 }

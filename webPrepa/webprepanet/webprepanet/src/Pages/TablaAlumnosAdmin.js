@@ -42,7 +42,7 @@ function TablaAlumnosAdmin() {
                     </Col>
                 </Row>
                 <Row className="tabla-datos">
-                    <Table responsive striped bordered hover variant="light">
+                    <Table responsive striped bordered hover variant="light" style={{overflow: "auto"} }>
                         <thead>
                             <tr>
                                 <th>Matricula</th>
@@ -55,6 +55,8 @@ function TablaAlumnosAdmin() {
                                 <th>Grupo</th>
                                 <th>Taller aprobado</th>
                                 <th>Estatus</th>
+
+                                <th>Actualizar</th>
                             </tr>
                         </thead>
                         <tbody>
