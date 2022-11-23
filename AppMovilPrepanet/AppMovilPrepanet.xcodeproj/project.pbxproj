@@ -369,7 +369,7 @@
 				INFOPLIST_FILE = AppMovilPrepanet/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "PrepaNet Talleres";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.education";
-				INFOPLIST_KEY_NSCalendarsUsageDescription = "";
+				INFOPLIST_KEY_NSCalendarsUsageDescription = "Permission request to add course to your Calendar";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = "Launch Screen.storyboard";
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -382,7 +382,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = Tec.AppMovilPrepanet;
+				PRODUCT_BUNDLE_IDENTIFIER = Tec.AppMovilPrepanetTest;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
@@ -405,7 +405,7 @@
 				INFOPLIST_FILE = AppMovilPrepanet/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "PrepaNet Talleres";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.education";
-				INFOPLIST_KEY_NSCalendarsUsageDescription = "";
+				INFOPLIST_KEY_NSCalendarsUsageDescription = "Permission request to add course to your Calendar";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = "Launch Screen.storyboard";
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -418,7 +418,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = Tec.AppMovilPrepanet;
+				PRODUCT_BUNDLE_IDENTIFIER = Tec.AppMovilPrepanetTest;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
