@@ -18,7 +18,7 @@ function Login() {
                     <input type="text" class="form-control" placeholder="Matricula" />
                 </div>
                 <div className="prepanet-input">
-                    <input type="password" class="form-control" placeholder="Contraseña" />
+                    <input type="password" class="form-control" placeholder="Contrasena" />
                 </div>
                 <Button href="/menu" className="prepanet-button" type="submit">Ingresar</Button>
             </Stack>

@@ -6,7 +6,7 @@ import Container from "@mui/material/Container";
 import Button from "../ComponentsWeb/Button";
 import Typography from "@mui/material/Typography";
 import "./Taller1.css";
-import TallerHero from "../ComponentsWeb/TallerHero";
+import TallerHero from "../ComponentsWeb/TallerHero2";
 import MainPage from "../ComponentsWeb/MainPage";
 
 const item = {
