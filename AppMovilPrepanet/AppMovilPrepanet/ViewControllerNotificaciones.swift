@@ -103,7 +103,7 @@ class ViewControllerNotificaciones: UIViewController, UITableViewDelegate, UITab
                                             let notif = notificacion(titulo: nData["titulo"] as! String, fecha: nData["fecha"] as! Timestamp, contenido: nData["contenido"] as! String, autor_id: nData["autor_id"] as! DocumentReference, groupKey: nData["groupKey"] as! String)
                                             self.notificaciones.append(notif)
                                         }
-                                        self.tableViewNotif.reloadData()
+                                        //self.tableViewNotif.reloadData()
                                         self.db.collection("Notificacion").whereField("groupKey", isEqualTo: groupKey).getDocuments{ qsNotificacion, error in
                                             if let error = error {
                                                 print("Inscripcion Error" + error.localizedDescription)
@@ -155,7 +155,14 @@ class ViewControllerNotificaciones: UIViewController, UITableViewDelegate, UITab
         if (notificaciones.count != 0){
             cell.lbTitle.text = notificaciones[indexPath.row].titulo
             cell.lbMsg.text = notificaciones[indexPath.row].contenido
-            cell.lbAutor.text = notificaciones[indexPath.row].groupKey
+            
+            notificaciones[indexPath.row].autor_id.getDocument  { DocumentSnapshot, error in
+                if let error = error {
+                    print("Inscripcion Error" + error.localizedDescription)
+                }
+                
+                cell.lbAutor.text = (DocumentSnapshot?.data()!["nombre"] as! String)
+            }
         }
         return cell
     }

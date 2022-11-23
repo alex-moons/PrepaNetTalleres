@@ -19,10 +19,9 @@ class ViewController: UIViewController {
     @IBOutlet weak var btnReset: UIButton!
     @IBOutlet weak var checkbox: UIButton!
     
-    var recordar:Bool = false
     let db = Firestore.firestore()
     let defaults = UserDefaults.standard
-    let staySigned = true; //Cambiar despues por check button
+    var staySigned = false; //Cambiar despues por check button
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,6 +39,7 @@ class ViewController: UIViewController {
         if let signedUser = defaults.string(forKey: "signedUser"){
             print(signedUser)
             if signedUser == ""{
+                print("Signed user does not exist, delete info")
                 do {
                     try Auth.auth().signOut()
                 } catch {
@@ -93,12 +93,12 @@ class ViewController: UIViewController {
     }
     
     @IBAction func recuerdame(_ sender: Any) {
-        if recordar {
+        if staySigned {
             self.checkbox.setImage(UIImage(named: "unchecked"), for: .normal)
-            recordar = false
+            staySigned = false
         }else{
             self.checkbox.setImage(UIImage(named: "checkbox"), for: .normal)
-            recordar = true
+            staySigned = true
         }
     }
     

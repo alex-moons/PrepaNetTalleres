@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21225" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="ooF-N3-kWR">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="ooF-N3-kWR">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
-        <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21207"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
         <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -35,7 +34,7 @@
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" rowHeight="89" id="Dg4-TH-543" customClass="TableViewCellNotif" customModule="AppMovilPrepanet" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="50" width="343" height="89"/>
+                                        <rect key="frame" x="0.0" y="44.5" width="343" height="89"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Dg4-TH-543" id="zdf-gM-iga">
                                             <rect key="frame" x="0.0" y="0.0" width="343" height="89"/>
@@ -228,7 +227,7 @@
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" rowHeight="56" id="1W0-f1-hth">
-                                        <rect key="frame" x="0.0" y="50" width="325" height="56"/>
+                                        <rect key="frame" x="0.0" y="44.5" width="325" height="56"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="1W0-f1-hth" id="7lN-YH-0qd">
                                             <rect key="frame" x="0.0" y="0.0" width="325" height="56"/>
@@ -372,7 +371,7 @@
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" rowHeight="124" id="xqE-K5-A7U" customClass="tallerCeldaTableViewCell" customModule="AppMovilPrepanet" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="50" width="317" height="124"/>
+                                        <rect key="frame" x="0.0" y="44.5" width="317" height="124"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="xqE-K5-A7U" id="FrB-3s-aeR">
                                             <rect key="frame" x="0.0" y="0.0" width="317" height="124"/>
@@ -744,7 +743,7 @@ Inscripciones: 11/10/2022</string>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3aX-Ca-Q7u">
-                                <rect key="frame" x="141.5" y="462" width="92" height="34.5"/>
+                                <rect key="frame" x="141.5" y="462" width="92" height="31"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="92" id="X2H-D7-Q4D"/>
                                 </constraints>
@@ -756,7 +755,7 @@ Inscripciones: 11/10/2022</string>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ox5-JV-nl4">
-                                <rect key="frame" x="99" y="516.5" width="177" height="33.5"/>
+                                <rect key="frame" x="99" y="513" width="177" height="33.5"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="177" id="QZk-zx-1Uh"/>
                                 </constraints>
@@ -844,18 +843,18 @@ Inscripciones: 11/10/2022</string>
     <color key="tintColor" name="AccentColor"/>
     <resources>
         <image name="backdrop" width="960" height="540"/>
-        <image name="bell.fill" catalog="system" width="123" height="128"/>
+        <image name="bell.fill" catalog="system" width="128" height="124"/>
         <image name="calendar.badge.plus" catalog="system" width="128" height="108"/>
-        <image name="gearshape.2.fill" catalog="system" width="128" height="101"/>
+        <image name="gearshape.2.fill" catalog="system" width="128" height="100"/>
         <image name="prepanet_blanco" width="1038" height="227"/>
         <image name="square.split.2x2.fill" catalog="system" width="128" height="114"/>
         <image name="tallerdefault" width="2000" height="1333"/>
         <image name="unchecked" width="20" height="20"/>
         <namedColor name="AccentColor">
-            <color red="0.2196078431372549" green="0.33333333333333331" blue="0.95294117647058818" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+            <color red="1" green="0.79199999570846558" blue="0.15700000524520874" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <systemColor name="labelColor">
-            <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="secondaryLabelColor">
             <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
