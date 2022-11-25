@@ -20,6 +20,20 @@ const app = firebase.initializeApp({
 
 export default app;
 
+//const auth = getAuth();
+//signInWithEmailAndPassword(auth, email, password)
+//    .then((userCredential) => {
+//        // Signed in 
+//        const user = userCredential.user;
+//        // ...
+//    })
+//    .catch((error) => {
+//        const errorCode = error.code;
+//        const errorMessage = error.message;
+//    });
+
+//expot 
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>

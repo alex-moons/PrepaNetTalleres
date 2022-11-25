@@ -8,6 +8,7 @@
     margin-bottom: 20px;
     display: flex;
     width: 100%;
+    z-index: 2;
 }
 
 .titleCards {
