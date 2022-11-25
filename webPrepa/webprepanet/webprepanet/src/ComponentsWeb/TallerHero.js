@@ -3,12 +3,28 @@ import Button from "./Button";
 import Typography from "@mui/material/Typography";
 import ProductHeroLayout from "./HeroLayout";
 import "./TallerHero.css";
+import { useGetDataAlumno, useGetDataGrupoTaller, useGetDataInscripcion, useGetDataTaller } from "../hooks/useGetData";
+
 import { Box } from "../../../node_modules/@material-ui/core/index";
 
 const backgroundImage =
     "https://firebasestorage.googleapis.com/v0/b/prepanetcyberware.appspot.com/o/FotosTalleres%2Ftaller0.jpg?alt=media&token=ec559a50-0c99-497b-9f68-b5bf20bb08bd";
 
-export default function ProductHero() {
+export default function ProductHero({ alumno, taller }) {
+
+    const [grupos] = useGetDataGrupoTaller();
+
+
+    function inscribir() {
+        for (let i = 0; i < grupos.length; i++) {
+            if (grupos[i].value.taller_idStr == taller.id) {
+                // si empata un grupo checar que la fecha sea valida e inscribirse si si
+                var grupo = grupos[i]
+                //AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+            }
+        }
+    }
+
     return (
         <ProductHeroLayout
             sxBackground={{
@@ -24,18 +40,24 @@ export default function ProductHero() {
                 alt="increase priority"
             />
             <div
-                className="titleHero"   
+                className="titleHero"
             >
-                Taller 1: Liderazgo Positivo y Transformacion Personal 
+                Taller {taller.value.id}: {taller.value.nombre}
             </div>
             <div
                 className="textHero"
             >
-                Transformar su vida y aumentar tu riqueza y capital psicologico, con el fin de tener mayor exito estudiantil, lograr una mayor influencia en su contexto y cambiar el entorno. 
+                {taller.value.descripcion}
             </div>
-            <div className="fechaHero">
-                Fechas: 1 de agosto 2023 - 3 de noviembre 2023
-            </div>
+            {grupos.map((item, index) => {
+                return (
+                    <div className="fechaHero">
+                        {item.value.taller_idStr == taller.id &&
+                            <p>Poner aqui la fecha del grupo {item.value.numer_grupo}</p>
+                        }
+                    </div>
+                );
+            })}
             <Button
                 color="primary"
                 size="large"

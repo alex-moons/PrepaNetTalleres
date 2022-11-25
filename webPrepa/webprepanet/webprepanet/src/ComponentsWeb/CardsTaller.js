@@ -4,13 +4,14 @@ import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
 import { CardActionArea } from "@mui/material";
+import { Routes, Route, useNavigate } from 'react-router-dom';
 import { Link } from "react-router-dom";
 import { CardsData } from "./CardsData";
 import { useGetDataAlumno, useGetDataGrupoTaller, useGetDataInscripcion, useGetDataTaller } from "../hooks/useGetData";
 import "./CardsTaller.css";
 
 export default function ActionAreaCard({ doc }) {
-
+    const navigate = useNavigate();
     let tabla = [];
     let fila = [];
     const [talleres] = useGetDataTaller();
@@ -27,7 +28,7 @@ export default function ActionAreaCard({ doc }) {
                 for (let k = 0; k < inscripciones.length; k++) {
                     if (inscripciones[k].value.grupo_idStr == grupos[j].id && inscripciones[k].value.alumno_idStr == doc.id) {
                         fila.push(talleres[i].value.nombre); // 0 = nombre
-                        fila.push("/taller" + talleres[i].value.id); // 1 = path
+                        fila.push("/taller" + "1"); // 1 = path
                         fila.push(talleres[i].value.descripcion); // 2 = descripcion
                         fila.push("/img/backdrop.png"); // 3 = imagen
                         fila.push(inscripciones[k].value.estatus); // 4 = estatus
@@ -42,6 +43,7 @@ export default function ActionAreaCard({ doc }) {
                             fila.push("aprobado")
                         }
                         fila.push(talleres[i].value.id)
+                        fila.push(talleres[i])
                         registrado = true;
                     }
                 }
@@ -50,7 +52,7 @@ export default function ActionAreaCard({ doc }) {
         }
         if (registrado == false) {
             fila.push(talleres[i].value.nombre); // 0 = nombre
-            fila.push("/taller" + talleres[i].value.id); // 1 = path
+            fila.push("/taller" + "1"); // 1 = path
             fila.push(talleres[i].value.descripcion); // 2 = descripcion
             fila.push("/img/backdrop.png"); // 3 = imagen
             fila.push("No disponible"); // 4 = estatus
@@ -61,10 +63,11 @@ export default function ActionAreaCard({ doc }) {
 
             fila.push("no_disp")
             fila.push(talleres[i].value.id)
+            fila.push(talleres[i])
         }
-        fila.length = 9
+        fila.length = 10
         let aux = [...fila]
-        if (aux.length == 9) {
+        if (aux.length == 10) {
             tabla.push(aux)
         }
         fila.length = 0
@@ -76,13 +79,22 @@ export default function ActionAreaCard({ doc }) {
         return (a[8] < b[8]) ? -1 : 1;
     }
 
+    // ABFANVWAPAWVNAWKVLJ
+    function dirigirTaller(index) {
+        navigate('/taller1', {
+            state: {
+                alumno: doc,
+                taller: tabla[index][9]
+            }
+        });
+    }
 
     return (
         <ul className="listaTarjetas">
             {tabla.map((item, index) => {
                 return (
                     <Card key={index} className="tarjeta">
-                        <CardActionArea href={item[1]}>
+                        <CardActionArea onClick={() => { dirigirTaller(index) }}>
                             <CardMedia
                                 component={item[5]}
                                 height={item[6]}
