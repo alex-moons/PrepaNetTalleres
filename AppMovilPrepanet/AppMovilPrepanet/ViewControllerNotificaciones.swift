@@ -170,6 +170,22 @@ class ViewControllerNotificaciones: UIViewController, UITableViewDelegate, UITab
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
     }
+    
+    @IBAction func logOut(_ sender: UIButton) {
+        do {
+            print("Signing out")
+            try Auth.auth().signOut()
+            UserDefaults.standard.set("", forKey: "signedUser")
+            print("Signed out")
+        } catch {
+            print("Sign out error")
+          print(error)
+        }
+        print("Dismissing")
+        self.dismiss(animated: true)
+        print("Dismissed")
+        //performSegue(withIdentifier: "signOut", sender: self)
+    }
 
     // MARK: - Navigation
 
