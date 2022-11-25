@@ -258,6 +258,8 @@ export const FireStoreTablaAlumnosPorTaller = ({ taller }) => {
         }
     }
 
+
+
     // firebase principal
 
     function InfoAlumnoTabla(alumnoId) {
