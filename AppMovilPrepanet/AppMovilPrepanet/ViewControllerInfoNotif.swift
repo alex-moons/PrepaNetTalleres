@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Firebase
 
 class ViewControllerInfoNotif: UIViewController {
     
@@ -14,11 +15,18 @@ class ViewControllerInfoNotif: UIViewController {
     @IBOutlet weak var lbAutor: UILabel!
     
     var notif:notificacion!
+    var autor:String!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         lbTitulo.text = notif.titulo
-        lbAutor.text = notif.groupKey
+        notif.autor_id.getDocument  { DocumentSnapshot, error in
+            if let error = error {
+                print("Inscripcion Error" + error.localizedDescription)
+            }
+            
+            self.lbAutor.text = (DocumentSnapshot?.data()!["nombre"] as! String)
+        }
         textMsg.text = notif.contenido
         
 

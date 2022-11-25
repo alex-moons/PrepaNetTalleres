@@ -184,6 +184,8 @@ class ViewControllerInfoTaller: UIViewController {
                     let inscripFin = (self.tallerDisponible.data()["inscripcion_fin"] as! Timestamp).dateValue()
                     self.lbFechasCurso.text = formatoFecha.string(from: cursoInit) + " - " + formatoFecha.string(from: cursoFin)
                     self.lbFechasInscripcion.text = formatoFecha.string(from: inscripInit) + " - " + formatoFecha.string(from: inscripFin)
+                    self.lbTFechasCurso.text = "Fechas del curso:"
+                    self.lbTFechasInscripcion.text = "Fechas de inscripción:"
                 }
                 else {
                     print(mensajeError)
