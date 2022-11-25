@@ -35,7 +35,7 @@ class ViewController: UIViewController {
         let _ = Auth.auth().addStateDidChangeListener { auth, user in }
         //print(defaults.string(forKey: "signedUser"))
         
-        print(defaults.string(forKey: "signedUser")!)
+        //print(defaults.string(forKey: "signedUser")!)
         if let signedUser = defaults.string(forKey: "signedUser"){
             print(signedUser)
             if signedUser == ""{
