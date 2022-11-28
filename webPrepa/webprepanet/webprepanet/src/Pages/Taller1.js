@@ -36,7 +36,7 @@ function Taller1({ route, navigation }) {
   return (
     <div>
       <MainPage />
-          <TallerHero alumno={alumno} taller={taller} />
+          <TallerHero alumno={alumno} taller={taller} aprobado={location.state.aprobar } />
     </div>
   );
 }

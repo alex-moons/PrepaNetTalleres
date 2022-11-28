@@ -5,11 +5,13 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import firebase from "firebase/compat/app";
 import { getAuth } from "firebase/auth"
 import { Routes, Route, useNavigate } from 'react-router-dom';
+import { useGetDataAdmin, useGetDataCoordinador } from "../hooks/useGetData"
 import './Login.css';
 
 function Login() {
     const navigate = useNavigate();
     const [usuario, setUsuario] = React.useState("");
+    const [errorcillo, setErrorcillo] = React.useState("");
     const [pass, setPass] = React.useState("");
     const getUsuario = (event) => {
         setUsuario(event.target.value); // se pone el valor del field
@@ -28,6 +30,8 @@ function Login() {
         measurementId: process.env.REACT_APP_measurementId,
     });
     const auth = getAuth(app);
+    const [admins] = useGetDataAdmin();
+    const [coordis] = useGetDataCoordinador();
 
     function logear() {
 
@@ -40,11 +44,30 @@ function Login() {
                         state: {
                             userId: usuario,
                         }
-});
+                    });
 
                 }
                 else {
-                navigate('/menu');
+                    let seVa = false;
+                    for (let i = 0; i < admins.length; i++) {
+                        if (admins[i].value.correo_institucional == usuario) {
+                            navigate('/menu', {
+                                state: {
+                                    admin: true,
+                                }
+                            });
+                            seVa = true;
+                        }
+                    }
+                    if (seVa == false) {
+                        navigate('/menu', {
+                            state: {
+                                admin: false,
+                            }
+                        });
+                    }
+
+
 
                 }
                 // ...
@@ -52,10 +75,11 @@ function Login() {
             .catch((error) => {
                 var errorCode = error.code;
                 var errorMessage = error.message;
+                setErrorcillo("Correo o contraseña incorrecto");
             });
     }
 
-    
+
 
     return (
         <div className="bg">
@@ -69,6 +93,7 @@ function Login() {
                 <div className="prepanet-input">
                     <input onBlur={getPass} type="password" class="form-control" placeholder="Contrasena" />
                 </div>
+                <p style={{color:"red"} }>{errorcillo}</p>
                 <Button onClick={logear} className="prepanet-button" type="submit">Ingresar</Button>
             </Stack>
         </div>

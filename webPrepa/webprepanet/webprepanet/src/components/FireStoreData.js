@@ -526,7 +526,7 @@ export const FireStoreDataGrupos = () => {
     );
 };
 
-export const FireStoreTablaAlumnosInfoCoordi = () => {
+export const FireStoreTablaAlumnosInfoCoordi = ({campus }) => {
 
     // cada uno de estos tiene todas las colecciones de cada uno
     const [sortedField, setSortedField] = React.useState(null);
@@ -539,7 +539,7 @@ export const FireStoreTablaAlumnosInfoCoordi = () => {
     let fila = [];
     let curr = 0;
     let cont = 0;
-    let campusCordi = "Monterrey";
+    let campusCordi = campus;
 
     for (let i = 0; i < inscripciones.length; i++) {
         InfoAlumnoTabla(inscripciones[i].value.alumno_idStr, inscripciones[i].value.campus)
