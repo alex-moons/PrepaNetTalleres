@@ -1,8 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import { Dropdown, Button } from 'react-bootstrap';
 import firebase from "firebase/compat/app";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import { renderMatches } from "../../../node_modules/react-router-dom/dist/index";
+import Modal from 'react-bootstrap/Modal';
+
 // PARA ACTUALIZAR VALORES EN UN HTML PON <UPADTE DOC ={ DOC.ID}/>
 export const UpdateEstatus = ({ doc }) => {
     const [value, setValue] = React.useState();
@@ -86,9 +89,6 @@ export const UpdateGrupo = ({ doc }) => {
 
     
     const [active, setActive] = React.useState(false);
-
-    
-        
     
 
     const db = firebase.firestore();
@@ -98,33 +98,41 @@ export const UpdateGrupo = ({ doc }) => {
         setActive(true);
     };
 
+    const [show, setShow] = useState(false);
 
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
+
+    function alertarErrorFecha() {
+        alert("Fecha Incorrecta");
+    }
 
     const updateValue = () => {
-        console.log("Entre al update")
-        db.collection("GrupoTaller")
-            .doc(doc.id)
-            .update({
-                fecha_inicio: startDate,
-                fecha_fin: endDate,
-                inscripcion_inicio: startIns,
-                inscripcion_fin: endIns
-            })
-            .then(function () {
-                console.log("Document successfully updated!");
-            })
-            .catch(function (error) {
-                console.error("Error updating document: ", error);
-            });
-       
+        if (startDate < endDate && startIns < endIns) {
+            console.log("Entre al update")
+            db.collection("GrupoTaller")
+                .doc(doc.id)
+                .update({
+                    fecha_inicio: startDate,
+                    fecha_fin: endDate,
+                    inscripcion_inicio: startIns,
+                    inscripcion_fin: endIns
+                })
+                .then(function () {
+                    console.log("Document successfully updated!");
+                })
+                .catch(function (error) {
+                    console.error("Error updating document: ", error);
+                });
+        }
+        else {
+            alertarErrorFecha()
+        }
     };
 
     return (
 
-        <>
-
-            
-                
+        <>      
            <p>Inicio Curso</p>
             <DatePicker selected={startDate} onChange={(date) => setStartDate(date)} />
             <p>Fin Curso</p>
