@@ -54,6 +54,7 @@ function Login() {
                             navigate('/menu', {
                                 state: {
                                     admin: true,
+                                    correo: usuario
                                 }
                             });
                             seVa = true;
@@ -63,6 +64,7 @@ function Login() {
                         navigate('/menu', {
                             state: {
                                 admin: false,
+                                correo:usuario
                             }
                         });
                     }

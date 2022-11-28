@@ -4,9 +4,20 @@ import { Card, Button, Container, Row, Col, Link } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { useLocation } from "react-router-dom";
 import "./CoordAdminMenu.css";
+import { Routes, Route, useNavigate } from 'react-router-dom';
 
 function CoordAdminMenu(admin) {
     const location = useLocation();
+    const navigate = useNavigate();
+
+    function irMenuCoordi() {
+        navigate('/tablaAlumnosC', {
+            state: {
+                admin: false,
+                correo: location.state.correo
+            }
+        });
+    }
 
     return (
         <div class="bg-menu">
@@ -41,7 +52,7 @@ function CoordAdminMenu(admin) {
                                     </Card.Body>
                                 </Card.Link>
                                 :
-                                <Card.Link href="/tablaAlumnosC" className="link-format">
+                                <Card.Link onClick={() => irMenuCoordi()} href="/tablaAlumnosC" className="link-format">
                                     <Card.Img variant="top" src="/img/imagenTalleres.jpg" />
                                     <Card.Body>
                                         <Card.Title>Todos los alumnos</Card.Title>
