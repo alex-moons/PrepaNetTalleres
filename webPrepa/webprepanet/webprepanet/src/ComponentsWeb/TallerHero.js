@@ -4,13 +4,14 @@ import Typography from "@mui/material/Typography";
 import ProductHeroLayout from "./HeroLayout";
 import "./TallerHero.css";
 import { useGetDataAlumno, useGetDataGrupoTaller, useGetDataInscripcion, useGetDataTaller } from "../hooks/useGetData";
+import { AddValueInscripcion } from "../components/Add"
 
 import { Box } from "../../../node_modules/@material-ui/core/index";
 
 const backgroundImage =
     "https://firebasestorage.googleapis.com/v0/b/prepanetcyberware.appspot.com/o/FotosTalleres%2Ftaller0.jpg?alt=media&token=ec559a50-0c99-497b-9f68-b5bf20bb08bd";
 
-export default function ProductHero({ alumno, taller }) {
+export default function ProductHero({ alumno, taller, aprobado }) {
 
     const [grupos] = useGetDataGrupoTaller();
 
@@ -23,6 +24,18 @@ export default function ProductHero({ alumno, taller }) {
                 //AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
             }
         }
+    }
+
+    function padTo2Digits(num) {
+        return num.toString().padStart(2, '0');
+    }
+
+    function formatDate(date) {
+        return [
+            padTo2Digits(date.getDate()),
+            padTo2Digits(date.getMonth() + 1),
+            date.getFullYear(),
+        ].join('/');
     }
 
     return (
@@ -49,25 +62,32 @@ export default function ProductHero({ alumno, taller }) {
             >
                 {taller.value.descripcion}
             </div>
-            {grupos.map((item, index) => {
-                return (
-                    <div className="fechaHero">
-                        {item.value.taller_idStr == taller.id &&
-                            <p>Poner aqui la fecha del grupo {item.value.numer_grupo}</p>
-                        }
-                    </div>
-                );
-            })}
-            <Button
-                color="primary"
-                size="large"
-                variant="contained"
-                component="a"
-                href="/inicio"
-                sx={{ mt: 8 }}
-            >
-                Inscribir
-            </Button>
-        </ProductHeroLayout>
+            {aprobado == false ?
+                <>
+                    {grupos.map((item, index) => {
+                        return (
+                            <div className="fechaHero">
+
+
+                                {item.value.taller_idStr == taller.id &&
+                                    <>
+                                        < p > Fecha inscripcion grupo: {item.value.numero_grupo}</p>
+                                        <p>Inicio : {formatDate(item.value.inscripcion_inicio.toDate())}</p>
+                                        <p>Fin : {formatDate(item.value.inscripcion_fin.toDate())}</p>
+                                        {/*Poner un if para habilitar o no el boton*/}
+                                        <AddValueInscripcion grupo={item} taller={taller} alumno={alumno} />
+                                    </>
+                                }
+
+
+
+
+                            </div>
+                        );
+                    })}
+                </> :
+                <p>Taller inscrito</p>}
+
+        </ProductHeroLayout >
     );
 }

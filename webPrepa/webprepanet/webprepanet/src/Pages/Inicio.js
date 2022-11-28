@@ -12,15 +12,16 @@ const Inicio = ({ route, navigation }) => {
     const [alumnos] = useGetDataAlumno();
     // get userId
     let userId = location.state.userId;
+    let doc = alumnos[1];
     for (let i = 0; i < alumnos.length; i++) {
         if (alumnos[i].value.correo_institucional == userId) {
-            var doc = alumnos[i];
+             doc = alumnos[i];
         }
     }
     return (
         <div>
             <MainPage />
-            <div className="titulo">Bienvenido Usuario</div>
+            <div className="titulo">Bienvenido </div>
             <Stack spacing={10} justifyContent="center" alignItems="center" direction="column">
                 <CardTaller doc={doc} />
             </Stack>

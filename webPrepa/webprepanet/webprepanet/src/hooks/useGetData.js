@@ -67,6 +67,50 @@ export const useGetDataInscripcion = () => {
     return [document];
 };
 
+export const useGetDataAdmin = () => {
+
+    // documents es nuestro objeto, setDoc es un setter
+    const [document, setDocument] = React.useState([]);
+
+    // firebase principal
+    const db = firebase.firestore();
+
+    React.useEffect(() => {
+        db.collection("Administrador")
+            .get()
+            .then((querySnapshot) => {
+                let arr = [];
+                querySnapshot.docs.map((doc) =>
+                    arr.push({ id: doc.id, value: doc.data() })
+                );
+                setDocument(arr);
+            });
+    }, [db]);
+    return [document];
+};
+
+export const useGetDataCoordinador = () => {
+
+    // documents es nuestro objeto, setDoc es un setter
+    const [document, setDocument] = React.useState([]);
+
+    // firebase principal
+    const db = firebase.firestore();
+
+    React.useEffect(() => {
+        db.collection("Coordinador")
+            .get()
+            .then((querySnapshot) => {
+                let arr = [];
+                querySnapshot.docs.map((doc) =>
+                    arr.push({ id: doc.id, value: doc.data() })
+                );
+                setDocument(arr);
+            });
+    }, [db]);
+    return [document];
+};
+
 export const useGetDataTaller = () => {
 
     // documents es nuestro objeto, setDoc es un setter
@@ -133,24 +177,3 @@ export const useGetDataAdministrador = () => {
     return [documents];
 };
 
-export const useGetDataCoordinador = () => {
-
-    // documents es nuestro objeto, setDoc es un setter
-    const [documents, setDocuments] = React.useState([]);
-
-    // firebase principal
-    const db = firebase.firestore();
-
-    React.useEffect(() => {
-        db.collection("Coordinador") // se recojen los docs de alumno
-            .get()
-            .then((querySnapshot) => {
-                let arr = [];
-                querySnapshot.docs.map((doc) =>
-                    arr.push({ id: doc.id, value: doc.data() })
-                );
-                setDocuments(arr);
-            });
-    }, [db]);
-    return [documents];
-};

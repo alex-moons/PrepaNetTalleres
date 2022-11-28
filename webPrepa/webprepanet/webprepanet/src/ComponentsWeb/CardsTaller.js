@@ -44,6 +44,7 @@ export default function ActionAreaCard({ doc }) {
                         }
                         fila.push(talleres[i].value.id)
                         fila.push(talleres[i])
+
                         registrado = true;
                     }
                 }
@@ -81,10 +82,16 @@ export default function ActionAreaCard({ doc }) {
 
     // ABFANVWAPAWVNAWKVLJ
     function dirigirTaller(index) {
+        let aprobado = false
+        if (tabla[index][4] == "Cursando" || tabla[index][4] == "Aprobado") {
+            aprobado = true;
+        }
+
         navigate('/taller1', {
             state: {
                 alumno: doc,
-                taller: tabla[index][9]
+                taller: tabla[index][9],
+                aprobar: aprobado
             }
         });
     }
