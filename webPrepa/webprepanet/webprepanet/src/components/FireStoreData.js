@@ -8,6 +8,7 @@ import "../Pages/InfoTaller.css";
 import "../Pages/TablaAlumnosAdmin.css";
 import firebase from "firebase/compat/app";
 import Popup from './Popup'
+import { CSVLink, CSVDownload } from "react-csv";
 
 // construir la tabla de los alumnos de TableAlumnosAdmin.js
 export const FireStoreTablaAlumnosInfo = () => {
@@ -726,7 +727,9 @@ export const FireStoreTablaAlumnosInfoCoordi = () => {
                         </tbody>
                     </Table>
                 </Row>
-
+                <button class="btn btn-success" type="submit">
+                    <CSVLink data={tabla}>Descargar tabla CSV</CSVLink>
+                </button>
             </Container>
         </ div >
 
