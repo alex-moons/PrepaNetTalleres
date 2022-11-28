@@ -5,6 +5,7 @@ import Container from "@mui/material/Container";
 import Button from "../ComponentsWeb/Button";
 import Typography from "@mui/material/Typography";
 import "./Taller1.css";
+import { useLocation } from "react-router-dom";
 import TallerHero from "../ComponentsWeb/TallerHero";
 import MainPage from "../ComponentsWeb/MainPage";
 
@@ -27,11 +28,15 @@ const image = {
   my: 4
 };
 
-function Taller1() {
+function Taller1({ route, navigation }) {
+
+    const location = useLocation();
+    let alumno = location.state.alumno;
+    let taller = location.state.taller
   return (
     <div>
       <MainPage />
-      <TallerHero />
+          <TallerHero alumno={alumno} taller={taller} />
     </div>
   );
 }

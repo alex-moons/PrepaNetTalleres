@@ -36,7 +36,11 @@ function Login() {
                 // Signed in
                 var user = userCredential.user;
                 if (usuario.substring(0, 2) == "A0" || usuario.substring(0, 2) == "a0") {
-                    navigate('/inicio');
+                    navigate('/inicio', {
+                        state: {
+                            userId: usuario,
+                        }
+});
 
                 }
                 else {
@@ -48,7 +52,6 @@ function Login() {
             .catch((error) => {
                 var errorCode = error.code;
                 var errorMessage = error.message;
-                console.log("jajajajaja");
             });
     }
 

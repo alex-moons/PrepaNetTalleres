@@ -3,12 +3,27 @@ import Button from "./Button";
 import Typography from "@mui/material/Typography";
 import ProductHeroLayout from "./HeroLayout";
 import "./TallerHero.css";
+import { useGetDataAlumno, useGetDataGrupoTaller, useGetDataInscripcion, useGetDataTaller } from "../hooks/useGetData";
+
 import { Box } from "../../../node_modules/@material-ui/core/index";
 
 const backgroundImage =
     "https://firebasestorage.googleapis.com/v0/b/prepanetcyberware.appspot.com/o/FotosTalleres%2Ftaller6.png?alt=media&token=af42ec42-d42e-4e90-96f9-0d2c3d912e74";
 
-export default function ProductHero() {
+export default function ProductHero({ alumno, taller }) {
+
+    const [grupos] = useGetDataGrupoTaller();
+
+    function inscribir() {
+        if (let i = 0; i < grupos.length; i++) {
+            if (grupos[i].value.taller_idStr == taller.id) {
+                // si empata un grupo checar que la fecha sea valida e inscribirse si si
+                //AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+            }
+        }
+    }
+
+
     return (
         <ProductHeroLayout
             sxBackground={{

@@ -6,7 +6,7 @@ import Container from "@mui/material/Container";
 import Button from "../ComponentsWeb/Button";
 import Typography from "@mui/material/Typography";
 import "./Taller1.css";
-import TallerHero from "../ComponentsWeb/TallerHero3";
+import TallerHero from "../ComponentsWeb/TallerHero";
 import MainPage from "../ComponentsWeb/MainPage";
 
 const item = {
@@ -32,7 +32,6 @@ function Taller3() {
   return (
     <div>
       <MainPage />
-      <TallerHero />
     </div>
   );
 }
