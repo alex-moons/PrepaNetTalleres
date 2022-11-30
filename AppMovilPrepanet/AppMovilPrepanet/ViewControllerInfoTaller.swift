@@ -54,6 +54,8 @@ class ViewControllerInfoTaller: UIViewController {
             print("Taller aprobado")
             let cursoInit = (talleres[tallerIndex].grupoDatos!["fecha_inicio"] as! Timestamp).dateValue()
             let cursoFin = (talleres[tallerIndex].grupoDatos!["fecha_fin"] as! Timestamp).dateValue()
+            fechaini = cursoInit
+            fechafin = cursoFin
             lbFechasCurso.text = formatoFecha.string(from: cursoInit) + " - " + formatoFecha.string(from: cursoFin)
             lbTFechasInscripcion.text = ""
             lbFechasInscripcion.text = ""
@@ -64,6 +66,8 @@ class ViewControllerInfoTaller: UIViewController {
             print("Taller cursando")
             let cursoInit = (talleres[tallerIndex].grupoDatos!["fecha_inicio"] as! Timestamp).dateValue()
             let cursoFin = (talleres[tallerIndex].grupoDatos!["fecha_fin"] as! Timestamp).dateValue()
+            fechaini = cursoInit
+            fechafin = cursoFin
             lbFechasCurso.text = formatoFecha.string(from: cursoInit) + " - " + formatoFecha.string(from: cursoFin)
             lbTFechasInscripcion.text = ""
             lbFechasInscripcion.text = ""
@@ -74,6 +78,8 @@ class ViewControllerInfoTaller: UIViewController {
             print("Taller pendiente")
             let cursoInit = (talleres[tallerIndex].grupoDatos!["fecha_inicio"] as! Timestamp).dateValue()
             let cursoFin = (talleres[tallerIndex].grupoDatos!["fecha_fin"] as! Timestamp).dateValue()
+            fechaini = cursoInit
+            fechafin = cursoFin
             let inscripInit = (talleres[tallerIndex].grupoDatos!["inscripcion_inicio"] as! Timestamp).dateValue()
             let inscripFin = (talleres[tallerIndex].grupoDatos!["inscripcion_fin"] as! Timestamp).dateValue()
             lbFechasCurso.text = formatoFecha.string(from: cursoInit) + " - " + formatoFecha.string(from: cursoFin)
@@ -92,8 +98,6 @@ class ViewControllerInfoTaller: UIViewController {
                let cursoFin = talleres[tallerIndex].grupoDatos {
                 let dateInit = (cursoInit["fecha_inicio"] as! Timestamp).dateValue()
                 let dateFin = (cursoFin["fecha_fin"] as! Timestamp).dateValue()
-                fechaini = dateInit
-                fechafin = dateFin
                 lbFechasCurso.text = formatoFecha.string(from: dateInit) + " - " + formatoFecha.string(from: dateFin)
             }
             else {
