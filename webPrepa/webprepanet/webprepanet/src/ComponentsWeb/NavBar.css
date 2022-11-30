@@ -13,3 +13,17 @@
     margin-left: 20px;
     justify-content: left;
 }
+
+.btn-outline-primary {
+    background-color: #f8f8f8 !important;
+    outline-color: #f8f8f8 !important;
+    color: #1d2b50 !important;
+    margin-right: 20px;
+
+}
+
+.btn-outline-primary:hover {
+    background-color: #1d2b50 !important;
+    outline-color: #1d2b50 !important;
+    color: #f8f8f8 !important;
+}

@@ -11,14 +11,8 @@ export const SidebarData = [
         cName: "nav-text"
     },
     {
-        title: "Ajustes",
-        path: "/ajustes",
-        icon: <SettingsIcon />,
-        cName: "nav-text"
-    },
-    {
         title: "Salir",
-        path: "/",
+        path: "/logout",
         icon: <LogoutIcon />,
         cName: "nav-text"
     }

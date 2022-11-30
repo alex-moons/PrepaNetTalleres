@@ -10,29 +10,42 @@ import { useLocation } from "react-router-dom";
 
 function TablaAlumnosCoord() {
 
-    const [coordis] = useGetDataCoordinador();
+    //const [coordis] = useGetDataCoordinador();
 
-    const location = useLocation();
+    //const location = useLocation();
 
-    let campus = "";
+    //let campus = "";
 
-    for (let i = 0; i < coordis.length; i++) {
-        if (coordis[i].value.correo_institucional == location.state.correo) {
-            campus = coordis[i].value.campus
-        }
+    //for (let i = 0; i < coordis.length; i++) {
+    //    if (coordis[i].value.correo_institucional == location.state.correo) {
+    //        campus = coordis[i].value.campus
+    //    }
+    //}
+    if (sessionStorage.getItem("rol") == "Coordi") {
+        return (<>
+            <FireStoreTablaAlumnosInfoCoordi />
+            {/* <AddValueInscripcion /> */}
+        </>
+        );
     }
-
-    return (<>
-        <FireStoreTablaAlumnosInfoCoordi campus={campus}  />
-        {/* <AddValueInscripcion /> */}
-    </>
-    );
+    else {
+        return (
+            <p style={{ color: "white" }}>No se puede compita</p>
+        );
+    }
 }
 
-export function TablaAlumnoAdminTaller({ taller }) {
-    return (
-        <FireStoreTablaAlumnosPorTallerCoordi taller={taller} />
-    );
+export function TablaAlumnoCoordiTaller({ taller }) {
+    if (sessionStorage.getItem("rol") == "Coordi") {
+        return (
+            <FireStoreTablaAlumnosPorTallerCoordi taller={taller} />
+        );
+    }
+    else {
+        return (
+            <p style={{ color: "white" }}>No se puede compita</p>
+        );
+    }
 }
 
 export default TablaAlumnosCoord;

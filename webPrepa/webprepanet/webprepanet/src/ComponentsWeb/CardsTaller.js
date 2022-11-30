@@ -94,6 +94,14 @@ export default function ActionAreaCard({ doc }) {
                 aprobar: aprobado
             }
         });
+
+        sessionStorage.setItem("taller", JSON.stringify(tabla[index][9]));
+        sessionStorage.setItem("aprobar", aprobado);
+        sessionStorage.setItem("alumno_doc", JSON.stringify(doc));
+        //console.log(sessionStorage.getItem("aprobar"));
+        //console.log(sessionStorage.getItem("taller"));
+        //console.log(sessionStorage.getItem("alumno_doc"));
+        
     }
 
     return (

@@ -5,8 +5,11 @@ import "../ComponentsWeb/TallerHero.css";
     
 // Tiene que ser en mayusculas, un export para cada query que se quiere hacer
 export const AddValueInscripcion = ({ grupo, alumno, taller }) => {
+    //alumno = sessionStorage.getItem("alumno_doc");
+    console.log(alumno.campus);
     const [alumnoId, setAlumnoId] = React.useState(alumno.id); // Aqui se ponen los valores que queremos junto a su set
     const [estatusVal, setEstatusVal] = React.useState("Pendiente");
+    //console.log(alumno.value.campus);
     const [campusVal, setCampus] = React.useState(alumno.value.campus);
     const [grupoId, setGrupoId] = React.useState(grupo.id);
     const [periodoVal, setPeriodoVal] = React.useState(alumno.value.periodo_de_ingreso);
@@ -45,11 +48,14 @@ export const AddValueInscripcion = ({ grupo, alumno, taller }) => {
             // Si todo sale bien se corre este metodo
             .then(function () {
                 console.log("Value successfully written!");
+                alert("Se ha inscrito exitosamente");
             })
             // Si sale mal es este otro
             .catch(function (error) {
                 console.error("Error writing Value: ", error);
             });
+
+        
     };
 
     return (
@@ -65,13 +71,14 @@ export const AddValueInscripcion = ({ grupo, alumno, taller }) => {
             <input onBlur={getGrupoId} type='text' /> 
             <p style={{ color: "white" }}> Taller</p>
             <input onBlur={getPeriodoVal} type='text' /> */}
-            {(new Date() > grupo.value.inscripcion_inicio.toDate() && new Date < grupo.value.inscripcion_fin.toDate())  ?
+            {((new Date() > grupo.value.inscripcion_inicio.toDate() && new Date < grupo.value.inscripcion_fin.toDate()))  ?
                 <button type='button' onClick={addValue}> {/* Al presionar el boton se corre para mandar a Firebase*/}
                     Inscribir
                 </button> :
                 <button disabled={true} type='button' onClick={addValue}> {/* Al presionar el boton se corre para mandar a Firebase*/}
                     Inscribir
                 </button>
+
 }
             
         </div>

@@ -7,19 +7,32 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "./TablaAlumnosAdmin.css";
 
 function TablaAlumnosAdmin() {
+    if(sessionStorage.getItem("rol") == "Admin") {
 
-
-    return (<>
-        <FireStoreTablaAlumnosInfo />
-        {/* <AddValueInscripcion /> */}
+        return (<>
+            <FireStoreTablaAlumnosInfo />
+            {/* <AddValueInscripcion /> */}
         </>
-    );
+        );
+    }
+    else {
+        return (
+            <p style={{ color: "white" }}>No se puede compita</p>
+        );
+    }
 }
 
 export function TablaAlumnoAdminTaller({ taller }) {
-    return (
-        <FireStoreTablaAlumnosPorTaller taller={taller} />
-    );
+    if (sessionStorage.getItem("rol") == "Admin") {
+        return (
+            <FireStoreTablaAlumnosPorTaller taller={taller} />
+        );
+    }
+    else {
+        return (
+            <p style = {{ color: "white" }} >No se puede compita</p>
+        );
+    }
 }
 
 export default TablaAlumnosAdmin;

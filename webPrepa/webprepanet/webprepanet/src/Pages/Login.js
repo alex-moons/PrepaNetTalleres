@@ -5,7 +5,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import firebase from "firebase/compat/app";
 import { getAuth } from "firebase/auth"
 import { Routes, Route, useNavigate } from 'react-router-dom';
-import { useGetDataAdmin, useGetDataCoordinador } from "../hooks/useGetData"
+import { useGetDataAdmin, useGetDataCoordinador, useGetDataAlumno } from "../hooks/useGetData"
 import './Login.css';
 
 function Login() {
@@ -32,6 +32,7 @@ function Login() {
     const auth = getAuth(app);
     const [admins] = useGetDataAdmin();
     const [coordis] = useGetDataCoordinador();
+    const [alumnos] = useGetDataAlumno();
 
     function logear() {
 
@@ -39,15 +40,18 @@ function Login() {
             .then((userCredential) => {
                 // Signed in
                 var user = userCredential.user;
-                if (usuario.substring(0, 2) == "A0" || usuario.substring(0, 2) == "a0") {
-                    navigate('/inicio', {
-                        state: {
-                            userId: usuario,
-                        }
-                    });
+                for (let i = 0; i < alumnos.length; i++) {
+                    if (alumnos[i].value.correo_institucional == usuario) {
+                        navigate('/inicio', {
+                            state: {
+                                userId: usuario,
+                            }
+                        });
 
+                        sessionStorage.setItem("usuario", usuario);
+                        
+                    }
                 }
-                else {
                     let seVa = false;
                     for (let i = 0; i < admins.length; i++) {
                         if (admins[i].value.correo_institucional == usuario) {
@@ -58,20 +62,28 @@ function Login() {
                                 }
                             });
                             seVa = true;
+                            sessionStorage.setItem("usuario", usuario);
+                            sessionStorage.setItem("rol", "Admin");
                         }
                     }
                     if (seVa == false) {
-                        navigate('/menu', {
-                            state: {
-                                admin: false,
-                                correo:usuario
+                        for (let i = 0; i < coordis.length; i++) {
+                            if (coordis[i].value.correo_institucional == usuario) {
+                                navigate('/menu', {
+                                    state: {
+                                        admin: false,
+                                        correo: usuario
+                                    }
+                                });
+                                seVa = true;
+                                sessionStorage.setItem("usuario", usuario);
+                                sessionStorage.setItem("rol", "Coordi");
+                                sessionStorage.setItem("campus", coordis[i].value.campus);
                             }
-                        });
+                        }
                     }
 
-
-
-                }
+                
                 // ...
             })
             .catch((error) => {
