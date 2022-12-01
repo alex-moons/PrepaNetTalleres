@@ -4,6 +4,10 @@
 //
 //  Created by alex on 14/10/22.
 //
+/*
+    Se despliega la información del taller y si se encuentra disponible para el alumno.
+    Se hacen múltiples llamadas a Firestore
+ */
 
 import UIKit
 import EventKit
@@ -26,13 +30,12 @@ class ViewControllerInfoTaller: UIViewController {
     let user = Auth.auth().currentUser
     
     var talleres:[taller]!
-    var tallerIndex:Int!
+    var tallerIndex:Int! //Indice del taller relativo a ViewControllerTalleres
     var tallerInfo:taller!
     var img:UIImage!
     var tallerDisponible:QueryDocumentSnapshot!
     var fechaini:Date?
     var fechafin:Date?
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,14 +45,14 @@ class ViewControllerInfoTaller: UIViewController {
         lbName.text = tallerInfo.nombre
         lbStatus.text = tallerInfo.status
         textDesc.text = tallerInfo.desc
-        
-        // Do any additional setup after loading the view.
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        //Se revisa la disponibilidad del taller y el estatus del alumno
         let formatoFecha = DateFormatter()
-        formatoFecha.dateFormat = "dd/MM/yyyy"
-        switch tallerInfo.status {
+        formatoFecha.dateFormat = "dd/MM/yyyy" //Formato para desplegar la fecha
+        
+        switch tallerInfo.status { //Switch case para poner las fechas
         case "Aprobado":
             print("Taller aprobado")
             let cursoInit = (talleres[tallerIndex].grupoDatos!["fecha_inicio"] as! Timestamp).dateValue()
@@ -90,10 +93,6 @@ class ViewControllerInfoTaller: UIViewController {
         case "Sin Cursar":
             print("Taller sin cursar")
             
-            /*let tallerDocRef = db.collection("Taller").document(talleres[tallerIndex].docID);
-            
-            db.collection("GrupoTaller").whereField("taller_id", isEqualTo: tallerDocRef)*/
-            
             if let cursoInit = talleres[tallerIndex].grupoDatos,
                let cursoFin = talleres[tallerIndex].grupoDatos {
                 let dateInit = (cursoInit["fecha_inicio"] as! Timestamp).dateValue()
@@ -127,19 +126,18 @@ class ViewControllerInfoTaller: UIViewController {
             break
         }
         
+        //Proceso para habilitar o deshabilitar inscripción
         btnInscribir.isEnabled = false
         if lbFechasCurso.text == ""{
             btnCalendario.isEnabled = false
         }else{
             btnCalendario.isEnabled = true
         }
-        /*Condiciones para habilitar boton
-         - El alumno debio cursar todos los talleres anteriores y no estar cursando el taller escogido
-         - Debe haber un grupo con fechas de inscripcion vigentes
-         */
+        
         var habilitarBotones = true
         var mensajeError = " "
-                
+        
+        //Revisar que todos los talleres anteriores hayan sido cursados
         for i in 0..<tallerIndex {
             if talleres[i].status != "Aprobado" {
                 habilitarBotones = false
@@ -147,10 +145,7 @@ class ViewControllerInfoTaller: UIViewController {
             }
         }
         
-        if (mensajeError != " "){
-            print(mensajeError)
-        }
-        
+        //Revisar que el alumno no este cursando actualmente el taller
         if (tallerInfo.status == "Pendiente"){
             habilitarBotones = false
         }
@@ -170,11 +165,7 @@ class ViewControllerInfoTaller: UIViewController {
                     let tallerData = tallerDoc.data()
                     let inscripcionInit = (tallerData["inscripcion_inicio"] as! Timestamp).dateValue()
                     let inscripcionFin = (tallerData["inscripcion_fin"] as! Timestamp).dateValue()
-                    /*print(inscripcionInit)
-                    print(currentTime)
-                    print(inscripcionFin)*/
                     if inscripcionInit <= currentTime && inscripcionFin >= currentTime {
-                        //print("Hay taller disponible")
                         self.tallerDisponible = tallerDoc
                         habilitarBotones = true
                         mensajeError = ""
@@ -184,6 +175,8 @@ class ViewControllerInfoTaller: UIViewController {
                     print("Hay taller disponible")
                     let cursoInit = (self.tallerDisponible.data()["fecha_inicio"] as! Timestamp).dateValue()
                     let cursoFin = (self.tallerDisponible.data()["fecha_fin"] as! Timestamp).dateValue()
+                    self.fechaini = cursoInit
+                    self.fechafin = cursoFin
                     let inscripInit = (self.tallerDisponible.data()["inscripcion_inicio"] as! Timestamp).dateValue()
                     let inscripFin = (self.tallerDisponible.data()["inscripcion_fin"] as! Timestamp).dateValue()
                     self.lbFechasCurso.text = formatoFecha.string(from: cursoInit) + " - " + formatoFecha.string(from: cursoFin)
@@ -204,14 +197,10 @@ class ViewControllerInfoTaller: UIViewController {
     }
     
     @IBAction func Inscribir(_ sender: UIButton){
+        //Se inscribe el alumno a un grupo disponible
         let confirmAlert = UIAlertController(title: "Confirmar inscripción", message: "Deseas inscribirte a este taller? Una vez mandada la solicitud, un coordinador aceptará tu inscripción.", preferredStyle: .alert)
         
         confirmAlert.addAction(UIAlertAction(title: "Confirmar", style: .default, handler: { (action: UIAlertAction!) in
-          /*
-           - Tener taller disponible (gupo_id)
-           - Conseguir doc Alumno
-           - Crear inscripcion
-           */
             
             self.db.collection("Alumno").whereField("correo_institucional", isEqualTo: self.user!.email!).getDocuments {
                 qsAlumno, error in
@@ -221,13 +210,27 @@ class ViewControllerInfoTaller: UIViewController {
                 
                 let alumnoDoc = qsAlumno?.documents[0]
                 
+                let formatoFecha = DateFormatter()
+                formatoFecha.dateFormat = "MMMMM"
+                let formatoYear = DateFormatter()
+                formatoYear.dateFormat = "YY"
+                
+                var pIni = formatoFecha.string(from: self.fechaini!)
+                let pFin = formatoFecha.string(from: self.fechafin!)
+                let pYear = formatoYear.string(from: self.fechafin!)
+                
+                if pIni == "J"{
+                    pIni = "E"
+                }
+                
                 self.db.collection("Inscripcion").document().setData([
                     "alumno_id": self.db.collection("Alumno").document(alumnoDoc!.documentID),
                     "alumno_idStr": alumnoDoc!.documentID,
                     "estatus": "Pendiente",
                     "grupo_id": self.db.collection("GrupoTaller").document(self.tallerDisponible!.documentID),
                     "grupo_idStr": self.tallerDisponible!.documentID,
-                    "periodo": "SD22",
+                    "periodo": pIni + pFin + pYear,
+                    "campus": alumnoDoc?.data()["campus"] as! String,
                     "taller_aprobado": false
                 ]) { err in
                     if let err = err {
@@ -255,7 +258,7 @@ class ViewControllerInfoTaller: UIViewController {
     }
     
     func addEventToCalendar(title: String, description: String?, startDate: Date, endDate: Date, completion: ((_ success: Bool, _ error: NSError?) -> Void)? = nil) {
-        print("func actioned")
+        //Agregar las fechas del curso al calendario del telefono
         let eventStore = EKEventStore()
 
         eventStore.requestAccess(to: .event) { (granted, error) in
@@ -294,16 +297,4 @@ class ViewControllerInfoTaller: UIViewController {
             addEventToCalendar(title: lbName.text!, description: textDesc.text!, startDate: fechaini!, endDate: fechafin!)
         }
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

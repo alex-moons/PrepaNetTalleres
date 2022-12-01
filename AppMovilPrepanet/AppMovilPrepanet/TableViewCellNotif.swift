@@ -4,6 +4,9 @@
 //
 //  Created by alex on 18/10/22.
 //
+/*
+ Celdas de notificaciones
+ */
 
 import UIKit
 
@@ -21,13 +24,9 @@ class TableViewCellNotif: UITableViewCell {
         lbTitle.text = title
         lbMsg.text = msg
         lbAutor.text = autor
-        // Initialization code
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
     }
-
 }
