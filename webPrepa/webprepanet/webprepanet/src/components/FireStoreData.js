@@ -251,9 +251,27 @@ export const FireStoreTablaAlumnosPorTaller = ({ taller }) => {
     const [grupos] = useGetDataGrupoTaller();
     const [talleres] = useGetDataTaller();
     let tabla = [];
+    let tablaCSV = [];
     let fila = [];
+    let filaAux = [];
     let curr = 0;
     let cont = 0;
+
+    filaAux.push("Matricula");
+    filaAux.push("Alumno");
+    filaAux.push("Campus");
+    filaAux.push("Tetramestre");
+    filaAux.push("Periodo");
+    filaAux.push("Fechas");
+    filaAux.push("Taller_inscrito");
+    filaAux.push("Grupo");
+    filaAux.push("Taller_aprobado");
+    filaAux.push("Estatus");
+    filaAux.push("Actualizar");
+
+    let auxMeter = [...filaAux];
+
+    tablaCSV.push(auxMeter);
 
     for (let i = 0; i < inscripciones.length; i++) {
         InfoAlumnoTabla(inscripciones[i].value.alumno_idStr)
@@ -331,6 +349,7 @@ export const FireStoreTablaAlumnosPorTaller = ({ taller }) => {
                         let aux = [...fila]
                         if (aux.length == 11) {
                             tabla.push(aux)
+                            tablaCSV.push(aux)
                         }
                         console.log(tabla)
                         fila.length = 0;
@@ -570,11 +589,29 @@ export const FireStoreTablaAlumnosInfoCoordi = () => {
     const [inscripciones] = useGetDataInscripcion();
     const [grupos] = useGetDataGrupoTaller();
     const [talleres] = useGetDataTaller();
-    const [campusCoordi] = useGetDataCoordinador();
     let tabla = [];
+    let tablaCSV = [];
     let fila = [];
+    let filaAux = [];
     let curr = 0;
     let cont = 0;
+
+    filaAux.push("Matricula");
+    filaAux.push("Alumno");
+    filaAux.push("Campus");
+    filaAux.push("Tetramestre");
+    filaAux.push("Periodo");
+    filaAux.push("Fechas");
+    filaAux.push("Taller_inscrito");
+    filaAux.push("Grupo");
+    filaAux.push("Taller_aprobado");
+    filaAux.push("Estatus");
+    filaAux.push("Actualizar");
+
+    let auxMeter = [...filaAux];
+
+    tablaCSV.push(auxMeter);
+
     let campusCordi = sessionStorage.getItem("campus");
 
     for (let i = 0; i < inscripciones.length; i++) {
@@ -648,6 +685,7 @@ export const FireStoreTablaAlumnosInfoCoordi = () => {
                         let aux = [...fila]
                         if (aux.length == 11) {
                             tabla.push(aux)
+                            tablaCSV.push(aux)
                         }
                         console.log(tabla)
                         fila.length = 0;
@@ -778,11 +816,29 @@ export const FireStoreTablaAlumnosPorTallerCoordi = ({ taller }) => {
     const [grupos] = useGetDataGrupoTaller();
     const [talleres] = useGetDataTaller();
     let tabla = [];
+    let tablaCSV = [];
     let fila = [];
+    let filaAux = [];
     let curr = 0;
     let cont = 0;
+
+    filaAux.push("Matricula");
+    filaAux.push("Alumno");
+    filaAux.push("Campus");
+    filaAux.push("Tetramestre");
+    filaAux.push("Periodo");
+    filaAux.push("Fechas");
+    filaAux.push("Taller_inscrito");
+    filaAux.push("Grupo");
+    filaAux.push("Taller_aprobado");
+    filaAux.push("Estatus");
+    filaAux.push("Actualizar");
+
+    let auxMeter = [...filaAux];
+
+    tablaCSV.push(auxMeter);
     let campusCordi = sessionStorage.getItem("campus");
-    console.log(campusCordi);
+    //console.log(campusCordi);
 
     for (let i = 0; i < inscripciones.length; i++) {
         InfoAlumnoTabla(inscripciones[i].value.alumno_idStr, inscripciones[i].value.campus)
@@ -860,6 +916,7 @@ export const FireStoreTablaAlumnosPorTallerCoordi = ({ taller }) => {
                         let aux = [...fila]
                         if (aux.length == 11) {
                             tabla.push(aux)
+                            tablaCSV.push(aux)
                         }
                         console.log(tabla)
                         fila.length = 0;
