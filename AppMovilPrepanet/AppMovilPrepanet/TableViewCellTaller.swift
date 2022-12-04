@@ -4,6 +4,9 @@
 //
 //  Created by alex on 14/10/22.
 //
+/*
+ Celdas de los talleres
+ */
 
 import UIKit
 
@@ -20,8 +23,6 @@ class TableViewCellTaller: UITableViewCell {
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
     }
 
 }

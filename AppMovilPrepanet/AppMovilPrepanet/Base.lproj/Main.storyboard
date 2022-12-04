@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21225" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="ooF-N3-kWR">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="ooF-N3-kWR">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
-        <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21207"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
         <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -24,7 +23,7 @@
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" rowHeight="89" id="Dg4-TH-543" customClass="TableViewCellNotif" customModule="AppMovilPrepanet" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="50" width="343" height="89"/>
+                                        <rect key="frame" x="0.0" y="44.5" width="343" height="89"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Dg4-TH-543" id="zdf-gM-iga">
                                             <rect key="frame" x="0.0" y="0.0" width="343" height="89"/>
@@ -70,6 +69,7 @@
                                                             </subviews>
                                                         </stackView>
                                                     </subviews>
+                                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                     <constraints>
                                                         <constraint firstItem="Yo6-Uj-oNY" firstAttribute="height" secondItem="E5t-Lb-BKn" secondAttribute="height" id="n80-rO-0fe"/>
                                                     </constraints>
@@ -149,7 +149,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hbp-ZB-aig" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1700" y="120.98950524737631"/>
+            <point key="canvasLocation" x="1748" y="121.88905547226388"/>
         </scene>
         <!--View Controller Info Notif-->
         <scene sceneID="KXA-Dg-KKe">
@@ -230,7 +230,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3iz-at-LJz" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2472.8000000000002" y="120.98950524737631"/>
+            <point key="canvasLocation" x="2521" y="122"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="fAq-lT-cW5">
@@ -291,7 +291,7 @@
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" rowHeight="124" id="xqE-K5-A7U" customClass="tallerCeldaTableViewCell" customModule="AppMovilPrepanet" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="50" width="317" height="124"/>
+                                        <rect key="frame" x="0.0" y="44.5" width="317" height="124"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="xqE-K5-A7U" id="FrB-3s-aeR">
                                             <rect key="frame" x="0.0" y="0.0" width="317" height="124"/>
@@ -402,7 +402,7 @@ Inscripciones: 11/10/2022</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AwE-wH-kiJ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1700" y="831.63418290854577"/>
+            <point key="canvasLocation" x="1748" y="-608"/>
         </scene>
         <!--View Controller Info Taller-->
         <scene sceneID="MDf-mG-y5X">
@@ -621,7 +621,7 @@ Inscripciones: 11/10/2022</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GSS-L2-6PW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2473" y="832"/>
+            <point key="canvasLocation" x="2521" y="-608"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="LYX-yL-9jc">
@@ -634,7 +634,7 @@ Inscripciones: 11/10/2022</string>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="backdrop" translatesAutoresizingMaskIntoConstraints="NO" id="7hM-xR-Ok1">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </imageView>
-                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Matrícula" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="WNU-Z4-W3H">
+                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Correo institucional" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="WNU-Z4-W3H">
                                 <rect key="frame" x="37.5" y="316" width="300" height="34"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="300" id="pSG-6H-nc3"/>
@@ -663,7 +663,7 @@ Inscripciones: 11/10/2022</string>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3aX-Ca-Q7u">
-                                <rect key="frame" x="141.5" y="462" width="92" height="34.5"/>
+                                <rect key="frame" x="141.5" y="462" width="92" height="31"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="92" id="X2H-D7-Q4D"/>
                                 </constraints>
@@ -675,7 +675,7 @@ Inscripciones: 11/10/2022</string>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ox5-JV-nl4">
-                                <rect key="frame" x="99" y="516.5" width="177" height="33.5"/>
+                                <rect key="frame" x="99" y="513" width="177" height="33.5"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="177" id="QZk-zx-1Uh"/>
                                 </constraints>
@@ -686,6 +686,9 @@ Inscripciones: 11/10/2022</string>
                                 <buttonConfiguration key="configuration" style="plain" title="Olvidé mi contraseña">
                                     <fontDescription key="titleFontDescription" type="system" pointSize="16"/>
                                 </buttonConfiguration>
+                                <connections>
+                                    <action selector="recuperacion:" destination="ooF-N3-kWR" eventType="touchUpInside" id="Xae-m2-5Lu"/>
+                                </connections>
                             </button>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="prepanet_blanco" translatesAutoresizingMaskIntoConstraints="NO" id="10N-Qf-OMh">
                                 <rect key="frame" x="9" y="138" width="357" height="96"/>
@@ -763,17 +766,17 @@ Inscripciones: 11/10/2022</string>
     <color key="tintColor" name="AccentColor"/>
     <resources>
         <image name="backdrop" width="960" height="540"/>
-        <image name="bell.fill" catalog="system" width="123" height="128"/>
+        <image name="bell.fill" catalog="system" width="128" height="124"/>
         <image name="calendar.badge.plus" catalog="system" width="128" height="108"/>
         <image name="prepanet_blanco" width="1038" height="227"/>
         <image name="square.split.2x2.fill" catalog="system" width="128" height="114"/>
         <image name="tallerdefault" width="2000" height="1333"/>
         <image name="unchecked" width="20" height="20"/>
         <namedColor name="AccentColor">
-            <color red="1" green="0.79199999570846558" blue="0.15700000524520874" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.2196078431372549" green="0.33333333333333331" blue="0.95294117647058818" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
         <systemColor name="labelColor">
-            <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="secondaryLabelColor">
             <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>

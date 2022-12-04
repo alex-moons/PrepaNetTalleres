@@ -4,6 +4,10 @@
 //
 //  Created by alex on 11/10/22.
 //
+/*
+ Página de login de la aplicación. Aquí se hace login a Firebase con
+ Firebase Auth.
+ */
 
 import UIKit
 import Firebase
@@ -21,54 +25,44 @@ class ViewController: UIViewController {
     
     let db = Firestore.firestore()
     let defaults = UserDefaults.standard
-    var staySigned = false; //Cambiar despues por check button
+    var staySigned = false; //Se utiliza para recordar al usuario
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         let tap = UITapGestureRecognizer(target: self, action: #selector(UIInputViewController.dismissKeyboard))
         view.addGestureRecognizer(tap)
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        //Se revisa si hay un usuario guardado para ingresar en Firebase Auth
         let _ = Auth.auth().addStateDidChangeListener { auth, user in }
-        //print(defaults.string(forKey: "signedUser"))
         
-        //print(defaults.string(forKey: "signedUser")!)
         if let signedUser = defaults.string(forKey: "signedUser"){
-            print(signedUser)
             if signedUser == ""{
-                print("Signed user does not exist, delete info")
+                print("No hay usuario guardado.")
                 do {
                     try Auth.auth().signOut()
                 } catch {
                   print(error)
                 }
             } else {
-                print("Signed user exists, perfrom segue")
+                print("Existe usuario guardado, ir a menu principal.")
                 DispatchQueue.main.async {
                     [unowned self] in self.performSegue(withIdentifier: "login", sender: self)
                 }
             }
         } else {
-            print("No saved user, sign out")
+            print("No hay usuario guardado.")
             do {
                 try Auth.auth().signOut()
             } catch {
               print(error)
             }
         }
-
-        
-        //EDITAR DESPUES: se hace sign out cada vez que hace login
-        /*do {
-            try Auth.auth().signOut()
-        } catch let signOutError as NSError {
-          print("Error signing out: %@", signOutError)
-        }*/
     }
     
+    // MARK: - Funcionalidades de interfaz
     override func viewDidDisappear(_ animated: Bool) {
         tfUsername.text = ""
         tfPassword.text = ""
@@ -92,6 +86,11 @@ class ViewController: UIViewController {
         Entrar(btnEntrar!)
     }
     
+    @IBAction func recuperacion(_ sender: Any) {
+        guard let url = URL(string: "https://itesm.custhelp.com/app/chat/login_faqs") else { return }
+        UIApplication.shared.open(url)
+    }
+    
     @IBAction func recuerdame(_ sender: Any) {
         if staySigned {
             self.checkbox.setImage(UIImage(named: "unchecked"), for: .normal)
@@ -102,7 +101,7 @@ class ViewController: UIViewController {
         }
     }
     
-    
+    // MARK: - Funcionalidad Login
     func errorMessage(title: String, message: String) {
         let tfVacio = UIAlertController(title: title, message: message, preferredStyle: .alert)
         let alertOk = UIAlertAction(title: "Ok", style: .cancel)
@@ -118,12 +117,11 @@ class ViewController: UIViewController {
                 [weak self] authResult, error in
                 guard let _ = self else { return }
                 if let err = error {
-                    print("Error en auth")
+                    print("Error en auth:")
                     print(err.localizedDescription)
                 }
                 
                 if Auth.auth().currentUser != nil {
-                    //print(Auth.auth().currentUser?.uid as Any)
                     self!.db.collection("Alumno").whereField("correo_institucional", isEqualTo: username).getDocuments{ [self] querySnapshot, error in
                             if let error = error {
                                 print("Inscripcion Error" + error.localizedDescription)
@@ -157,14 +155,4 @@ class ViewController: UIViewController {
             errorMessage(title: "Campo de texto Vacío", message: "Por favor llena todos los campos");
         }
     }
-    
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        //let target = segue.destination as! UINavigationController
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-
 }

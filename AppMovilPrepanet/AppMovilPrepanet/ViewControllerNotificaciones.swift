@@ -4,6 +4,9 @@
 //
 //  Created by alex on 18/10/22.
 //
+/*
+    Aquí se pueden ver las notificaciones de los cursos y salir de la aplicación
+ */
 
 import UIKit
 import Firebase
@@ -19,23 +22,10 @@ class ViewControllerNotificaciones: UIViewController, UITableViewDelegate, UITab
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        /*notificaciones = [
-            notificacion(titulo: "Inicio de Inscripciones", fecha: .now, contenido: "Chavos, nada más para recordarles que las inscripciones ya están disponibles.", autor_id: "Alejandro Hernández", taller_id: 0, campus_id: " ", grupo_id: " "),
-            notificacion(titulo: "Recuerden confirmar", fecha: .now, contenido: "Porfa confirmen bien sus talleres, deberían aparecer en verde", autor_id: "Alejandro Hernández", taller_id: 0, campus_id: " ", grupo_id: " ")
-        ]*/
-
-        // Do any additional setup after loading the view.
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        /*
-         - Llamar Alumno (Campus)
-         - Llamar Inscripciones (Grupo)
-         - Llamar Grupo (Taller)
-         - Llamar Taller (numero)
-         - Llamar notificaciones
-         */
+        
         notificaciones = [notificacion]()
         
         db.collection("Alumno").whereField("correo_institucional", isEqualTo: user!.email!).getDocuments { qsAlumno, error in
@@ -181,23 +171,15 @@ class ViewControllerNotificaciones: UIViewController, UITableViewDelegate, UITab
             print("Sign out error")
           print(error)
         }
-        print("Dismissing")
         self.dismiss(animated: true)
-        print("Dismissed")
-        //performSegue(withIdentifier: "signOut", sender: self)
     }
 
     // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let target = segue.destination as? ViewControllerInfoNotif
         let index = tableViewNotif.indexPathForSelectedRow!
 
         target!.notif = notificaciones[index.row]
-
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
     }
-
 }

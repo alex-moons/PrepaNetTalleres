@@ -2,6 +2,7 @@ import * as React from "react";
 import Button from "./Button";
 import Typography from "@mui/material/Typography";
 import ProductHeroLayout from "./HeroLayout";
+import { Stack } from "@mui/material";
 import "./TallerHero.css";
 import { useGetDataAlumno, useGetDataGrupoTaller, useGetDataInscripcion, useGetDataTaller } from "../hooks/useGetData";
 import { AddValueInscripcion } from "../components/Add"
@@ -14,7 +15,26 @@ const backgroundImage =
 export default function ProductHero({ alumno, taller, aprobado }) {
 
     const [grupos] = useGetDataGrupoTaller();
-
+    //console.log(sessionStorage.getItem("usuario"));
+    //console.log(sessionStorage.getItem("taller"));
+    //console.log(taller == sessionStorage.getItem("taller"));
+    //console.log(sessionStorage.getItem("aprobado"));
+    //var taller2 = JSON.parse(taller1);
+    var alumno1 = sessionStorage.getItem("alumno_doc");
+    alumno = JSON.parse(alumno1);
+    var alumno2 = JSON.parse(alumno1);
+    //console.log(alumno.value.campus);
+    //console.log(sessionStorage.getItem("alumno_doc"));
+    //console.log(taller2.id);
+    //console.log(taller.id);
+    var aprobar = false;
+    if (aprobado == "false") {
+        aprobar = false;
+    }
+    else {
+        aprobar = true;
+    }
+    console.log(aprobar);
 
     function inscribir() {
         for (let i = 0; i < grupos.length; i++) {
@@ -62,29 +82,29 @@ export default function ProductHero({ alumno, taller, aprobado }) {
             >
                 {taller.value.descripcion}
             </div>
-            {aprobado == false ?
+            {aprobar == false ?
                 <>
-                    {grupos.map((item, index) => {
-                        return (
-                            <div className="fechaHero">
+                    <Stack direction="row" spacing={2}>
+                        {grupos.map((item, index) => {
+                            return (
+                                <div className="fechaHero">
 
+                                    {item.value.taller_idStr == taller.id &&
+                                        <>
 
-                                {item.value.taller_idStr == taller.id &&
-                                    <>
-                                        < p > Fecha inscripcion grupo: {item.value.numero_grupo}</p>
-                                        <p>Inicio : {formatDate(item.value.inscripcion_inicio.toDate())}</p>
-                                        <p>Fin : {formatDate(item.value.inscripcion_fin.toDate())}</p>
-                                        {/*Poner un if para habilitar o no el boton*/}
-                                        <AddValueInscripcion grupo={item} taller={taller} alumno={alumno} />
-                                    </>
-                                }
+                                            < p > Fecha inscripcion grupo: {item.value.numero_grupo}</p>
+                                            <p>Inicio : {formatDate(item.value.inscripcion_inicio.toDate())}</p>
+                                            <p>Fin : {formatDate(item.value.inscripcion_fin.toDate())}</p>
+                                            {/*Poner un if para habilitar o no el boton*/}
+                                            <AddValueInscripcion grupo={item} taller={taller} alumno={alumno2} />
 
+                                        </>
+                                    }
 
-
-
-                            </div>
-                        );
-                    })}
+                                </div>
+                            );
+                        })}
+                    </Stack>
                 </> :
                 <p>Taller inscrito</p>}
 

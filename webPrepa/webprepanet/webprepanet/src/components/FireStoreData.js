@@ -9,6 +9,8 @@ import "../Pages/TablaAlumnosAdmin.css";
 import firebase from "firebase/compat/app";
 import Popup from './Popup'
 import { CSVLink, CSVDownload } from "react-csv";
+import { useLocation, useNavigate } from "react-router-dom";
+import { NavBarAC } from "../ComponentsWeb/NavBar";
 
 // construir la tabla de los alumnos de TableAlumnosAdmin.js
 export const FireStoreTablaAlumnosInfo = () => {
@@ -20,9 +22,28 @@ export const FireStoreTablaAlumnosInfo = () => {
     const [grupos] = useGetDataGrupoTaller();
     const [talleres] = useGetDataTaller();
     let tabla = [];
+    let tablaCSV = [];
     let fila = [];
+    let filaAux = [];
     let curr = 0;
     let cont = 0;
+    
+    filaAux.push("Matricula");
+    filaAux.push("Alumno");
+    filaAux.push("Campus");
+    filaAux.push("Tetramestre");
+    filaAux.push("Periodo");
+    filaAux.push("Fechas");
+    filaAux.push("Taller_inscrito");
+    filaAux.push("Grupo");
+    filaAux.push("Taller_aprobado");
+    filaAux.push("Estatus");
+    filaAux.push("Actualizar");
+
+    let auxMeter = [...filaAux];
+
+    tablaCSV.push(auxMeter);
+
 
     for (let i = 0; i < inscripciones.length; i++) {
         InfoAlumnoTabla(inscripciones[i].value.alumno_idStr)
@@ -62,7 +83,6 @@ export const FireStoreTablaAlumnosInfo = () => {
                 fila.push(alumnos[i].value.tetramestre);
                 fila.push(alumnos[i].value.periodo_de_ingreso);
                 fila.length = 5;
-
             }
         }
 
@@ -98,6 +118,7 @@ export const FireStoreTablaAlumnosInfo = () => {
                         let aux = [...fila]
                         if (aux.length == 11) {
                             tabla.push(aux)
+                            tablaCSV.push(aux);
                         }
                         console.log(tabla)
                         fila.length = 0;
@@ -114,18 +135,14 @@ export const FireStoreTablaAlumnosInfo = () => {
 
 
     return (
+        <>
+            <NavBarAC />
         <div className="bg-tablas">
             <Container>
                 <Row className="tabla-row">
                     <Col>
                         <h1 className="tabla-titulo">Alumnos</h1>
                     </Col>
-                    <Col className="tabla-filter">
-                        <Form className="tabla-buscar">
-                            <Form.Control type="email" placeholder="Buscar" />
-                        </Form>
-                    </Col>
-
                 </Row>
                 <Row className="tabla-datos">
                     <Table responsive striped bordered hover variant="light" style={{ overflow: "auto" }}>
@@ -213,10 +230,11 @@ export const FireStoreTablaAlumnosInfo = () => {
                     </Table>
                 </Row>
                 <button class="btn btn-outline-primary" type="submit">
-                    <CSVLink data={tabla}>Descargar tabla CSV</CSVLink>
+                    <CSVLink data={tablaCSV}>Descargar tabla CSV</CSVLink>
                 </button>
             </Container>
-        </ div >
+            </ div >
+        </>
 
     );
 
@@ -233,9 +251,27 @@ export const FireStoreTablaAlumnosPorTaller = ({ taller }) => {
     const [grupos] = useGetDataGrupoTaller();
     const [talleres] = useGetDataTaller();
     let tabla = [];
+    let tablaCSV = [];
     let fila = [];
+    let filaAux = [];
     let curr = 0;
     let cont = 0;
+
+    filaAux.push("Matricula");
+    filaAux.push("Alumno");
+    filaAux.push("Campus");
+    filaAux.push("Tetramestre");
+    filaAux.push("Periodo");
+    filaAux.push("Fechas");
+    filaAux.push("Taller_inscrito");
+    filaAux.push("Grupo");
+    filaAux.push("Taller_aprobado");
+    filaAux.push("Estatus");
+    filaAux.push("Actualizar");
+
+    let auxMeter = [...filaAux];
+
+    tablaCSV.push(auxMeter);
 
     for (let i = 0; i < inscripciones.length; i++) {
         InfoAlumnoTabla(inscripciones[i].value.alumno_idStr)
@@ -313,6 +349,7 @@ export const FireStoreTablaAlumnosPorTaller = ({ taller }) => {
                         let aux = [...fila]
                         if (aux.length == 11) {
                             tabla.push(aux)
+                            tablaCSV.push(aux)
                         }
                         console.log(tabla)
                         fila.length = 0;
@@ -329,18 +366,14 @@ export const FireStoreTablaAlumnosPorTaller = ({ taller }) => {
 
 
     return (
+        <>
+            <NavBarAC />
         <div className="bg-tablas">
             <Container>
                 <Row className="tabla-row">
                     <Col>
                         <h1 className="tabla-titulo">Alumnos</h1>
                     </Col>
-                    <Col className="tabla-filter">
-                        <Form className="tabla-buscar">
-                            <Form.Control type="email" placeholder="Buscar" />
-                        </Form>
-                    </Col>
-
                 </Row>
                 <Row className="tabla-datos">
                     <Table responsive striped bordered hover variant="light" style={{ overflow: "auto" }}>
@@ -437,7 +470,7 @@ export const FireStoreTablaAlumnosPorTaller = ({ taller }) => {
                 </button>
             </Container>
         </ div >
-
+        </>
     );
 
 
@@ -480,7 +513,7 @@ export const FireStoreDataGrupos = () => {
                     <p><b>Fin de inscripciones:</b> {formatDate(grupos[ind].value.inscripcion_fin.toDate())}</p>
                     <p><b>Inicio del curso:</b> {formatDate(grupos[ind].value.fecha_inicio.toDate())}</p>
                     <p><b>Fin del curso:</b> {formatDate(grupos[ind].value.fecha_fin.toDate())}</p>
-                    <Popup doc={grupos[ind]}/>
+                    <Popup doc={grupos[ind]} />
 
                 </>
             );
@@ -490,9 +523,22 @@ export const FireStoreDataGrupos = () => {
 
     }
 
+    const location = useLocation();
+    const navigate = useNavigate();
+
+    function irMenuCoordi(id) {
+        if (sessionStorage.getItem("rol") == "Coordi") {
+            navigate("/tablaAlumnosTaller" + id + "C");
+        }
+        else {
+            navigate("/tablaAlumnosTaller" + id);
+        }
+    }
+
 
     return (
         <>
+
             {talleres.map((talleres) => (
                 <React.Fragment key={talleres.id}>
                     <Row className="taller-row">
@@ -509,14 +555,18 @@ export const FireStoreDataGrupos = () => {
                     <Row>
                         <Col className="taller-texto">
                             <p>{talleres.value.descripcion}</p>
-                            <Button href={"/tablaAlumnosTaller" + talleres.value.id} className="taller-button">Lista</Button>
+
+                            <Button onClick={() => irMenuCoordi(talleres.value.id)} className="taller-button">Lista</Button>
+
+                            {/*<Button href={"/tablaAlumnosTaller" + talleres.value.id} className="taller-button">Lista</Button>*/}
+
                         </Col>
                         <Col className="taller-texto">
                             {grupos.map((grupos, index) => {
                                 return (
                                     <>
                                         <Fecha myID={talleres.id} myIDgrupo={grupos.value.taller_idStr} index={index} />
-                                        
+
                                     </>
 
                                 );
@@ -531,7 +581,7 @@ export const FireStoreDataGrupos = () => {
     );
 };
 
-export const FireStoreTablaAlumnosInfoCoordi = ({campus }) => {
+export const FireStoreTablaAlumnosInfoCoordi = () => {
 
     // cada uno de estos tiene todas las colecciones de cada uno
     const [sortedField, setSortedField] = React.useState(null);
@@ -539,12 +589,30 @@ export const FireStoreTablaAlumnosInfoCoordi = ({campus }) => {
     const [inscripciones] = useGetDataInscripcion();
     const [grupos] = useGetDataGrupoTaller();
     const [talleres] = useGetDataTaller();
-    const [campusCoordi] = useGetDataCoordinador();
     let tabla = [];
+    let tablaCSV = [];
     let fila = [];
+    let filaAux = [];
     let curr = 0;
     let cont = 0;
-    let campusCordi = campus;
+
+    filaAux.push("Matricula");
+    filaAux.push("Alumno");
+    filaAux.push("Campus");
+    filaAux.push("Tetramestre");
+    filaAux.push("Periodo");
+    filaAux.push("Fechas");
+    filaAux.push("Taller_inscrito");
+    filaAux.push("Grupo");
+    filaAux.push("Taller_aprobado");
+    filaAux.push("Estatus");
+    filaAux.push("Actualizar");
+
+    let auxMeter = [...filaAux];
+
+    tablaCSV.push(auxMeter);
+
+    let campusCordi = sessionStorage.getItem("campus");
 
     for (let i = 0; i < inscripciones.length; i++) {
         InfoAlumnoTabla(inscripciones[i].value.alumno_idStr, inscripciones[i].value.campus)
@@ -617,6 +685,7 @@ export const FireStoreTablaAlumnosInfoCoordi = ({campus }) => {
                         let aux = [...fila]
                         if (aux.length == 11) {
                             tabla.push(aux)
+                            tablaCSV.push(aux)
                         }
                         console.log(tabla)
                         fila.length = 0;
@@ -633,18 +702,14 @@ export const FireStoreTablaAlumnosInfoCoordi = ({campus }) => {
 
 
     return (
+        <>
+            <NavBarAC />
         <div className="bg-tablas">
             <Container>
                 <Row className="tabla-row">
                     <Col>
                         <h1 className="tabla-titulo">{campusCordi}</h1>
                     </Col>
-                    <Col className="tabla-filter">
-                        <Form className="tabla-buscar">
-                            <Form.Control type="email" placeholder="Buscar" />
-                        </Form>
-                    </Col>
-
                 </Row>
                 <Row className="tabla-datos">
                     <Table responsive striped bordered hover variant="light" style={{ overflow: "auto" }}>
@@ -736,7 +801,7 @@ export const FireStoreTablaAlumnosInfoCoordi = ({campus }) => {
                 </button>
             </Container>
         </ div >
-
+        </>
     );
 
 
@@ -751,10 +816,29 @@ export const FireStoreTablaAlumnosPorTallerCoordi = ({ taller }) => {
     const [grupos] = useGetDataGrupoTaller();
     const [talleres] = useGetDataTaller();
     let tabla = [];
+    let tablaCSV = [];
     let fila = [];
+    let filaAux = [];
     let curr = 0;
     let cont = 0;
-    let campusCordi = "Monterrey";
+
+    filaAux.push("Matricula");
+    filaAux.push("Alumno");
+    filaAux.push("Campus");
+    filaAux.push("Tetramestre");
+    filaAux.push("Periodo");
+    filaAux.push("Fechas");
+    filaAux.push("Taller_inscrito");
+    filaAux.push("Grupo");
+    filaAux.push("Taller_aprobado");
+    filaAux.push("Estatus");
+    filaAux.push("Actualizar");
+
+    let auxMeter = [...filaAux];
+
+    tablaCSV.push(auxMeter);
+    let campusCordi = sessionStorage.getItem("campus");
+    //console.log(campusCordi);
 
     for (let i = 0; i < inscripciones.length; i++) {
         InfoAlumnoTabla(inscripciones[i].value.alumno_idStr, inscripciones[i].value.campus)
@@ -832,6 +916,7 @@ export const FireStoreTablaAlumnosPorTallerCoordi = ({ taller }) => {
                         let aux = [...fila]
                         if (aux.length == 11) {
                             tabla.push(aux)
+                            tablaCSV.push(aux)
                         }
                         console.log(tabla)
                         fila.length = 0;
@@ -848,18 +933,14 @@ export const FireStoreTablaAlumnosPorTallerCoordi = ({ taller }) => {
 
 
     return (
+        <>
+            <NavBarAC />
         <div className="bg-tablas">
             <Container>
                 <Row className="tabla-row">
                     <Col>
-                        <h1 className="tabla-titulo">Alumnos</h1>
+                        <h1 className="tabla-titulo">{campusCordi}</h1>
                     </Col>
-                    <Col className="tabla-filter">
-                        <Form className="tabla-buscar">
-                            <Form.Control type="email" placeholder="Buscar" />
-                        </Form>
-                    </Col>
-
                 </Row>
                 <Row className="tabla-datos">
                     <Table responsive striped bordered hover variant="light" style={{ overflow: "auto" }}>
@@ -956,7 +1037,7 @@ export const FireStoreTablaAlumnosPorTallerCoordi = ({ taller }) => {
                 </button>
             </Container>
         </ div >
-
+        </>
     );
 
 

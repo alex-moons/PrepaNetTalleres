@@ -4,6 +4,9 @@
 //
 //  Created by alex on 14/10/22.
 //
+/*
+    Aquí se cargan todos los talleres del alumno. Se hacen múltiples llamadas a Firestore
+ */
 
 import UIKit
 import Firebase
@@ -16,8 +19,8 @@ class ViewControllerTalleres: UIViewController, UITableViewDelegate, UITableView
     
     var db = Firestore.firestore()
     let user = Auth.auth().currentUser
-    var talleres = [taller](repeating: taller(docID: "", nombre: "", status: "", desc: ""), count: 6)
-    var queryAlumno: Query!
+    var talleres = [taller](repeating: taller(docID: "", nombre: "", status: "", desc: ""), count: 6) //Se inicializa el arreglo con los 6 talleres
+    var queryAlumno: Query! //Se guarda el query para llamar al alumno
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -56,7 +59,6 @@ class ViewControllerTalleres: UIViewController, UITableViewDelegate, UITableView
                     
                     self.talleres[(datos["id"] as! Int) - 1] = taller(docID: tallerDoc.documentID, nombre: datos["nombre"] as! String, status: "Sin Cursar", desc: datos["descripcion"] as! String)
                 }
-                //self.tableViewTalleres.reloadData()
             }
         }
         
@@ -145,20 +147,15 @@ class ViewControllerTalleres: UIViewController, UITableViewDelegate, UITableView
         tableView.deselectRow(at: indexPath, animated: true)
     }
     
-    
-    
     // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        //Se pasa la info del taller para la vista detallada
         let target = segue.destination as? ViewControllerInfoTaller
         let index = tableViewTalleres.indexPathForSelectedRow!
         target?.tallerInfo = talleres[index.row]
         target?.img = UIImage(named: "taller\(String(index.row+1))")
         target?.talleres = talleres
         target?.tallerIndex = index.row
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
     }
-
 }
